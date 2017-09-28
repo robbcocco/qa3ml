@@ -1,0 +1,252 @@
+{
+    "1": {
+        "dataset": "town_of_cary_expenditures",
+        "question": "How much was spent on public safety by the Town of Cary in 2010?",
+        "result": "How much was spent on \npublic safety\t<https://openspending.org/town_of_cary_expenditures/Class/4>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Public Safety\" \n by the Town of Cary in \n2010\t<http://linkedspending.aksw.org/instance/observation-town_of_cary_expenditures-857e5982e12bb38ad08357347431826ba2164881>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "2": {
+        "dataset": "town_of_cary_expenditures",
+        "question": "How many programs were done under the class of General Government in the expenditure of the Town of Cary?",
+        "result": "How many \nprograms\t<http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Program>\t<http://purl.org/dc/terms/identifier>\t\"Program\" \n were done under the \nclass\t<http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Class>\t<http://purl.org/dc/terms/identifier>\t\"Class\" \n of \nGeneral Government\t<https://openspending.org/town_of_cary_expenditures/Class/3>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"General Government\" \n in the expenditure of the Town of Cary?"
+    },
+    "3": {
+        "dataset": "town_of_cary_revenues",
+        "question": "How much did the Town of Cary earn in 2010?",
+        "result": "How much did the \nTown of Cary earn\t<http://linkedspending.aksw.org/instance/town_of_cary_revenues>\t<http://purl.org/dc/terms/identifier>\t\"town_of_cary_revenues\" \n in \n2010\t<http://linkedspending.aksw.org/instance/observation-town_of_cary_revenues-3454d699a20771880d3dd7e2f4423a225ea88f86>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "4": {
+        "dataset": "town_of_cary_revenues",
+        "question": "Which class achieved the highest revenue for the Town of Cary?",
+        "result": "Which \nclass\t<http://linkedspending.aksw.org/ontology/town_of_cary_revenues-Class>\t<http://purl.org/dc/terms/identifier>\t\"Class\" \n achieved the highest revenue for the Town of Cary?"
+    },
+    "5": {
+        "dataset": "city-of-whiteacre-spending",
+        "question": "For which account type of whiteacre was spent the most?",
+        "result": "For which \naccount type\t<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-accounttype>\t<http://www.w3.org/2000/01/rdf-schema#comment>\t\"Account Type\" \n of whiteacre was spent the most?"
+    },
+    "6": {
+        "dataset": "city-of-whiteacre-spending",
+        "question": "How much interest did the debt service of the city of Whiteacre spend?",
+        "result": "How much \ninterest\t<https://openspending.org/city-of-whiteacre-spending/object/9022.0>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"INTEREST\" \n did the \ndebt service\t<https://openspending.org/city-of-whiteacre-spending/to/851006>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Debt Service\" \n of the \ncity of Whiteacre spend\t<http://linkedspending.aksw.org/instance/city-of-whiteacre-spending>\t<http://purl.org/dc/terms/identifier>\t\"city-of-whiteacre-spending\" \n?"
+    },
+    "7": {
+        "dataset": "maldives_proposed_expenditure_2015",
+        "question": "Which expenses had the highest total amount of proposed expenditures for the Maldives?\n",
+        "result": "Which \nexpenses\t<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-Expenses>\t<http://purl.org/dc/terms/identifier>\t\"Expenses\" \n had the highest total \namount\t<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n of proposed expenditures for the Maldives?"
+    },
+    "8": {
+        "dataset": "maldives_proposed_expenditure_2015",
+        "question": "What was the highest single expenditure amount proposed by the Maldives Broadcasting Corporation?",
+        "result": "What was the highest single expenditure \namount\t<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n proposed by the \nMaldives Broadcasting Corporation\t<https://openspending.org/maldives_proposed_expenditure_2015/Agency/maldives-broadcasting-corporation>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Maldives Broadcasting Corporation\" \n?"
+    },
+    "9": {
+        "dataset": "fingal_exp_budget",
+        "question": "Which Ugandan output had the highest budget in 2014?",
+        "result": "Which Ugandan output had the highest budget in \n2014\t<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-f33977cf48402e93ff8e03b72f03ff4e759f11c6>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2014\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "10": {
+        "dataset": "ministry_of_health",
+        "question": "What was the average Uganda health budget amount in Namutumba District?",
+        "result": "What was the average Uganda health budget \namount\t<http://linkedspending.aksw.org/ontology/ministry_of_health-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n in \nNamutumba District\t<https://openspending.org/ministry_of_health/to/namutumba-district>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Namutumba District\" \n?"
+    },
+    "11": {
+        "dataset": "newcastle-city-council-payments-over-500",
+        "question": "How many suppliers did the Newcastle city council use for education?",
+        "result": "How many suppliers did the \nNewcastle city council\t<https://openspending.org/newcastle-city-council-payments-over-500/to/newcastle-city-council>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"NEWCASTLE CITY COUNCIL\" \n use for \neducation\t<http://linkedspending.aksw.org/instance/observation-newcastle-city-council-payments-over-500-1818179b7a9d9c18e50fc3c64279fe2bcb802660>\t<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-service-area>\t\"EDUCATION\" \n?"
+    },
+    "12": {
+        "dataset": "iw-council-spending-2012-13-test",
+        "question": "How many directorates does the Newcastle city council have?",
+        "result": "How many \ndirectorates\t<http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-directorate>\t<http://purl.org/dc/terms/identifier>\t\"directorate\" \n does the \nNewcastle city council\t<https://openspending.org/iw-council-spending-2012-13-test/suppliernameclustered/newcastle-city-council>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"NEWCASTLE CITY COUNCIL\" \n have?"
+    },
+    "13": {
+        "dataset": "uk-local-walthamforest",
+        "question": "Which suppliers did the Waltham Forest Council utilize for recycling?",
+        "result": "Which \nsuppliers\t<http://linkedspending.aksw.org/ontology/uk-local-walthamforest-to>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Supplier\" \n did the Waltham Forest Council utilize for \nrecycling\t<http://linkedspending.aksw.org/instance/observation-uk-local-walthamforest-ca18c731ebc8a7ede76b3d8733af90711a5ce5f7>\t<http://linkedspending.aksw.org/ontology/uk-local-walthamforest-ExpenseType>\t\"RECYCLING\" \n?"
+    },
+    "14": {
+        "dataset": "uk-local-walthamforest",
+        "question": "On the Waltham Forest Council, how much money was given to the Forest Recycling Project?",
+        "result": "On the Waltham Forest Council, how much money was given to the Forest \nRecycling\t<http://linkedspending.aksw.org/instance/observation-uk-local-walthamforest-ca18c731ebc8a7ede76b3d8733af90711a5ce5f7>\t<http://linkedspending.aksw.org/ontology/uk-local-walthamforest-ExpenseType>\t\"RECYCLING\" \n Project?"
+    },
+    "15": {
+        "dataset": "cheshire_west_and_chester_april_2013",
+        "question": "How many narratives are there for Cheshire West and Chester council spending in the category of Marketing?",
+        "result": "How many \nnarratives\t<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-narrative>\t<http://purl.org/dc/terms/identifier>\t\"narrative\" \n are there for Cheshire West and Chester council \nspending in the category\t<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-expenditure-category>\t<http://purl.org/dc/terms/identifier>\t\"expenditure-category\" \n of \nMarketing\t<http://linkedspending.aksw.org/instance/observation-cheshire_west_and_chester_april_2013-fe05131712bb21f29a0fc107e759ec5f46968ba9>\t<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-expenditure-category>\t\"Marketing\" \n?"
+    },
+    "16": {
+        "dataset": "cheshire_west_and_chester_april_2013",
+        "question": "What are the top 3 expenditure categories in Cheshire West and Chester council spending?",
+        "result": "What are the top \n3\t<http://linkedspending.aksw.org/instance/cheshire_west_and_chester_april_2013>\t<http://linkedspending.aksw.org/ontology/transformationVersion>\t\"3\"^^<http://www.w3.org/2001/XMLSchema#int> \n \nexpenditure categories\t<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-expenditure-category>\t<http://purl.org/dc/terms/identifier>\t\"expenditure-category\" \n in Cheshire West and Chester council spending?"
+    },
+    "17": {
+        "dataset": "city-of-redacre-spending",
+        "question": "Which priorities does the insurance fund have for the City of Redacre?",
+        "result": "Which \npriorities\t<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-priority>\t<http://purl.org/dc/terms/identifier>\t\"priority\" \n does the \ninsurance\t<https://openspending.org/city-of-redacre-spending/from/510>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Insurance\" \n \nfund\t<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-from>\t<http://www.w3.org/2000/01/rdf-schema#comment>\t\"Fund\" \n have for the City of Redacre?"
+    },
+    "18": {
+        "dataset": "city-of-redacre-spending",
+        "question": "How many divisions have safety priority in the City of Redacre spending?",
+        "result": "How many \ndivisions\t<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-to>\t<http://www.w3.org/2000/01/rdf-schema#comment>\t\"Division\" \n have \nsafety\t<https://openspending.org/city-of-redacre-spending/priority/safety>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"SAFETY\" \n \npriority\t<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-priority>\t<http://purl.org/dc/terms/identifier>\t\"priority\" \n in the \nCity of Redacre spending\t<http://linkedspending.aksw.org/instance/city-of-redacre-spending>\t<http://purl.org/dc/terms/identifier>\t\"city-of-redacre-spending\" \n?"
+    },
+    "19": {
+        "dataset": "wandsworthspending_2013",
+        "question": "What was the total Wandsworth spending in 2013 from the housing department?",
+        "result": "What was the total \nWandsworth spending in 2013\t<http://linkedspending.aksw.org/instance/wandsworthspending_2013>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Wandsworth spending (2013)\" \n from the \nhousing\t<http://linkedspending.aksw.org/instance/observation-wandsworthspending_2013-0f8b87bb13b2e41e989a63bd464a0f5f0ded20a4>\t<http://linkedspending.aksw.org/ontology/wandsworthspending_2013-Department>\t\"HOUSING\" \n \ndepartment\t<http://linkedspending.aksw.org/ontology/wandsworthspending_2013-Department>\t<http://purl.org/dc/terms/identifier>\t\"Department\" \n?"
+    },
+    "20": {
+        "dataset": "wandsworthspending_2013",
+        "question": "How much money does Wandsworth spendt on general internal repairs?",
+        "result": "How much money does \nWandsworth\t<http://linkedspending.aksw.org/instance/wandsworthspending_2013>\t<http://www.w3.org/2000/01/rdf-schema#comment>\t\"Wandsworth \" \n spendt on \ngeneral internal repairs\t<http://linkedspending.aksw.org/instance/observation-wandsworthspending_2013-0f8b87bb13b2e41e989a63bd464a0f5f0ded20a4>\t<http://linkedspending.aksw.org/ontology/wandsworthspending_2013-DetailedExpenses>\t\"GENERAL INTERNAL REPAIRS\" \n?"
+    },
+    "21": {
+        "dataset": "iw-council-spending-2012-13-test",
+        "question": "Top 3 IW Council Spending service areas?",
+        "result": "Top \n3\t<http://linkedspending.aksw.org/instance/observation-iw-council-spending-2012-13-test-5d077b2ae774b8558de7a52c23f2ce57aecf4e0f>\t<http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-index>\t\"_3\" \n IW Council Spending service areas?"
+    },
+    "22": {
+        "dataset": "newcastle-city-council-payments-over-500",
+        "question": "Under which directorate does the IW Council service area have the highest revenue?",
+        "result": "Under which \ndirectorate\t<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-from>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Directorate\" \n does the IW Council \nservice area\t<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-service-area>\t<http://purl.org/dc/terms/identifier>\t\"service-area\" \n have the highest \nrevenue\t<http://linkedspending.aksw.org/instance/observation-newcastle-city-council-payments-over-500-1783c9e86f1c4f86e881ed9bbdab7c9994b8299c>\t<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-capital-or-revenue>\t\"Revenue\" \n?"
+    },
+    "23": {
+        "dataset": "city-of-springfield-budget",
+        "question": "Which departments of the city of Springfield had a higher budget in 2004 then in 2005?",
+        "result": "Which \ndepartments\t<http://linkedspending.aksw.org/ontology/city-of-springfield-budget-to>\t<http://www.w3.org/2000/01/rdf-schema#comment>\t\"Department\" \n of the city of Springfield had a higher budget in \n2004\t<http://linkedspending.aksw.org/instance/observation-city-of-springfield-budget-452ade012d6bea3a3ca009be0d1f8eff441c87b2>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2004\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n then in \n2005\t<http://linkedspending.aksw.org/instance/observation-city-of-springfield-budget-2090f3943f55dd91f7d8ef19d2ccbdb60ffe28bd>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2005\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "24": {
+        "dataset": "city-of-springfield-budget",
+        "question": "What is the highest single budget amount in the city of Springfield for public safety?",
+        "result": "What is the highest single budget \namount\t<http://linkedspending.aksw.org/ontology/city-of-springfield-budget-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n in the city of Springfield for \npublic safety\t<https://openspending.org/city-of-springfield-budget/deptgroup/public-safety>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"PUBLIC SAFETY\" \n?"
+    },
+    "25": {
+        "dataset": "city-of-whiteacre-spending",
+        "question": "Which of the Californian cities received the highest amount of money?",
+        "result": "Which of the Californian cities received the highest \namount\t<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n of money?"
+    },
+    "26": {
+        "dataset": "pscs_ca_cities",
+        "question": "Under which caption did Livermore receive the highest amount of money in 2011?",
+        "result": "Under which \ncaption\t<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>\t<http://purl.org/dc/terms/identifier>\t\"caption\" \n did \nLivermore\t<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-64613863d24ffce0257f2ad2fea56657261c658f>\t<http://linkedspending.aksw.org/ontology/pscs_ca_cities-gov-full-name>\t\"Livermore\" \n receive the highest \namount\t<http://linkedspending.aksw.org/ontology/pscs_ca_cities-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n of money in \n2011\t<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-f1c45c72b12fe53cdb093a1580e7889b3765d2f9>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "27": {
+        "dataset": "dc-city-salaries",
+        "question": "What is the average Washington DC teacher salary?",
+        "result": "What is the average \nWashington\t<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-f40c235426548ab625b646c3e3095ecba8b7d5c2>\t<http://linkedspending.aksw.org/ontology/dc-city-salaries-first>\t\"Washington\" \n DC \nteacher\t<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-5485f4b70712b68c3dfd39bfe4ed870a26f86e99>\t<http://linkedspending.aksw.org/ontology/dc-city-salaries-position>\t\"Teacher\" \n salary?"
+    },
+    "28": {
+        "dataset": "dc-city-salaries",
+        "question": "Which position has the highest average salary in Washington DC?",
+        "result": "Which \nposition\t<http://linkedspending.aksw.org/ontology/dc-city-salaries-position>\t<http://purl.org/dc/terms/identifier>\t\"position\" \n \nhas\t<https://openspending.org/dc-city-salaries/to/ha>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Ha\" \n the highest average salary in \nWashington\t<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-f40c235426548ab625b646c3e3095ecba8b7d5c2>\t<http://linkedspending.aksw.org/ontology/dc-city-salaries-first>\t\"Washington\" \n DC?"
+    },
+    "29": {
+        "dataset": "big-lottery-fund-grants",
+        "question": "How many big lottery found grants were given in the South West in 2012?",
+        "result": "How many big lottery found grants were \ngiven\t<https://openspending.org/big-lottery-fund-grants/to/will-to-give>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Will To Give\" \n in the \nSouth West\t<http://linkedspending.aksw.org/instance/observation-big-lottery-fund-grants-fadeb23c244d7cdb5d51b0eb5f8a274a7ab8fb68>\t<http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-region>\t\"South West\" \n in \n2012\t<http://linkedspending.aksw.org/instance/observation-big-lottery-fund-grants-fadeb23c244d7cdb5d51b0eb5f8a274a7ab8fb68>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2012\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "30": {
+        "dataset": "big-lottery-fund-grants",
+        "question": "Has there been a big lottery fund grant to Stanbury Court Social Club?\n\n",
+        "result": "Has there been a \nbig lottery fund grant\t<http://linkedspending.aksw.org/instance/big-lottery-fund-grants>\t<http://purl.org/dc/terms/identifier>\t\"big-lottery-fund-grants\" \n to \nStanbury Court Social Club\t<https://openspending.org/big-lottery-fund-grants/to/stanbury-court-social-club>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Stanbury Court Social Club\" \n?"
+    },
+    "31": {
+        "dataset": "maldives_proposed_expenditure_2015",
+        "question": "On which expenses in Gloucestershire was spent more than 10000000 pound in total?",
+        "result": "On which \nexpenses\t<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-Expenses>\t<http://purl.org/dc/terms/identifier>\t\"Expenses\" \n in Gloucestershire was spent more than 10000000 pound in total?"
+    },
+    "32": {
+        "dataset": "nyc-council-member-items",
+        "question": "How much money did Cheltenham Borough Homes receive?",
+        "result": "How much money did Cheltenham \nBorough\t<http://linkedspending.aksw.org/ontology/nyc-council-member-items-borough>\t<http://purl.org/dc/terms/identifier>\t\"borough\" \n Homes receive?"
+    },
+    "33": {
+        "dataset": "ukgov-finances-cra",
+        "question": "How much did the department for work and pensions pay for Research into Infrastructure?",
+        "result": "How much did the \ndepartment for work and pensions\t<https://openspending.org/ukgov-finances-cra/from/Dept032>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Department for Work and Pensions\" \n \npay\t<http://linkedspending.aksw.org/ontology/ukgov-finances-cra-to>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Paid to\" \n for \nResearch into Infrastructure\t<https://openspending.org/ukgov-finances-cra/cofog2/04.8>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Research into Infrastructure\" \n?"
+    },
+    "34": {
+        "dataset": "ukgov-finances-cra",
+        "question": "What are the geographic regions in the UK Country Regional Analysis from the scottish executive and its departments for forests?",
+        "result": "What are the \ngeographic regions\t<http://linkedspending.aksw.org/ontology/ukgov-finances-cra-region>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Geographic region\" \n in the \nUK Country Regional Analysis\t<http://linkedspending.aksw.org/instance/ukgov-finances-cra>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"UK Country Regional Analysis\" \n from the \nscottish executive and its departments\t<https://openspending.org/ukgov-finances-cra/from/SCT075>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Scottish Executive and its departments\" \n for \nforests\t<https://openspending.org/ukgov-finances-cra/cofog3/04.2.2>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Forests\" \n?"
+    },
+    "35": {
+        "dataset": "iati_cordaid_af",
+        "question": "How much cost the implementation of Midwifery Education in Nangarhar?",
+        "result": "How much cost the \nimplementation\t<http://linkedspending.aksw.org/instance/observation-iati_cordaid_af-3e05f7d0bebc9bb94e7b5e4cecf0445a4f2faa17>\t<http://linkedspending.aksw.org/ontology/iati_cordaid_af-Activity_Status>\t\"Implementation\" \n of \nMidwifery Education in Nangarhar\t<https://openspending.org/iati_cordaid_af/Unique/262>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Midwifery Education in Nangarhar\" \n?"
+    },
+    "36": {
+        "dataset": "iati_cordaid_af",
+        "question": "How much was spent on food security by Cordaid in Afghanistan?",
+        "result": "How much was spent on \nfood security\t<http://linkedspending.aksw.org/instance/observation-iati_cordaid_af-3e05f7d0bebc9bb94e7b5e4cecf0445a4f2faa17>\t<http://linkedspending.aksw.org/ontology/iati_cordaid_af-Area>\t\"Food Security\" \n by Cordaid in Afghanistan?"
+    },
+    "37": {
+        "dataset": "ca-local-toronto",
+        "question": "What was the total expenditure on Materials and Supplies of the City of Toronto in 2010?",
+        "result": "What was the total \nexpenditure\t<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-abc85fac105637461705149e7a4a3d5871854fae>\t<http://linkedspending.aksw.org/ontology/ca-local-toronto-type>\t\"Other Expenditures\" \n on \nMaterials and Supplies\t<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-336ec80bfc7ad0b4e37dc0fe3df310b16886363d>\t<http://linkedspending.aksw.org/ontology/ca-local-toronto-type>\t\"Materials and Supplies\" \n of the City of Toronto in \n2010\t<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-0df5e4ebf64a6ba164e74fb3eabc151c0d15d199>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "38": {
+        "dataset": "ie_charity_exp",
+        "question": "How much did Ireland charities pay  in total governance costs?",
+        "result": "How much did \nIreland\t<https://openspending.org/ie_charity_exp/Charity/5365>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"The MS of Ireland\" \n \ncharities\t<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-8ea910ace9e0cc4347de516e57692349c436d087>\t<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>\t\"Charity\" \n pay in total \ngovernance costs\t<https://openspending.org/ie_charity_exp/Level3/b3-5310>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Governance Costs\" \n?"
+    },
+    "39": {
+        "dataset": "frontex",
+        "question": "What was the frontex staff budget in 2005?",
+        "result": "What was the \nfrontex\t<http://linkedspending.aksw.org/instance/frontex>\t<http://purl.org/dc/terms/identifier>\t\"frontex\" \n \nstaff\t<https://openspending.org/frontex/Article/a-111>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Other Staff\" \n budget in \n2005\t<http://linkedspending.aksw.org/instance/observation-frontex-aca8ff489f693b92da8b005e27a6d07e8fb27377>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2005\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "40": {
+        "dataset": "dcc_exp_budget2013",
+        "question": "What was the smallest amount for industrial and commercial facilities in the Dublin City Council Expenditure Budget of 2013?",
+        "result": "What was the smallest \namount\t<http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n for \nindustrial and commercial facilities\t<https://openspending.org/dcc_exp_budget2013/to/d04>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Industrial & Commercial Facilities\" \n in the \nDublin City Council Expenditure Budget of 2013\t<http://linkedspending.aksw.org/instance/dcc_exp_budget2013>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Dublin City Council Expenditure Budget 2013\" \n?"
+    },
+    "41": {
+        "dataset": "financial_aid",
+        "question": "Which country received the highest financial crisis aid?\n",
+        "result": "Which \ncountry\t<http://linkedspending.aksw.org/ontology/financial_aid-country>\t<http://purl.org/dc/terms/identifier>\t\"country\" \n received the highest \nfinancial crisis aid\t<http://linkedspending.aksw.org/instance/financial_aid>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Financial_crisis_aid\" \n?"
+    },
+    "42": {
+        "dataset": "ie_charity_exp",
+        "question": "How much was charity spending was expended for charitable activities in Haiti?",
+        "result": "How much was \ncharity\t<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-8ea910ace9e0cc4347de516e57692349c436d087>\t<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>\t\"Charity\" \n \nspending\t<https://openspending.org/ie_charity_exp/Level1/b>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Expended\" \n was expended for \ncharitable activities\t<https://openspending.org/ie_charity_exp/Level3/b2-5210>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Charitable Activities\" \n in \nHaiti\t<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-c804c5fbdb83ea30c3d585ef8496182b27db812c>\t<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>\t\"Haiti\" \n?"
+    },
+    "43": {
+        "dataset": "dc-vendors-contractors",
+        "question": "What is the amount given by the Metropolitan Police Department to Cybernational?",
+        "result": "What is the \namount\t<http://linkedspending.aksw.org/ontology/dc-vendors-contractors-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n given by the \nMetropolitan Police Department\t<https://openspending.org/dc-vendors-contractors/from/metropolitan-police-department>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"METROPOLITAN POLICE DEPARTMENT\" \n to Cybernational?"
+    },
+    "44": {
+        "dataset": "cameroon_visualisation",
+        "question": "What was the highest amount under the sub-account for layout and construction of buildingsin Cameroon in 2009?",
+        "result": "NOT ABLE TO RENDER"
+    },
+    "45": {
+        "dataset": "nominettrust_funding",
+        "question": "When did Canada get Nominet Trust funding for the last time?",
+        "result": "When did \nCanada\t<https://openspending.org/nominettrust_funding/region/canada>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Canada\" \n get \nNominet Trust funding\t<http://linkedspending.aksw.org/instance/nominettrust_funding>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Nominet Trust funding\" \n for the last \ntime\t<http://linkedspending.aksw.org/ontology/nominettrust_funding-time>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Time\" \n?"
+    },
+    "46": {
+        "dataset": "618ac3ec98384f44a9ef142356ce476d",
+        "question": "Which admin was reponsible for the most total running expenses in Armenia in 2009?",
+        "result": "Which \nadmin\t<http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-from>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Admin\" \n was reponsible for the most total \nrunning expenses\t<http://linkedspending.aksw.org/instance/observation-618ac3ec98384f44a9ef142356ce476d-8b31551d0f8a7a86b3c885654e4b67e4a4c334af>\t<http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-economiclevel1>\t\"Running expenses\" \n in Armenia in \n2009\t<http://linkedspending.aksw.org/instance/observation-618ac3ec98384f44a9ef142356ce476d-8b31551d0f8a7a86b3c885654e4b67e4a4c334af>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2009\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "47": {
+        "dataset": "al_planned_budget_2007to2013",
+        "question": "How much is the total amount of statuatory transfers in Nigerias proposed budget of 2013?",
+        "result": "How much is the total \namount\t<http://linkedspending.aksw.org/ontology/al_planned_budget_2007to2013-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n of statuatory transfers in Nigerias proposed budget of \n2013\t<http://linkedspending.aksw.org/instance/al_planned_budget_2007to2013>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
+    },
+    "48": {
+        "dataset": "nyc-council-member-items",
+        "question": "How much did the New York City Council Members give in 2015 for the Manhattan youth?",
+        "result": "How much did the New York City Council Members give in \n2015\t<http://linkedspending.aksw.org/instance/observation-nyc-council-member-items-362390b52fe9da123563a21b950a0a785b5b16bc>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2015\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n for the \nManhattan\t<https://openspending.org/nyc-council-member-items/borough/manhattan>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Manhattan\" \n \nyouth\t<https://openspending.org/nyc-council-member-items/category/youth>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Youth\" \n?"
+    },
+    "49": {
+        "dataset": "fingal_exp_budget",
+        "question": "What was the amount of the smallest community grant in the Fingal County Council expenditure budget?\n",
+        "result": "What was the \namount\t<http://linkedspending.aksw.org/ontology/fingal_exp_budget-amount>\t<http://purl.org/dc/terms/identifier>\t\"amount\" \n of the smallest \ncommunity grant\t<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-7995341cdc0871ebe045e7c85f5865bb29dc9158>\t<http://linkedspending.aksw.org/ontology/fingal_exp_budget-ref2-desc>\t\"Community Grants\" \n in the \nFingal County Council expenditure budget\t<http://linkedspending.aksw.org/instance/fingal_exp_budget>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Fingal County Council Expenditure Budget\" \n?"
+    },
+    "50": {
+        "dataset": "pbw-ct",
+        "question": "When was the upgrade of the Parks-Baba Park paid?",
+        "result": "When was the \nupgrade of the Parks-Baba Park paid\t<https://openspending.org/pbw-ct/Description/upgrade-of-parks-baba-park>\t<http://www.w3.org/2000/01/rdf-schema#label>\t\"Upgrade of Parks-Baba Park\" \n?"
+    }
+}
