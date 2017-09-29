@@ -4,7 +4,7 @@ import os
 
 def get_test_data():
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'datasets/qald-6-train-datacube.json')
+    data_path = os.path.join(directory, 'datasets/qald-6-test-datacube.json')
     with open(data_path, newline='') as data_file:
         data = json.load(data_file)
         return data
@@ -27,15 +27,15 @@ class Question:
         self.query = raw_question['query']['sparql']
         self.aggregation = raw_question['aggregation']
 
-        self.vars = []
-        for var in raw_question['answers'][0]['head']['vars']:
-            self.vars.append(var)
-
-        self.answers = []
-        for binding in raw_question['answers'][0]['results']['bindings']:
-            for var in self.vars:
-                answer = Answer(var, binding[var])
-                self.answers.append(answer)
+        # self.vars = []
+        # for var in raw_question['answers'][0]['head']['vars']:
+        #     self.vars.append(var)
+        #
+        # self.answers = []
+        # for binding in raw_question['answers'][0]['results']['bindings']:
+        #     for var in self.vars:
+        #         answer = Answer(var, binding[var])
+        #         self.answers.append(answer)
 
 
 class Answer:

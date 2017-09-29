@@ -23,13 +23,13 @@ def save_data_to_text(data):
 
 def answer2json(question, qa3_answer, query):
     answers = []
-    for dc_answer in question.answers:
-        answer = {
-            'var': dc_answer.var,
-            'type': dc_answer.type,
-            'value': dc_answer.value
-        }
-        answers.append(answer)
+    # for dc_answer in question.answers:
+    #     answer = {
+    #         'var': dc_answer.var,
+    #         'type': dc_answer.type,
+    #         'value': dc_answer.value
+    #     }
+    #     answers.append(answer)
 
     results = []
     for qa3_result in qa3_answer.result:
