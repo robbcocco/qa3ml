@@ -9,14 +9,14 @@ import datacube.query as qa3query
 
 def save_data_to_json(data):
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'datasets/test.json')
+    data_path = os.path.join(directory, 'datasets/train.json')
     with open(data_path, 'w') as data_file:
         json.dump(data, data_file, indent=4)
 
 
 def save_data_to_text(data):
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'datasets/test.txt')
+    data_path = os.path.join(directory, 'datasets/train.txt')
     with open(data_path, 'w') as data_file:
         data_file.write(data)
 

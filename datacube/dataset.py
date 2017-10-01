@@ -4,7 +4,7 @@ import os
 
 def get_test_data():
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'datasets/qald-6-test-datacube.json')
+    data_path = os.path.join(directory, 'datasets/qald-6-train-datacube.json')
     with open(data_path, newline='') as data_file:
         data = json.load(data_file)
         return data

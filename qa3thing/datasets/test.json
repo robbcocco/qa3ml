@@ -6,7 +6,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/town_of_cary_expenditures> { ?obs qb:dataSet ls:town_of_cary_expenditures. ?obs lso:town_of_cary_expenditures-amount ?amount. ?obs lso:town_of_cary_expenditures-Class <https://openspending.org/town_of_cary_expenditures/Class/4>. ?obs lso:refYear ?year. filter(year(?year)=2010). }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs <http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Class> ?subject##1 . ?obs ?property##2 ?year . filter(year(?year)=?value##2) . }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs <http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Class> <?subject##1> . ?obs <?property##2> ?year . filter(year(?year)=<?value##2>) . }",
             "qa3_dataset": "town_of_cary_expenditures",
             "qa3_result": [
                 {
@@ -27,7 +27,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select count(distinct(?program)) as ?result from <http://linkedspending.aksw.org/town_of_cary_expenditures> { ?obs qb:dataSet ls:town_of_cary_expenditures. ?obs lso:town_of_cary_expenditures-Program ?program. ?obs lso:town_of_cary_expenditures-Class <https://openspending.org/town_of_cary_expenditures/Class/3>. }",
-            "qa3_query": " select count(distinct(?program)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?program . ?obs ?subject##2 ?subject##3 . }",
+            "qa3_query": " select count(distinct(?program)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?program . ?obs <?subject##2> <?subject##3> . }",
             "qa3_dataset": "town_of_cary_expenditures",
             "qa3_result": [
                 {
@@ -53,7 +53,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/town_of_cary_revenues> { ?obs qb:dataSet ls:town_of_cary_revenues. ?obs lso:refYear ?year. filter(year(?year)=2010). ?obs lso:town_of_cary_revenues-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?year . filter(year(?year)=?value##2) . ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> ?year . filter(year(?year)=<?value##2>) . ?obs <measure> ?measure. }",
             "qa3_dataset": "town_of_cary_revenues",
             "qa3_result": [
                 {
@@ -74,7 +74,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/town_of_cary_revenues> { ?obs qb:dataSet ls:town_of_cary_revenues. ?obs lso:town_of_cary_revenues-Class ?result. ?obs lso:town_of_cary_revenues-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "town_of_cary_revenues",
             "qa3_result": [
                 {
@@ -90,7 +90,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/city-of-whiteacre-spending> { ?obs qb:dataSet ls:city-of-whiteacre-spending. ?obs lso:city-of-whiteacre-spending-accounttype ?result. ?obs lso:city-of-whiteacre-spending-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "city-of-whiteacre-spending",
             "qa3_result": [
                 {
@@ -106,7 +106,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/city-of-whiteacre-spending> { ?obs qb:dataSet ls:city-of-whiteacre-spending. ?obs lso:city-of-whiteacre-spending-object <https://openspending.org/city-of-whiteacre-spending/object/9022.0>. ?obs lso:city-of-whiteacre-spending-to <https://openspending.org/city-of-whiteacre-spending/to/851006>. ?obs lso:city-of-whiteacre-spending-amount ?amount. } ",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-object> ?subject##1 . ?obs <http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-to> ?subject##2 . ?obs <measure> ?measure. } ",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-object> <?subject##1> . ?obs <http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-to> <?subject##2> . ?obs <measure> ?measure. } ",
             "qa3_dataset": "city-of-whiteacre-spending",
             "qa3_result": [
                 {
@@ -132,7 +132,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Expenses ?result. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
             "qa3_result": [
                 {
@@ -153,7 +153,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select max(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Agency <https://openspending.org/maldives_proposed_expenditure_2015/Agency/maldives-broadcasting-corporation>. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. }",
-            "qa3_query": " select max(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-Agency> ?subject##2 . ?obs <measure> ?measure. }",
+            "qa3_query": " select max(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-Agency> <?subject##2> . ?obs <measure> ?measure. }",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
             "qa3_result": [
                 {
@@ -174,7 +174,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/ministry_of_health> { ?obs qb:dataSet ls:ministry_of_health. ?obs lso:ministry_of_health-output ?result. ?obs lso:ministry_of_health-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2014). } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-output> ?result . ?obs <measure> ?measure. ?obs ?property##1 ?year . filter(year(?year)=?value##1) . } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-output> ?result . ?obs <measure> ?measure. ?obs <?property##1> ?year . filter(year(?year)=<?value##1>) . } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "fingal_exp_budget",
             "qa3_result": [
                 {
@@ -190,7 +190,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select avg(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/ministry_of_health> { ?obs qb:dataSet ls:ministry_of_health. ?obs lso:ministry_of_health-to <https://openspending.org/ministry_of_health/to/namutumba-district>. ?obs lso:ministry_of_health-amount ?amount. }",
-            "qa3_query": " select avg(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-to> ?subject##2 . ?obs <measure> ?measure. }",
+            "qa3_query": " select avg(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-to> <?subject##2> . ?obs <measure> ?measure. }",
             "qa3_dataset": "ministry_of_health",
             "qa3_result": [
                 {
@@ -211,7 +211,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select count(distinct(?supplier)) as ?result from <http://linkedspending.aksw.org/newcastle-city-council-payments-over-500> { ?obs qb:dataSet ls:newcastle-city-council-payments-over-500. ?obs lso:newcastle-city-council-payments-over-500-service-area \"EDUCATION\". ?obs lso:newcastle-city-council-payments-over-500-to ?supplier. }",
-            "qa3_query": " select count(distinct(?supplier)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs <http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-to> ?supplier . }",
+            "qa3_query": " select count(distinct(?supplier)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-to> ?supplier . }",
             "qa3_dataset": "newcastle-city-council-payments-over-500",
             "qa3_result": [
                 {
@@ -253,7 +253,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select distinct(?supplier) as ?result from <http://linkedspending.aksw.org/uk-local-walthamforest> { ?obs qb:dataSet ls:uk-local-walthamforest. ?obs lso:uk-local-walthamforest-ExpenseType \"RECYCLING\". ?obs lso:uk-local-walthamforest-to ?supplier. }",
-            "qa3_query": " select distinct(?supplier) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs ?subject##1 ?supplier . }",
+            "qa3_query": " select distinct(?supplier) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <?subject##1> ?supplier . }",
             "qa3_dataset": "uk-local-walthamforest",
             "qa3_result": [
                 {
@@ -290,7 +290,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select count(distinct(?narrative)) as ?result from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-narrative ?narrative. ?obs lso:cheshire_west_and_chester_april_2013-expenditure-category \"Marketing\". }",
-            "qa3_query": " select count(distinct(?narrative)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?narrative . ?obs ?subject##2 ?value##3. }",
+            "qa3_query": " select count(distinct(?narrative)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?narrative . ?obs <?subject##2> <?value##3>. }",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
             "qa3_result": [
                 {
@@ -316,7 +316,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select distinct(?result) from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-expenditure-category ?result. ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 3",
-            "qa3_query": " select distinct(?result) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201?value##1-expenditure-category> ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 3",
+            "qa3_query": " select distinct(?result) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201<?value##1>-expenditure-category> ?result . ?obs <measure> ?measure. } order by desc(sum(xsd:decimal(?amount))) limit 3",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
             "qa3_result": [
                 {
@@ -337,7 +337,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select distinct(?priority) from <http://linkedspending.aksw.org/city-of-redacre-spending> { ?obs qb:dataSet ls:city-of-redacre-spending. ?obs lso:city-of-redacre-spending-from <https://openspending.org/city-of-redacre-spending/from/510>. ?obs lso:city-of-redacre-spending-priority ?priority. }",
-            "qa3_query": " select distinct(?priority) { ?obs qb:dataSet <dataset>. ?obs ?subject##3 ?subject##2 . ?obs ?subject##1 ?priority . }",
+            "qa3_query": " select distinct(?priority) { ?obs qb:dataSet <dataset>. ?obs <?subject##3> <?subject##2> . ?obs <?subject##1> ?priority . }",
             "qa3_dataset": "city-of-redacre-spending",
             "qa3_result": [
                 {
@@ -363,7 +363,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select count(distinct(?division)) from <http://linkedspending.aksw.org/city-of-redacre-spending> { ?obs qb:dataSet ls:city-of-redacre-spending. ?obs lso:city-of-redacre-spending-to ?division. ?obs lso:city-of-redacre-spending-priority <https://openspending.org/city-of-redacre-spending/priority/safety>. }",
-            "qa3_query": " select count(distinct(?division)) { ?obs qb:dataSet <dataset>. ?obs ?subject##1 ?division . ?obs ?subject##3 ?subject##2 . }",
+            "qa3_query": " select count(distinct(?division)) { ?obs qb:dataSet <dataset>. ?obs <?subject##1> ?division . ?obs <?subject##3> <?subject##2> . }",
             "qa3_dataset": "city-of-redacre-spending",
             "qa3_result": [
                 {
@@ -394,7 +394,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/wandsworthspending_2013> { ?obs qb:dataSet ls:wandsworthspending_2013. ?obs lso:wandsworthspending_2013-Department \"HOUSING\". ?obs lso:wandsworthspending_2013-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <measure> ?measure. }",
             "qa3_dataset": "wandsworthspending_2013",
             "qa3_result": [
                 {
@@ -420,7 +420,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/wandsworthspending_2013> { ?obs qb:dataSet ls:wandsworthspending_2013. ?obs lso:wandsworthspending_2013-DetailedExpenses \"GENERAL INTERNAL REPAIRS\". ?obs lso:wandsworthspending_2013-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <measure> ?measure. }",
             "qa3_dataset": "wandsworthspending_2013",
             "qa3_result": [
                 {
@@ -509,7 +509,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select max(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/city-of-springfield-budget> { ?obs qb:dataSet ls:city-of-springfield-budget. ?obs lso:city-of-springfield-budget-deptgroup <https://openspending.org/city-of-springfield-budget/deptgroup/public-safety>. ?obs lso:city-of-springfield-budget-amount ?amount. }",
-            "qa3_query": " select max(xsd:decimal(?measure)) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/city-of-springfield-budget-deptgroup> ?subject##2 . ?obs <measure> ?measure. }",
+            "qa3_query": " select max(xsd:decimal(?measure)) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/city-of-springfield-budget-deptgroup> <?subject##2> . ?obs <measure> ?measure. }",
             "qa3_dataset": "city-of-springfield-budget",
             "qa3_result": [
                 {
@@ -546,7 +546,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/pscs_ca_cities> { ?obs qb:dataSet ls:pscs_ca_cities. ?obs lso:pscs_ca_cities-gov-full-name \"Livermore\". ?obs lso:pscs_ca_cities-caption ?result. ?obs lso:pscs_ca_cities-amount ?amount. ?obs lso:refYear ?year. filter (year(?year)=2011). } order by desc(xsd:decimal(?amount)) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs ?subject##1 ?result . ?obs <measure> ?measure. ?obs ?property##4 ?year . filter (year(?year)=?value##4) . } order by desc(xsd:decimal(?amount)) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <?subject##1> ?result . ?obs <measure> ?measure. ?obs <?property##4> ?year . filter (year(?year)=<?value##4>) . } order by desc(xsd:decimal(?amount)) limit 1",
             "qa3_dataset": "pscs_ca_cities",
             "qa3_result": [
                 {
@@ -577,7 +577,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select avg(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/dc-city-salaries> { ?obs qb:dataSet ls:dc-city-salaries. ?obs lso:dc-city-salaries-amount ?amount. ?obs lso:dc-city-salaries-position \"Teacher\". }",
-            "qa3_query": " select avg(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs ?property##2 ?value##2. }",
+            "qa3_query": " select avg(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs <?property##2> <?value##2>. }",
             "qa3_dataset": "dc-city-salaries",
             "qa3_result": [
                 {
@@ -598,7 +598,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/dc-city-salaries> { ?obs qb:dataSet ls:dc-city-salaries. ?obs lso:dc-city-salaries-amount ?amount. ?obs lso:dc-city-salaries-position ?result. } order by desc(avg(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs ?subject##1 ?result . } order by desc(avg(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs <?subject##1> ?result . } order by desc(avg(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "dc-city-salaries",
             "qa3_result": [
                 {
@@ -624,7 +624,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select count(distinct(?obs)) as ?result from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs lso:refYear ?year. filter(year(?year)=2012). ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-region \"South West\". } ",
-            "qa3_query": " select count(distinct(?obs)) as ?result { ?obs ?property##3 ?year . filter(year(?year)=?value##3) . ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. } ",
+            "qa3_query": " select count(distinct(?obs)) as ?result { ?obs <?property##3> ?year . filter(year(?year)=<?value##3>) . ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. } ",
             "qa3_dataset": "big-lottery-fund-grants",
             "qa3_result": [
                 {
@@ -650,7 +650,7 @@
             "aggregation": false,
             "answers": [],
             "query": " ask from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-to <https://openspending.org/big-lottery-fund-grants/to/stanbury-court-social-club>. }",
-            "qa3_query": " ask { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-to> ?subject##2 . }",
+            "qa3_query": " ask { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-to> <?subject##2> . }",
             "qa3_dataset": "big-lottery-fund-grants",
             "qa3_result": [
                 {
@@ -703,7 +703,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/ukgov-finances-cra> { ?obs qb:dataSet ls:ukgov-finances-cra. ?obs lso:ukgov-finances-cra-cofog2 <https://openspending.org/ukgov-finances-cra/cofog2/04.8>. ?obs lso:ukgov-finances-cra-from <https://openspending.org/ukgov-finances-cra/from/Dept032>. ?obs lso:ukgov-finances-cra-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-cofog2> ?subject##3 . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> ?subject##1 . ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-cofog2> <?subject##3> . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> <?subject##1> . ?obs <measure> ?measure. }",
             "qa3_dataset": "ukgov-finances-cra",
             "qa3_result": [
                 {
@@ -729,7 +729,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select distinct(?result) from <http://linkedspending.aksw.org/ukgov-finances-cra> { ?obs qb:dataSet ls:ukgov-finances-cra. ?obs lso:ukgov-finances-cra-cofog3 <https://openspending.org/ukgov-finances-cra/cofog3/04.2.2>. ?obs lso:ukgov-finances-cra-from <https://openspending.org/ukgov-finances-cra/from/SCT075>. ?obs lso:ukgov-finances-cra-region ?result. }",
-            "qa3_query": " select distinct(?result) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-cofog3> ?subject##4 . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> ?subject##3 . ?obs ?subject##1 ?result . }",
+            "qa3_query": " select distinct(?result) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-cofog3> <?subject##4> . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> <?subject##3> . ?obs <?subject##1> ?result . }",
             "qa3_dataset": "ukgov-finances-cra",
             "qa3_result": [
                 {
@@ -760,7 +760,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/iati_cordaid_af> { ?obs qb:dataSet ls:iati_cordaid_af. ?obs lso:iati_cordaid_af-Unique <https://openspending.org/iati_cordaid_af/Unique/259>. ?obs lso:iati_cordaid_af-Activity_Status \"Implementation\". ?obs lso:iati_cordaid_af-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/iati_cordaid_af-Unique> <https://openspending.org/iati_cordaid_af/Unique/259> . ?obs ?property##1 ?value##1. ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/iati_cordaid_af-Unique> <https://openspending.org/iati_cordaid_af/Unique/259> . ?obs <?property##1> <?value##1>. ?obs <measure> ?measure. }",
             "qa3_dataset": "iati_cordaid_af",
             "qa3_result": [
                 {
@@ -781,7 +781,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/iati_cordaid_af> { ?obs qb:dataSet ls:iati_cordaid_af. ?obs lso:iati_cordaid_af-Area \"Food Security\". ?obs lso:iati_cordaid_af-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##1 ?value##1. ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##1> <?value##1>. ?obs <measure> ?measure. }",
             "qa3_dataset": "iati_cordaid_af",
             "qa3_result": [
                 {
@@ -797,7 +797,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-type \"Materials and Supplies\". ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010). }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs ?property##1 ?value##2. ?obs <measure> ?measure. ?obs ?property##3 ?year . filter(year(?year)=?value##3) . }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs qb:dataSet <dataset>. ?obs <?property##1> <?value##2>. ?obs <measure> ?measure. ?obs <?property##3> ?year . filter(year(?year)=<?value##3>) . }",
             "qa3_dataset": "ca-local-toronto",
             "qa3_result": [
                 {
@@ -849,7 +849,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/frontex> { ?obs lso:refYear ?year. filter(year(?year)=2005). ?obs qb:dataSet ls:frontex. ?obs lso:frontex-Heading <https://openspending.org/frontex/Heading/a-1>. ?obs lso:frontex-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs ?property##3 ?year . filter(year(?year)=?value##3) . ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/frontex-Heading> <https://openspending.org/frontex/Heading/a-1> . ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?result { ?obs <?property##3> ?year . filter(year(?year)=<?value##3>) . ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/frontex-Heading> <https://openspending.org/frontex/Heading/a-1> . ?obs <measure> ?measure. }",
             "qa3_dataset": "frontex",
             "qa3_result": [
                 {
@@ -901,7 +901,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?country from <http://linkedspending.aksw.org/financial_aid> { ?obs qb:dataSet ls:financial_aid. ?obs lso:financial_aid-amount ?amount. ?obs lso:financial_aid-country ?country. } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?country { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs ?subject##1 ?country . } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?country { ?obs qb:dataSet <dataset>. ?obs <measure> ?measure. ?obs <?subject##1> ?country . } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "financial_aid",
             "qa3_result": [
                 {
@@ -953,7 +953,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dc-vendors-contractors> { ?obs qb:dataSet ls:dc-vendors-contractors. ?obs lso:dc-vendors-contractors-from <https://openspending.org/dc-vendors-contractors/from/metropolitan-police-department>. ?obs lso:dc-vendors-contractors-to <https://openspending.org/dc-vendors-contractors/to/cybernational-inc>. ?obs lso:dc-vendors-contractors-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/dc-vendors-contractors-from> ?subject##2 . ?obs <http://linkedspending.aksw.org/ontology/dc-vendors-contractors-to> <https://openspending.org/dc-vendors-contractors/to/cybernational-inc> . ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/dc-vendors-contractors-from> <?subject##2> . ?obs <http://linkedspending.aksw.org/ontology/dc-vendors-contractors-to> <https://openspending.org/dc-vendors-contractors/to/cybernational-inc> . ?obs <measure> ?measure. }",
             "qa3_dataset": "dc-vendors-contractors",
             "qa3_result": [
                 {
@@ -984,7 +984,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select max(distinct(?date)) from <http://linkedspending.aksw.org/nominettrust_funding> { ?obs qb:dataSet ls:nominettrust_funding. ?obs lso:nominettrust_funding-region <https://openspending.org/nominettrust_funding/region/canada>. ?obs lso:refDate ?date. }",
-            "qa3_query": " select max(distinct(?date)) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/nominettrust_funding-region> ?subject##1 . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?date . }",
+            "qa3_query": " select max(distinct(?date)) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/nominettrust_funding-region> <?subject##1> . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?date . }",
             "qa3_dataset": "nominettrust_funding",
             "qa3_result": [
                 {
@@ -1010,7 +1010,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/618ac3ec98384f44a9ef142356ce476d> { ?obs qb:dataSet ls:618ac3ec98384f44a9ef142356ce476d. ?obs lso:618ac3ec98384f44a9ef142356ce476d-economiclevel1 \"Running expenses\". ?obs lso:618ac3ec98384f44a9ef142356ce476d-from ?result. ?obs lso:618ac3ec98384f44a9ef142356ce476d-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2009). } order by desc(sum(xsd:decimal(?amount))) limit 1",
-            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs ?subject##1 ?result . ?obs <measure> ?measure. ?obs ?property##3 ?year . filter(year(?year)=?value##3) . } order by desc(sum(xsd:decimal(?amount))) limit 1",
+            "qa3_query": " select ?result { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <?subject##1> ?result . ?obs <measure> ?measure. ?obs <?property##3> ?year . filter(year(?year)=<?value##3>) . } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_dataset": "618ac3ec98384f44a9ef142356ce476d",
             "qa3_result": [
                 {
@@ -1057,7 +1057,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/nyc-council-member-items> { ?obs qb:dataSet ls:nyc-council-member-items. ?obs lso:nyc-council-member-items-category <https://openspending.org/nyc-council-member-items/category/youth>. ?obs lso:nyc-council-member-items-borough <https://openspending.org/nyc-council-member-items/borough/manhattan>. ?obs lso:nyc-council-member-items-amount ?amount. }",
-            "qa3_query": " select sum(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-category> ?subject##3 . ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-borough> ?subject##2 . ?obs <measure> ?measure. }",
+            "qa3_query": " select sum(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-category> <?subject##3> . ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-borough> <?subject##2> . ?obs <measure> ?measure. }",
             "qa3_dataset": "nyc-council-member-items",
             "qa3_result": [
                 {
@@ -1083,7 +1083,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select min(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/fingal_exp_budget> { ?obs qb:dataSet ls:fingal_exp_budget. ?obs lso:fingal_exp_budget-ref2-desc \"Community Grants\". ?obs lso:fingal_exp_budget-amount ?amount. }",
-            "qa3_query": " select min(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs ?property##2 ?value##2. ?obs <measure> ?measure. }",
+            "qa3_query": " select min(xsd:decimal(?measure)) as ?sum { ?obs qb:dataSet <dataset>. ?obs <?property##2> <?value##2>. ?obs <measure> ?measure. }",
             "qa3_dataset": "fingal_exp_budget",
             "qa3_result": [
                 {
@@ -1109,7 +1109,7 @@
             "aggregation": false,
             "answers": [],
             "query": " select distinct(?date) from <http://linkedspending.aksw.org/pbw-ct> { ?obs qb:dataSet ls:pbw-ct. ?obs lso:pbw-ct-Description <https://openspending.org/pbw-ct/Description/upgrade-of-parks-baba-park>. ?obs lso:refDate ?date. }",
-            "qa3_query": " select distinct(?date) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/pbw-ct-Description> ?subject##1 . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?date . }",
+            "qa3_query": " select distinct(?date) { ?obs qb:dataSet <dataset>. ?obs <http://linkedspending.aksw.org/ontology/pbw-ct-Description> <?subject##1> . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?date . }",
             "qa3_dataset": "pbw-ct",
             "qa3_result": [
                 {

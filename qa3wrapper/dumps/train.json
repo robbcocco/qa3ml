@@ -398,7 +398,7 @@
         "dataset": "f0bd947d9854445987d6ece304840a3c",
         "question": "What was the total cost of running expenses for Armenia in 2007?",
         "result": "What was the total \ncost\t<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-247057ecce79ba99159774ae9957c53a062021dc>\t<http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-economiclevel3>\t\"Other costs, other\" \n of \nrunning expenses\t<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-925412ed77d77b7ed0e5c9a570b89757d7884c01>\t<http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-economiclevel1>\t\"Running expenses\" \n for Armenia in \n2007\t<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-925412ed77d77b7ed0e5c9a570b89757d7884c01>\t<http://linkedspending.aksw.org/ontology/refYear>\t\"2007\"^^<http://www.w3.org/2001/XMLSchema#gYear> \n?"
-    }
+    },
     "81": {
         "dataset": "scottish-spending-jan13",
         "question": "What was the total Scottish Government expenditure of 2013-01-09?",

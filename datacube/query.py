@@ -132,4 +132,4 @@ class Qa3Query:
         if re.search(qa3_element, self.rows[i]) is not None:
             if qa3_element not in qa3_list:
                 qa3_list.append(qa3_element)
-            self.rows[i] = re.sub(qa3_element, replace_to + str(u+1), self.rows[i])
+            self.rows[i] = re.sub(qa3_element, '<'+replace_to+str(u+1)+'>', self.rows[i])
