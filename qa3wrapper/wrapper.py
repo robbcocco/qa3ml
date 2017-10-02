@@ -15,9 +15,9 @@ def get_answer_from_qa3(question):
     return answer
 
 
-def get_answer_from_dump(answer_id):
+def get_answer_from_dump(answer_id, file_name):
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'dumps/train.json')
+    data_path = os.path.join(directory, 'dumps/'+file_name+'.json')
     with open(data_path, newline='') as data_file:
         answers = json.load(data_file)
 

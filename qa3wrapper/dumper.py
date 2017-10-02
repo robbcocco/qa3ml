@@ -6,15 +6,15 @@ import qa3wrapper.interface as qa3
 import datacube.dataset as dc
 
 
-def save_data(data):
+def save_data(data, file_name):
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'dumps/dump.json')
+    data_path = os.path.join(directory, 'dumps/'+file_name+'.json')
     with open(data_path, 'w') as data_file:
         json.dump(data, data_file, indent=4)
 
 
-def qa3questioner():
-    dc_dataset = dc.Dataset()
+def qa3questioner(file_name):
+    dc_dataset = dc.Dataset(file_name)
     dataset = {}
 
     for i, question in enumerate(dc_dataset.questions):
@@ -37,5 +37,6 @@ def qa3questioner():
 
 
 class Dump:
-    dataset = qa3questioner()
-    save_data(dataset)
+    dataset_name = 'qald-6-train-datacube'
+    dataset = qa3questioner(dataset_name)
+    save_data(dataset, dataset_name)

@@ -2,17 +2,17 @@ import json
 import os
 
 
-def get_test_data():
+def get_test_data(file_name):
     directory = os.path.dirname(__file__)
-    data_path = os.path.join(directory, 'datasets/qald-6-train-datacube.json')
+    data_path = os.path.join(directory, 'datasets/'+file_name+'.json')
     with open(data_path, newline='') as data_file:
         data = json.load(data_file)
         return data
 
 
 class Dataset:
-    def __init__(self):
-        test_data = get_test_data()
+    def __init__(self, file_name):
+        test_data = get_test_data(file_name)
         self.questions = []
 
         for raw_question in test_data['questions']:

@@ -3,18 +3,18 @@ import re
 import qa3wrapper.wrapper as qa3
 
 
-def get_qa3query(dc_question):
+def get_qa3query(dc_question, dump_name):
     query = split_query(dc_query=dc_question.query)
 
-    query.qacubize(dc_question)
+    query.qacubize(dc_question, dump_name)
 
     return query.join_query()
 
 
-def get_qa3rows(dc_question):
+def get_qa3rows(dc_question, dump_name):
     query = split_query(dc_query=dc_question.query)
 
-    query.qacubize(dc_question)
+    query.qacubize(dc_question, dump_name)
 
     return query.list_rows()
 
@@ -62,8 +62,8 @@ class Qa3Query:
 
         return query
 
-    def qacubize(self, question):
-        qa3_answer = qa3.get_answer_from_dump(question.id)
+    def qacubize(self, question, dump_name):
+        qa3_answer = qa3.get_answer_from_dump(question.id, dump_name)
 
         # if self.dataset_found(qa3_answer=qa3_answer):
         self.remove_dataset()
