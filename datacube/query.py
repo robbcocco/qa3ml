@@ -70,39 +70,32 @@ class Qa3Query:
 
         self.replace_amount()
 
+        self.expand_prefix()
+
         self.update_rows(qa3_answer)
 
-        #         self.first_row = re.sub(' as \?[a-z]* ', ' ', self.first_row)
-        #
-        #         test = re.search(' [a-z]*\(([a-z]|\(|\)|:|\?)*\)', self.first_row)
-        #         if test is not None:
-        #             self.first_row = self.first_row.replace(test.group(0), ' ('+test.group(0)+' as ?sumans )')
+        # test = re.search(' [a-z]*\(([a-z]|\(|\)|:|\?)*\)', self.first_row)
+        # if test is not None:
+        #     self.first_row = self.first_row.replace(test.group(0), ' ('+test.group(0)+' as ?sumans )')
 
     def update_rows(self, qa3_answer):
         subjetcs = []
         properties = []
         values = []
 
-        for i, row in enumerate(self.rows):
-            if re.search('qb:dataSet', row):
-                self.rows[i] = '?obs qb:dataSet <dataset>. '
+        variables = []
 
-            elif re.search('\?amount', row):
-                self.rows[i] = '?obs <measure> ?measure. '
+        for i, result in enumerate(qa3_answer.result):
+            self.substitute_from_qa3(qa3_list=subjetcs, qa3_element=result.subject, replace_to='subject##',
+                                     index=i)
+            self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='property##',
+                                     index=i)
+            self.substitute_from_qa3(qa3_list=values, qa3_element=result.value, replace_to='value##', index=i)
+            year_value = re.split('"', result.value)[1]
+            if year_value.isdigit():
+                self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='value##', index=i)
 
-            else:
-                self.expand_prefix(i)
-
-                for u, result in enumerate(qa3_answer.result):
-                    self.substitute_from_qa3(qa3_list=subjetcs, qa3_element=result.subject, replace_to='?subject##',
-                                             i=i, u=u)
-                    self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='?property##',
-                                             i=i, u=u)
-                    self.substitute_from_qa3(qa3_list=values, qa3_element=result.value, replace_to='?value##', i=i, u=u)
-                    year_value = re.split('"', result.value)[1]
-                    if year_value.isdigit():
-                        self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='?value##', i=i,
-                                                 u=u)
+        self.substitute_variables(qa3_list=variables, replace_to='variable##')
 
     def add_groupbyvar(self):
         match = re.search('group by', self.last_row)
@@ -112,24 +105,67 @@ class Qa3Query:
 
     def remove_dataset(self):
         self.first_row = re.sub(' from <.*> ', ' ', self.first_row)
+        self.first_row = re.sub(' as \?[a-z]* ', ' ', self.first_row)
 
     def replace_amount(self):
         self.first_row = re.sub('\?amount', '?measure', self.first_row)
+        self.last_row = re.sub('\?amount', '?measure', self.last_row)
 
-    def expand_prefix(self, i):
-        match = re.search('lso:(\S)*', self.rows[i])
-        if match is not None:
-            temp = match.group(0)
-            expanded_row = re.sub('lso:', 'http://linkedspending.aksw.org/ontology/', temp)
-            self.rows[i] = re.sub('lso:(\S)*', '<'+expanded_row+'>', self.rows[i])
-        match = re.search('ls:(\S)*', self.rows[i])
-        if match is not None:
-            temp = match.group(0)
-            expanded_row = re.sub('ls:', 'http://linkedspending.aksw.org/instance/', temp)
-            self.rows[i] = re.sub('ls:(\S)*', '<'+expanded_row+'>', self.rows[i])
+    def expand_prefix(self):
+        prefixes = [{
+            'pattern': 'lso:(\S)*',
+            'prefix': 'lso:',
+            'url': 'http://linkedspending.aksw.org/ontology/'
+        }, {
+            'pattern': 'ls:(\S)*',
+            'prefix': 'ls:',
+            'url': 'http://linkedspending.aksw.org/instance/'
+        }]
 
-    def substitute_from_qa3(self, qa3_list, qa3_element, replace_to, i, u):
-        if re.search(qa3_element, self.rows[i]) is not None:
-            if qa3_element not in qa3_list:
-                qa3_list.append(qa3_element)
-            self.rows[i] = re.sub(qa3_element, '<'+replace_to+str(u+1)+'>', self.rows[i])
+        for i, row in enumerate(self.rows):
+            for prefix in prefixes:
+                match = re.search(re.compile(prefix['pattern']), self.rows[i])
+                if match is not None:
+                    expanded_row = re.sub(prefix['prefix'], prefix['url'], match.group(0))
+                    self.rows[i] = re.sub(re.compile(prefix['pattern']), '<'+expanded_row+'>', self.rows[i])
+
+    def substitute_from_qa3(self, qa3_list, qa3_element, replace_to, index):
+        for i, row in enumerate(self.rows):
+            if re.search('qb:dataSet', row):
+                self.rows[i] = '?obs qb:dataSet <dataset>. '
+
+            elif re.search('\?amount', row):
+                self.rows[i] = '?obs <measure> ?measure. '
+
+            elif re.search(qa3_element, self.rows[i]) is not None:
+                row_match = re.search(qa3_element, self.rows[i]).group(0)
+                if row_match not in qa3_list:
+                    qa3_list.append(row_match)
+                self.rows[i] = re.sub(row_match, '<' + replace_to + str(index + 1) + '>', self.rows[i])
+
+    def substitute_variables(self, qa3_list, replace_to):
+        keywords = ['?obs']
+        pattern = re.compile('\?[a-z]*')
+
+        for match in re.finditer(pattern, self.first_row):
+            variable = match.group(0)
+            if variable not in qa3_list:
+                qa3_list.append(variable)
+            self.first_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+                                    self.first_row)
+
+        for match in re.finditer(pattern, self.last_row):
+            variable = match.group(0)
+            if variable not in qa3_list:
+                qa3_list.append(variable)
+            self.last_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+                                   self.last_row)
+
+        for i, row in enumerate(self.rows):
+            for match in re.finditer(pattern, row):
+                variable = match.group(0)
+                if variable not in keywords:
+                    if variable not in qa3_list:
+                        qa3_list.append(variable)
+                    self.rows[i] = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+                                          self.rows[i])
