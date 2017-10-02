@@ -16,11 +16,11 @@ class Dataset:
         self.questions = []
 
         for raw_question in test_data['questions']:
-            question = Question(raw_question=raw_question)
+            question = DCQuestion(raw_question=raw_question)
             self.questions.append(question)
 
 
-class Question:
+class DCQuestion:
     def __init__(self, raw_question):
         self.id = raw_question['id']
         self.question = raw_question['question'][0]['string']

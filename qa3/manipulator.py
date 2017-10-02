@@ -2,9 +2,9 @@ import json
 import os
 import re
 
-import qa3wrapper.wrapper as qa3
 import datacube.dataset as dc
-import datacube.query as qa3query
+import qa3.query as qa3query
+import qa3wrapper.wrapper as qa3
 
 
 def save_data_to_json(data, file_name):

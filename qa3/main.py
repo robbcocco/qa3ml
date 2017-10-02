@@ -1,4 +1,4 @@
-import qa3thing.manipulator as qa3
+import qa3.manipulator as qa3
 
 
 class Main:
