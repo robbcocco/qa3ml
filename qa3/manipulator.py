@@ -93,9 +93,10 @@ def qa3questioner_text(file_name):
         query = qa3query.get_qa3query(question, file_name)
 
         temp_question = re.sub('\n', '', question.question).strip()
+        temp_dcquery = re.sub('\n', '', question.query).strip()
         temp_query = re.sub('\n', '', query).strip()
 
-        text = text + temp_question + '\t' + temp_query + '\n'
+        text = text + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\n'
 
     return text
 

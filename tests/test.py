@@ -26,8 +26,8 @@ import qa3.query as qa3query
 
 
 class QueryTest:
-    qa3_question = 'What is the highest single budget amount in the city of Springfield for public works?'
-    qa3_query = 'select max(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/city-of-springfield-budget> { ?obs qb:dataSet ls:city-of-springfield-budget. ?obs lso:city-of-springfield-budget-deptgroup <https://openspending.org/city-of-springfield-budget/deptgroup/public-works>. ?obs lso:city-of-springfield-budget-amount ?amount. }'
+    qa3_question = 'Over which programmes more than 1000000 pound but less than 10000000 pound in grants were given by the Big Lottery Fund?'
+    qa3_query = 'select ?programme from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-programme-name ?programme. ?obs lso:big-lottery-fund-grants-amount ?amount. } group by ?programme having (sum(xsd:decimal(?amount))>1000000&&sum(xsd:decimal(?amount))<10000000)'
 
     question = qa3query.Question(question=qa3_question, query=qa3_query)
     query = qa3query.get_qa3query(question)
