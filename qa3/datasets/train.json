@@ -200,7 +200,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select avg(?sum) as ?sum { select ?district sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ministry_of_health> { ?obs qb:dataSet ls:ministry_of_health. ?obs lso:ministry_of_health-District ?district. ?obs lso:ministry_of_health-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2014). } }",
-            "qa3_query": "select <aggr>(<variable##1><aggr>) { }",
+            "qa3_query": "select <aggr>(<variable##1>) { }",
             "qa3_dataset": "ministry_of_health",
             "qa3_result": [
                 {
@@ -469,7 +469,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?sum_fullerton/?sum_all { select sum(xsd:decimal(?fullerton)) as ?sum_fullerton sum(xsd:decimal(?all)) as ?sum_all from <http://linkedspending.aksw.org/pscs_ca_cities> { ?obs qb:dataSet ls:pscs_ca_cities. { ?obs lso:pscs_ca_cities-gov-full-name \"Fullerton\". ?obs lso:pscs_ca_cities-amount ?fullerton. } union { ?obs lso:pscs_ca_cities-amount ?all. } } }",
-            "qa3_query": "select <variable##1><aggr>_fullerton/<variable##1><aggr>_all { }",
+            "qa3_query": "select <variable##1>_fullerton/<variable##1>_all { }",
             "qa3_dataset": "pscs_ca_cities",
             "qa3_result": [
                 {
@@ -762,7 +762,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?division from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-division ?division. ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010). } group by ?division having (sum(xsd:decimal(?amount)) > 10000000)",
-            "qa3_query": "select <variable##1> { } group by <variable##1> having (<aggr>(<variable##2>) > <num##1>)",
+            "qa3_query": "select <variable##1> { } group by <variable##1> having (<aggr>(<variable##2>)> <num##1>)",
             "qa3_dataset": "city-of-redacre-spending",
             "qa3_result": [
                 {
@@ -851,7 +851,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select avg(?sum) { select ?chapter sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/frontex> { ?obs qb:dataSet ls:frontex. ?obs lso:frontex-Chapter ?chapter. ?obs lso:frontex-amount ?amount. } }",
-            "qa3_query": "select <aggr>(<variable##1><aggr>) { }",
+            "qa3_query": "select <aggr>(<variable##1>) { }",
             "qa3_dataset": "frontex",
             "qa3_result": [
                 {
@@ -1645,7 +1645,7 @@
             "aggregation": false,
             "answers": [],
             "query": "select distinct(?admin) from <http://linkedspending.aksw.org/e27f4ef7601446798cfa733a06cea8d9> { ?obs qb:dataSet ls:e27f4ef7601446798cfa733a06cea8d9. ?obs lso:e27f4ef7601446798cfa733a06cea8d9-economic <https://openspending.org/e27f4ef7601446798cfa733a06cea8d9/economic/4267>. ?obs lso:e27f4ef7601446798cfa733a06cea8d9-from ?admin. }",
-            "qa3_query": "select distinct(<variable##1><aggr>) { }",
+            "qa3_query": "select distinct(<variable##1>) { }",
             "qa3_dataset": "e27f4ef7601446798cfa733a06cea8d9",
             "qa3_result": [
                 {
@@ -2005,7 +2005,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?admin from <http://linkedspending.aksw.org/ke-county-exp> { ?obs qb:dataSet ls:ke-county-exp. ?obs lso:ke-county-exp-administration ?admin. ?obs lso:ke-county-exp-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1 ",
-            "qa3_query": "select <variable##1><aggr> { } order by desc(<aggr>(<variable##2>)) limit <num##1> ",
+            "qa3_query": "select <variable##1> { } order by desc(<aggr>(<variable##2>)) limit <num##1> ",
             "qa3_dataset": "town_of_cary_expenditures",
             "qa3_result": [
                 {
@@ -2120,7 +2120,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select count(distinct(?admin)) from <http://linkedspending.aksw.org/ddc94682cc95482a8deefc60596686fc> { ?obs qb:dataSet ls:ddc94682cc95482a8deefc60596686fc. ?obs lso:ddc94682cc95482a8deefc60596686fc-economic <https://openspending.org/ddc94682cc95482a8deefc60596686fc/economic/4823>. ?obs lso:ddc94682cc95482a8deefc60596686fc-from ?admin. } ",
-            "qa3_query": "select count(distinct(<variable##1><aggr>)) { } ",
+            "qa3_query": "select count(distinct(<variable##1>)) { } ",
             "qa3_dataset": "ddc94682cc95482a8deefc60596686fc",
             "qa3_result": [
                 {

@@ -54,7 +54,11 @@ class Answer:
 class Result:
     def __init__(self, row):
         result = re.split('\t', row)
+        self.chunk = result[0]
         self.subject = result[1]
         self.property = result[2]
         self.value = result[3]
         # self.value = re.split('"', result[3])[1]
+
+    def isyear(self):
+        return self.property == '<http://linkedspending.aksw.org/ontology/refYear>'

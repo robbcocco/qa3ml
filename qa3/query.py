@@ -3,18 +3,18 @@ import re
 import qa3wrapper.wrapper as qa3
 
 
-def get_qa3query(dc_question, dump_name=None):
+def get_qa3query(dc_question, dump_name=None, aggregators=True):
     query = split_query(dc_query=dc_question.query)
 
-    query.qacubize(dc_question, dump_name)
+    query.qacubize(question=dc_question, dump_name=dump_name, aggregators=aggregators)
 
     return query.join_query()
 
 
-def get_qa3rows(dc_question, dump_name=None):
+def get_qa3rows(dc_question, dump_name=None, aggregators=True):
     query = split_query(dc_query=dc_question.query)
 
-    query.qacubize(dc_question, dump_name)
+    query.qacubize(question=dc_question, dump_name=dump_name, aggregators=aggregators)
 
     return query.list_rows()
 
@@ -62,7 +62,7 @@ class Qa3Query:
 
         return query
 
-    def qacubize(self, question, dump_name):
+    def qacubize(self, question, dump_name, aggregators):
         if dump_name is None:
             qa3_answer = qa3.get_answer_from_qa3(question.question)
         else:
@@ -76,6 +76,9 @@ class Qa3Query:
         self.expand_prefix()
 
         self.update_rows(qa3_answer)
+
+        if aggregators:
+            self.substitute_aggregators()
 
         self.remove_xdsdecimal()
 
@@ -102,12 +105,10 @@ class Qa3Query:
             if year_value.isdigit():
                 self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='value##', index=i)
 
-        self.substitute_aggregators()
-
         self.substitute_variables(qa3_list=variables, replace_to='variable##')
 
-        self.substitute_values(numbers=numbers, pattern=re.compile('< ?[0-9]+'), replace_to='< <num##')
-        self.substitute_values(numbers=numbers, pattern=re.compile('> ?[0-9]+'), replace_to='> <num##')
+        self.substitute_values(numbers=numbers, pattern=re.compile(' ?< ?[0-9]+'), replace_to='< <num##')
+        self.substitute_values(numbers=numbers, pattern=re.compile(' ?> ?[0-9]+'), replace_to='> <num##')
         self.substitute_values(numbers=numbers, pattern=re.compile('limit [0-9]+'), replace_to='limit <num##')
 
     def add_groupbyvar(self):

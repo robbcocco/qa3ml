@@ -4,6 +4,7 @@ import re
 
 import datacube.dataset as dc
 import qa3.query as qa3query
+import qa3.question as qa3question
 import qa3wrapper.wrapper as qa3
 
 
@@ -90,15 +91,21 @@ def qa3questioner_text(file_name):
             # print(qa3_answer.api_status)
             break
 
-        query = qa3query.get_qa3query(question, file_name)
+        query = qa3query.get_qa3query(question, file_name, aggregators=False)
+        query_aggr = qa3query.get_qa3query(question, file_name)
+        qa3_question = qa3question.get_qa3question(question, file_name)
 
-        temp_question = re.sub('\n', '', question.question).strip()
+        temp_dcquestion = re.sub('\n', '', question.question).strip()
+        temp_question = re.sub('\n', '', qa3_question).strip()
         temp_dcquery = re.sub('\n', '', question.query).strip()
         temp_query = re.sub('\n', '', query).strip()
+        temp_query_aggr = re.sub('\n', '', query_aggr).strip()
         temp_dcdataset = re.sub('\n', '', question.dataset).strip()
         temp_dataset = re.sub('\n', '', qa3_answer.dataset).strip()
 
-        text = text + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\t' + temp_dcdataset + '\t' + temp_dataset + '\n'
+        text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
+               + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query \
+               + '\t' + temp_query_aggr + '\n'
 
     return text
 
