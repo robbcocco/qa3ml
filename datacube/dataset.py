@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 
 def get_test_data(file_name):
@@ -26,6 +27,13 @@ class DCQuestion:
         self.question = raw_question['question'][0]['string']
         self.query = raw_question['query']['sparql']
         self.aggregation = raw_question['aggregation']
+
+        dataset = None
+        if re.search(' from <([a-z]|[0-9]|-|_|\.|/|:)*> ', self.query) is not None:
+            dataset = re.search(' from <([a-z]|[0-9]|-|_|\.|/|:)*> ', self.query).group(0)
+            dataset = re.sub(' from <http://linkedspending.aksw.org/', '', dataset)
+            dataset = re.sub('>', '', dataset)
+        self.dataset = str(dataset)
 
         # self.vars = []
         # for var in raw_question['answers'][0]['head']['vars']:

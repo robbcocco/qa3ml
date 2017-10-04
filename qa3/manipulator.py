@@ -95,8 +95,10 @@ def qa3questioner_text(file_name):
         temp_question = re.sub('\n', '', question.question).strip()
         temp_dcquery = re.sub('\n', '', question.query).strip()
         temp_query = re.sub('\n', '', query).strip()
+        temp_dcdataset = re.sub('\n', '', question.dataset).strip()
+        temp_dataset = re.sub('\n', '', qa3_answer.dataset).strip()
 
-        text = text + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\n'
+        text = text + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\t' + temp_dcdataset + '\t' + temp_dataset + '\n'
 
     return text
 

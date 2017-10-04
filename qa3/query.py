@@ -117,7 +117,7 @@ class Qa3Query:
             self.last_row = self.last_row.replace('group by', '<groupby>')
 
     def remove_dataset(self):
-        self.first_row = re.sub(' from <.*> ', ' ', self.first_row)
+        self.first_row = re.sub(' from <([a-z]|[0-9]|-|_|\.|/|:)*> ', ' ', self.first_row)
         self.first_row = re.sub(' as \?[a-z]* ', ' ', self.first_row)
 
     def remove_xdsdecimal(self):
