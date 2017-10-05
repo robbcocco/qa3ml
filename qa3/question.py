@@ -16,9 +16,9 @@ def get_qa3question(dc_question, dump_name=None):
             if result.isyear():
                 question = re.sub(result.chunk, '<YEAR>', question)
             elif result.isidentifier():
-                question = re.sub(result.chunk, '<ID>', question)
+                question = re.sub(result.chunk, '<PROP>', question)
             else:
-                question = re.sub(result.chunk, '<X>', question)
+                question = re.sub(result.chunk, '<VALUE>', question)
 
     # magnitude = {
     #     'thousand': 000,
