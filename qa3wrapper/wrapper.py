@@ -60,5 +60,8 @@ class Result:
         self.value = result[3]
         # self.value = re.split('"', result[3])[1]
 
+    def isidentifier(self):
+        return self.property == '<http://purl.org/dc/terms/identifier>'
+
     def isyear(self):
         return self.property == '<http://linkedspending.aksw.org/ontology/refYear>'

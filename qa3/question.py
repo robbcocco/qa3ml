@@ -15,6 +15,8 @@ def get_qa3question(dc_question, dump_name=None):
         if re.search(result.chunk, question):
             if result.isyear():
                 question = re.sub(result.chunk, '<YEAR>', question)
+            elif result.isidentifier():
+                question = re.sub(result.chunk, '<ID>', question)
             else:
                 question = re.sub(result.chunk, '<X>', question)
 
