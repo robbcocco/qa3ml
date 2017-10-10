@@ -17,6 +17,7 @@ def get_qa3query(dc_question, dump_name=None, return_list=False, aggregators=Tru
     query.replace_keyword(qa_dataset=qa3_answer.dataset)
     query.expand_prefix()
     query.update_rows(qa3_answer)
+    query.generalize_properties()
     query.remove_xdsdecimal()
     if aggregators:
         query.substitute_aggregators()
@@ -64,10 +65,9 @@ class Qa3Query:
 
     def join_query(self):
         query = self.first_row
+        self.rows = sorted(self.rows)
         for row in self.rows:
-            if re.search('<dataset>|<measure>|variable', row):
-                if not re.search('<http://linkedspending.aksw.org/ontology/refYear>|filter ?\(year'):
-                    query = query + row
+            query = query + row
         query = query + self.last_row
 
         return query
@@ -88,26 +88,30 @@ class Qa3Query:
         subjetcs = []
         properties = []
         values = []
-
         variables = []
-
         numbers = []
 
         for i, result in enumerate(qa3_answer.result):
             self.substitute_from_qa3(qa3_list=subjetcs, qa3_element=result.subject, replace_to='subject##',
                                      index=i)
-            # self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='property##',
-            #                          index=i)
+            self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='property##',
+                                     index=i)
             self.substitute_from_qa3(qa3_list=values, qa3_element=result.value, replace_to='value##', index=i)
-            year_value = re.split('"', result.value)[1]
-            if year_value.isdigit():
-                self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='value##', index=i)
+            if result.is_integer():
+                int_value = re.search('[0-9]+', result.value)
+                self.substitute_from_qa3(qa3_list=values, qa3_element=str(int_value), replace_to='num##', index=i)
+            if result.is_type('refYear'):
+                year_value = re.split('"', result.value)[1]
+                self.substitute_from_qa3(qa3_list=values, qa3_element=str(year_value), replace_to='year##', index=i)
+            # year_value = re.split('"', result.value)[1]
+            # if year_value.isdigit():
+            #     self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='value##', index=i)
 
         self.substitute_variables(qa3_list=variables, replace_to='variable##')
 
-        self.substitute_values(numbers=numbers, pattern=re.compile(' ?< ?[0-9]+'), replace_to='< <num##')
-        self.substitute_values(numbers=numbers, pattern=re.compile(' ?> ?[0-9]+'), replace_to='> <num##')
-        self.substitute_values(numbers=numbers, pattern=re.compile('limit [0-9]+'), replace_to='limit <num##')
+        self.substitute_values(numbers=numbers, pattern=re.compile(' ?< ?[0-9]+'), replace_to='< <num#')
+        self.substitute_values(numbers=numbers, pattern=re.compile(' ?> ?[0-9]+'), replace_to='> <num#')
+        self.substitute_values(numbers=numbers, pattern=re.compile('limit [0-9]+'), replace_to='limit <num#')
 
     def add_groupbyvar(self):
         match = re.search('group by', self.last_row)
@@ -193,7 +197,7 @@ class Qa3Query:
                 row_match = re.search(qa3_element, self.rows[i]).group(0)
                 if row_match not in qa3_list:
                     qa3_list.append(row_match)
-                self.rows[i] = re.sub(row_match, '<' + replace_to + str(index + 1) + '>', self.rows[i])
+                self.rows[i] = re.sub(row_match, '<' + replace_to + str(index) + '>', self.rows[i])
 
     def substitute_variables(self, qa3_list, replace_to):
         keywords = ['?obs']
@@ -203,14 +207,14 @@ class Qa3Query:
             variable = match.group(0)
             if variable not in qa3_list:
                 qa3_list.append(variable)
-            self.first_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+            self.first_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
                                     self.first_row)
 
         for match in re.finditer(pattern, self.last_row):
             variable = match.group(0)
             if variable not in qa3_list:
                 qa3_list.append(variable)
-            self.last_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+            self.last_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
                                    self.last_row)
 
         for i, row in enumerate(self.rows):
@@ -219,7 +223,7 @@ class Qa3Query:
                 if variable not in keywords:
                     if variable not in qa3_list:
                         qa3_list.append(variable)
-                    self.rows[i] = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable) + 1) + '>',
+                    self.rows[i] = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
                                           self.rows[i])
 
     def substitute_aggregators(self):
@@ -240,6 +244,12 @@ class Qa3Query:
             if lrow_match not in numbers:
                 numbers.append(lrow_match)
             self.last_row = re.sub(lrow_match, replace_to+str(numbers.index(lrow_match)+1)+'>', self.last_row)
+
+    def generalize_properties(self):
+        for i, row in enumerate(self.rows):
+            splitted_row = re.split(' ', row)
+            if len(splitted_row) > 4 and splitted_row[1].startswith('<http') and re.search('<subject', splitted_row[2]):
+                self.rows[i] = re.sub(re.escape(splitted_row[1]), '[]', self.rows[i])
 
     def fillin_keywords(self, dataset):
         for i, row in enumerate(self.rows):
@@ -277,12 +287,12 @@ class Qa3Query:
 
     def fillin_costraints(self, qa3_answer):
         for result in qa3_answer:
-            if not result.isdataset():
-                if result.isyear():
+            if not result.is_dataset():
+                if result.is_type('refYear'):
                     self.rows.append('?obs <http://linkedspending.aksw.org/ontology/refYear> ' + result.value + ' .')
                     # self.rows.append(' ?obs <http://linkedspending.aksw.org/ontology/refYear> <?year> .')
                     # self.rows.append(' filter (year(<?year>)=<' + result. + '>) .')
-                if result.isidentifier():
+                if result.is_identifier():
                     None
 
 

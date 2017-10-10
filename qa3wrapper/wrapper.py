@@ -60,12 +60,15 @@ class Result:
         self.value = result[3]
         # self.value = re.split('"', result[3])[1]
 
-    def isdataset(self, dataset):
+    def is_dataset(self, dataset):
         return re.split('"', self.value)[1] == dataset or re.match('<http://linkedspending.aksw.org/instance/' + dataset
                                                                    + '>', self.subject)
 
-    def isidentifier(self):
+    def is_identifier(self):
         return self.property == '<http://purl.org/dc/terms/identifier>'
 
-    def isyear(self):
-        return self.property == '<http://linkedspending.aksw.org/ontology/refYear>'
+    def is_integer(self):
+        return re.search('_[0-9]+', self.value)
+
+    def is_type(self, type_name):
+        return self.property == '<http://linkedspending.aksw.org/ontology/'+type_name+'>'

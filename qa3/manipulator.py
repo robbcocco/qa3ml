@@ -103,9 +103,10 @@ def qa3questioner_text(file_name):
         temp_dcdataset = clean_string(question.dataset)
         temp_dataset = clean_string(qa3_answer.dataset)
 
-        text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
-               + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query \
-               + '\t' + temp_query_aggr + '\n'
+        # text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
+        #        + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query \
+        #        + '\t' + temp_query_aggr + '\n'
+        text = text + temp_dcquestion + '\t' + temp_dcquery + '\t' + temp_query + '\n'
 
     return text
 

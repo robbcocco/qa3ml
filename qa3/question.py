@@ -13,14 +13,16 @@ def get_qa3question(dc_question, dump_name=None):
 
     for i, result in enumerate(qa3_answer.result):
         if re.search(result.chunk, question):
-            if result.isdataset(qa3_answer.dataset):
+            if result.is_dataset(qa3_answer.dataset):
                 question = re.sub(result.chunk, '<DATASET>', question)
-            elif result.isyear():
-                question = re.sub(result.chunk, '<YEAR>', question)
-            elif result.isidentifier():
-                question = re.sub(result.chunk, '<PROP>', question)
+            elif result.is_type('refYear'):
+                question = re.sub(result.chunk, '<YEAR##'+str(i)+'>', question)
+            elif result.is_integer():
+                question = re.sub(result.chunk, '<NUM##' + str(i) + '>', question)
+            elif result.is_identifier():
+                question = re.sub(result.chunk, '<PROP##'+str(i)+'>', question)
             else:
-                question = re.sub(result.chunk, '<VALUE>', question)
+                question = re.sub(result.chunk, '<VALUE##'+str(i)+'>', question)
 
     # magnitude = {
     #     'thousand': 000,
@@ -38,15 +40,16 @@ def get_qa3question(dc_question, dump_name=None):
     #
     # for word in magnitude:
     #     re.sub('[0-9]*'+word, question)
-    for match in re.finditer('[0-9][0-9][0-9][0-9]-[0-9]?[0-9]-[0-9]?[0-9]', question):
-        num = '' + match.group(0)
-        question = re.sub(re.escape(num), '<DATE>', question, 1)
 
-    for match in re.finditer('[0-9]+', question):
-        num = '' + match.group(0)
-        if 1899 < int(num) < 2099:
-            question = re.sub(re.escape(num), '<YEAR>', question, 1)
-        else:
-            question = re.sub(re.escape(num), '<N>', question, 1)
+    # for match in re.finditer('[0-9][0-9][0-9][0-9]-[0-9]?[0-9]-[0-9]?[0-9]', question):
+    #     num = '' + match.group(0)
+    #     question = re.sub(re.escape(num), '<DATE>', question, 1)
+    #
+    # for match in re.finditer('[0-9]+', question):
+    #     num = '' + match.group(0)
+    #     if 1899 < int(num) < 2099:
+    #         question = re.sub(re.escape(num), '<YEAR>', question, 1)
+    #     else:
+    #         question = re.sub(re.escape(num), '<N>', question, 1)
 
     return question
