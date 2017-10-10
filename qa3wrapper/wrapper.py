@@ -60,6 +60,10 @@ class Result:
         self.value = result[3]
         # self.value = re.split('"', result[3])[1]
 
+    def isdataset(self, dataset):
+        return re.split('"', self.value)[1] == dataset or re.match('<http://linkedspending.aksw.org/instance/' + dataset
+                                                                   + '>', self.subject)
+
     def isidentifier(self):
         return self.property == '<http://purl.org/dc/terms/identifier>'
 

@@ -95,19 +95,26 @@ def qa3questioner_text(file_name):
         query_aggr = qa3query.get_qa3query(question, file_name)
         qa3_question = qa3question.get_qa3question(question, file_name)
 
-        temp_dcquestion = re.sub('\n', '', question.question).strip()
-        temp_question = re.sub('\n', '', qa3_question).strip()
-        temp_dcquery = re.sub('\n', '', question.query).strip()
-        temp_query = re.sub('\n', '', query).strip()
-        temp_query_aggr = re.sub('\n', '', query_aggr).strip()
-        temp_dcdataset = re.sub('\n', '', question.dataset).strip()
-        temp_dataset = re.sub('\n', '', qa3_answer.dataset).strip()
+        temp_dcquestion = clean_string(question.question)
+        temp_question = clean_string(qa3_question)
+        temp_dcquery = clean_string(question.query)
+        temp_query = clean_string(query)
+        temp_query_aggr = clean_string(query_aggr)
+        temp_dcdataset = clean_string(question.dataset)
+        temp_dataset = clean_string(qa3_answer.dataset)
 
         text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
                + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query \
                + '\t' + temp_query_aggr + '\n'
 
     return text
+
+
+def clean_string(string):
+    string = re.sub('\n', '', string).strip()
+    string = re.sub(' +', ' ', string)
+
+    return string
 
 
 def save_data(file_name, source_json, use_cache=False):

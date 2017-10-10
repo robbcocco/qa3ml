@@ -13,7 +13,9 @@ def get_qa3question(dc_question, dump_name=None):
 
     for i, result in enumerate(qa3_answer.result):
         if re.search(result.chunk, question):
-            if result.isyear():
+            if result.isdataset(qa3_answer.dataset):
+                question = re.sub(result.chunk, '<DATASET>', question)
+            elif result.isyear():
                 question = re.sub(result.chunk, '<YEAR>', question)
             elif result.isidentifier():
                 question = re.sub(result.chunk, '<PROP>', question)
@@ -36,6 +38,9 @@ def get_qa3question(dc_question, dump_name=None):
     #
     # for word in magnitude:
     #     re.sub('[0-9]*'+word, question)
+    for match in re.finditer('[0-9][0-9][0-9][0-9]-[0-9]?[0-9]-[0-9]?[0-9]', question):
+        num = '' + match.group(0)
+        question = re.sub(re.escape(num), '<DATE>', question, 1)
 
     for match in re.finditer('[0-9]+', question):
         num = '' + match.group(0)
