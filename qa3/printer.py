@@ -3,9 +3,10 @@ import os
 import re
 
 import datacube.dataset as dc
+import qa3.qaCube as qaCube
 import qa3.query as qa3query
 import qa3.question as qa3question
-import qa3wrapper.wrapper as qa3
+import qa3wrapper.wrapper as qa3wrapper
 
 
 def save_data_to_json(data, file_name):
@@ -62,15 +63,15 @@ def qa3questioner(file_name):
 
     # print(dc_dataset.questions[1].question)
     for question in dc_dataset.questions:
-        qa3_answer = qa3.get_answer_from_dump(question.id, file_name)
+        qa3_answer = qa3wrapper.get_answer_from_dump(question.id, file_name)
 
         if qa3_answer is None:
             # print(qa3_answer.api_status)
             break
 
-        query = qa3query.get_qa3query(question, file_name)
+        qa3 = qaCube.QA3(question=question.question, query=question.query, qa3_answer=qa3_answer)
 
-        answer = answer2json(question=question, qa3_answer=qa3_answer, query=query)
+        answer = answer2json(question=question, qa3_answer=qa3_answer, query=qa3.query)
 
         print(answer['id'])
         answers.append(answer)
@@ -85,28 +86,28 @@ def qa3questioner_text(file_name):
     text = ''
 
     for question in dc_dataset.questions:
-        qa3_answer = qa3.get_answer_from_dump(question.id, file_name)
+        qa3_answer = qa3wrapper.get_answer_from_dump(question.id, file_name)
 
         if qa3_answer is None:
             # print(qa3_answer.api_status)
             break
 
-        query = qa3query.get_qa3query(question, file_name, aggregators=False)
-        query_aggr = qa3query.get_qa3query(question, file_name)
-        qa3_question = qa3question.get_qa3question(question, file_name)
+        qa3 = qaCube.QA3(question=question.question, query=question.query, qa3_answer=qa3_answer)
+
+        # query = qa3query.get_qa3query(question, file_name, aggregators=False)
+        # query_aggr = qa3query.get_qa3query(question, file_name)
+        # qa3_question = qa3question.get_qa3question(question, file_name)
 
         temp_dcquestion = clean_string(question.question)
-        temp_question = clean_string(qa3_question)
+        temp_question = clean_string(qa3.question)
         temp_dcquery = clean_string(question.query)
-        temp_query = clean_string(query)
-        temp_query_aggr = clean_string(query_aggr)
+        temp_query = clean_string(qa3.query)
         temp_dcdataset = clean_string(question.dataset)
         temp_dataset = clean_string(qa3_answer.dataset)
 
-        # text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
-        #        + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query \
-        #        + '\t' + temp_query_aggr + '\n'
-        text = text + temp_dcquestion + '\t' + temp_dcquery + '\t' + temp_query + '\n'
+        text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
+               + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\n'
+        # text = text + temp_dcquestion + '\t' + temp_dcquery + '\t' + temp_query + '\n'
 
     return text
 

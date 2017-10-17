@@ -1,42 +1,5 @@
 import re
-
-import qa3wrapper.wrapper as qa3
-
-
-def get_qa3query(dc_question, dump_name=None, return_list=False, aggregators=True):
-    dc_query = re.sub(' +', ' ', dc_question.query)
-
-    query = split_query(query=dc_query)
-
-    if dump_name is None:
-        qa3_answer = qa3.get_answer_from_qa3(dc_question.question)
-    else:
-        qa3_answer = qa3.get_answer_from_dump(dc_question.id, dump_name)
-
-    query.remove_dataset()
-    query.replace_keyword(qa_dataset=qa3_answer.dataset)
-    query.expand_prefix()
-    query.update_rows(qa3_answer)
-    query.generalize_properties()
-    query.remove_xdsdecimal()
-    if aggregators:
-        query.substitute_aggregators()
-
-    if return_list:
-        return query.list_rows()
-    else:
-        return query.join_query()
-
-
-def fillin_qa3query(qa3query, dc_question, dump_name=None):
-    query = split_query(query=qa3query)
-
-    if dump_name is None:
-        qa3_answer = qa3.get_answer_from_qa3(dc_question.question)
-    else:
-        qa3_answer = qa3.get_answer_from_dump(dc_question.id, dump_name)
-
-    return None
+import string
 
 
 def split_query(query):
@@ -85,33 +48,19 @@ class Qa3Query:
         #     self.first_row = self.first_row.replace(test.group(0), ' ('+test.group(0)+' as ?sumans )')
 
     def update_rows(self, qa3_answer):
+        known_types = ['refYear', 'refDate']
         subjetcs = []
         properties = []
         values = []
-        variables = []
-        numbers = []
 
         for i, result in enumerate(qa3_answer.result):
-            self.substitute_from_qa3(qa3_list=subjetcs, qa3_element=result.subject, replace_to='subject##',
-                                     index=i)
-            self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='property##',
-                                     index=i)
-            self.substitute_from_qa3(qa3_list=values, qa3_element=result.value, replace_to='value##', index=i)
-            if result.is_integer():
-                int_value = re.search('[0-9]+', result.value)
-                self.substitute_from_qa3(qa3_list=values, qa3_element=str(int_value), replace_to='num##', index=i)
+            if result.get_type() not in known_types:
+                self.substitute_from_qa3(qa3_list=properties, qa3_element=result.property, replace_to='PROP', index=i)
+            self.substitute_from_qa3(qa3_list=subjetcs, qa3_element=result.subject, replace_to='SUB', index=i)
+            self.substitute_from_qa3(qa3_list=values, qa3_element=result.value, replace_to='VAL', index=i)
             if result.is_type('refYear'):
                 year_value = re.split('"', result.value)[1]
-                self.substitute_from_qa3(qa3_list=values, qa3_element=str(year_value), replace_to='year##', index=i)
-            # year_value = re.split('"', result.value)[1]
-            # if year_value.isdigit():
-            #     self.substitute_from_qa3(qa3_list=values, qa3_element=year_value, replace_to='value##', index=i)
-
-        self.substitute_variables(qa3_list=variables, replace_to='variable##')
-
-        self.substitute_values(numbers=numbers, pattern=re.compile(' ?< ?[0-9]+'), replace_to='< <num#')
-        self.substitute_values(numbers=numbers, pattern=re.compile(' ?> ?[0-9]+'), replace_to='> <num#')
-        self.substitute_values(numbers=numbers, pattern=re.compile('limit [0-9]+'), replace_to='limit <num#')
+                self.substitute_from_qa3(qa3_list=values, qa3_element=str(year_value), replace_to='YEAR', index=i)
 
     def add_groupbyvar(self):
         match = re.search('group by', self.last_row)
@@ -119,23 +68,24 @@ class Qa3Query:
             self.first_row = self.first_row.replace('select', 'select <groupbyvar>')
             self.last_row = self.last_row.replace('group by', '<groupby>')
 
-    def remove_dataset(self):
+    def clean_frow(self):
         self.first_row = re.sub(' from <([a-z]|[0-9]|-|_|\.|/|:)*> ', ' ', self.first_row)
         self.first_row = re.sub(' as \?[a-z]* ', ' ', self.first_row)
 
     def remove_xdsdecimal(self):
-        for match in re.finditer('xsd:decimal\(<[a-z]*##[0-9]*>\)', self.first_row):
+        pattern = re.compile('xsd:decimal\([a-zA-Z0-9?<>]*\)')
+        for match in re.finditer(pattern, self.first_row):
             frow_match = match.group(0)
             frow_match = re.sub('xsd:decimal\(', '', frow_match)
             frow_match = re.sub('\)', '', frow_match)
             self.first_row = re.sub(re.escape(match.group(0)), frow_match, self.first_row)
         for i, row in enumerate(self.rows):
-            for match in re.finditer('xsd:decimal\(<[a-z]*##[0-9]*>\)', self.rows[i]):
+            for match in re.finditer(pattern, self.rows[i]):
                 row_match = match.group(0)
                 row_match = re.sub('xsd:decimal\(', '', row_match)
                 row_match = re.sub('\)', '', row_match)
                 self.rows[i] = re.sub(re.escape(match.group(0)), row_match, self.rows[i])
-        for match in re.finditer('xsd:decimal\(<[a-z]*##[0-9]*>\)', self.last_row):
+        for match in re.finditer(pattern, self.last_row):
             lrow_match = match.group(0)
             lrow_match = re.sub('xsd:decimal\(', '', lrow_match)
             lrow_match = re.sub('\)', '', lrow_match)
@@ -175,15 +125,17 @@ class Qa3Query:
                     expanded_row = re.sub(prefix['prefix'], prefix['url'], match.group(0))
                     self.rows[i] = re.sub(re.compile(prefix['pattern']), '<'+expanded_row+'>', self.rows[i])
 
-    def replace_keyword(self, qa_dataset):
+    def replace_dataset(self, qa_dataset):
         for i, row in enumerate(self.rows):
             if re.search(qa_dataset+' ?\.', row):
-                self.rows[i] = '?obs qb:dataSet <dataset> . '
+                self.rows[i] = '?obs qb:dataSet <DATASET> . '
 
-            elif re.search(qa_dataset + '-amount', row):
+    def replace_measure(self, qa_dataset):
+        for i, row in enumerate(self.rows):
+            if re.search(qa_dataset + '-amount', row):
                 amount_variable = re.split(' ', row)[2]
                 self.replace_variable(amount_variable, '?measure')
-                self.rows[i] = '?obs <measure> ?measure . '
+                self.rows[i] = '?obs <MEASURE> ?measure . '
 
     def replace_variable(self, pattern, variable):
         self.first_row = re.sub(re.escape(pattern), variable, self.first_row)
@@ -199,23 +151,24 @@ class Qa3Query:
                     qa3_list.append(row_match)
                 self.rows[i] = re.sub(row_match, '<' + replace_to + str(index) + '>', self.rows[i])
 
-    def substitute_variables(self, qa3_list, replace_to):
+    def substitute_variables(self, replace_to):
         keywords = ['?obs']
+        qa3_list = []
         pattern = re.compile('\?[a-z0-9]*')
 
         for match in re.finditer(pattern, self.first_row):
             variable = match.group(0)
             if variable not in qa3_list:
                 qa3_list.append(variable)
-            self.first_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
-                                    self.first_row)
+            self.first_row = re.sub(re.escape(variable), '?' + replace_to +
+                                    string.ascii_uppercase[qa3_list.index(variable)], self.first_row)
 
         for match in re.finditer(pattern, self.last_row):
             variable = match.group(0)
             if variable not in qa3_list:
                 qa3_list.append(variable)
-            self.last_row = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
-                                   self.last_row)
+            self.last_row = re.sub(re.escape(variable), '?' + replace_to +
+                                   string.ascii_uppercase[qa3_list.index(variable)], self.last_row)
 
         for i, row in enumerate(self.rows):
             for match in re.finditer(pattern, row):
@@ -223,8 +176,8 @@ class Qa3Query:
                 if variable not in keywords:
                     if variable not in qa3_list:
                         qa3_list.append(variable)
-                    self.rows[i] = re.sub(re.escape(variable), '<' + replace_to + str(qa3_list.index(variable)) + '>',
-                                          self.rows[i])
+                    self.rows[i] = re.sub(re.escape(variable), '?' + replace_to +
+                                          string.ascii_uppercase[qa3_list.index(variable)], self.rows[i])
 
     def substitute_aggregators(self):
         aggregators = ['sum', 'avg', 'max', 'min']
@@ -232,23 +185,28 @@ class Qa3Query:
             self.first_row = re.sub(aggregator, '<aggr>', self.first_row)
             self.last_row = re.sub(aggregator, '<aggr>', self.last_row)
 
-    def substitute_values(self, numbers, replace_to, pattern):
-        for match in re.finditer(pattern, self.first_row):
-            frow_match = match.group(0)
-            if frow_match not in numbers:
-                numbers.append(frow_match)
-            self.first_row = re.sub(frow_match, replace_to+str(numbers.index(frow_match)+1)+'>', self.first_row)
-
-        for match in re.finditer(pattern, self.last_row):
-            lrow_match = match.group(0)
-            if lrow_match not in numbers:
-                numbers.append(lrow_match)
-            self.last_row = re.sub(lrow_match, replace_to+str(numbers.index(lrow_match)+1)+'>', self.last_row)
+    def substitute_values(self, values, replace_to):
+        for i, val in enumerate(values):
+            for match in re.finditer(val, self.first_row):
+                print(match.group(0))
+                self.first_row = re.sub(match.group(0),
+                                        ' <' + replace_to + string.ascii_uppercase[values.index(val)] + '> ',
+                                        self.first_row)
+            for o, row in enumerate(self.rows):
+                for match in re.finditer(val, row):
+                    print(match.group(0))
+                    self.rows[o] = re.sub(match.group(0),
+                                          ' <' + replace_to + string.ascii_uppercase[values.index(val)] + '> ', row)
+            for match in re.finditer(val, self.last_row):
+                print(match.group(0))
+                self.last_row = re.sub(match.group(0),
+                                       ' <' + replace_to + string.ascii_uppercase[values.index(val)] + '> ',
+                                       self.last_row)
 
     def generalize_properties(self):
         for i, row in enumerate(self.rows):
             splitted_row = re.split(' ', row)
-            if len(splitted_row) > 4 and splitted_row[1].startswith('<http') and re.search('<subject', splitted_row[2]):
+            if len(splitted_row) > 4 and splitted_row[1].startswith('<http') and re.search('<SUB', splitted_row[2]):
                 self.rows[i] = re.sub(re.escape(splitted_row[1]), '[]', self.rows[i])
 
     def fillin_keywords(self, dataset):

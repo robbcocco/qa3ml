@@ -50,6 +50,12 @@ class Answer:
             self.result = None
             self.api_status = 'API rate limit exceeded'
 
+    def index_by_chunk(self, value):
+        for i, result in enumerate(self.result):
+            if str(value) == str(result.chunk):
+                return int(i)
+        return None
+
 
 class Result:
     def __init__(self, row):
@@ -67,8 +73,13 @@ class Result:
     def is_identifier(self):
         return self.property == '<http://purl.org/dc/terms/identifier>'
 
-    def is_integer(self):
-        return re.search('_[0-9]+', self.value)
+    # def is_integer(self):
+    #     return re.search('_[0-9]+', self.value)
 
     def is_type(self, type_name):
         return self.property == '<http://linkedspending.aksw.org/ontology/'+type_name+'>'
+
+    def get_type(self):
+        type_name = self.property.rsplit('/')[-1]
+        type_name = re.sub('>', '', type_name)
+        return type_name

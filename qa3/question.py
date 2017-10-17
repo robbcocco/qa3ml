@@ -1,55 +1,72 @@
 import re
+import string
 
-import qa3wrapper.wrapper as qa3
 
+class Qa3Question(str):
+    def expand_numbers(self):
+        magnitudes = [
+                ['thousand', '000'],
+                ['million', '000000'],
+                ['billion', '000000000'],
+                ['trillion', '000000000000'],
+                ['quadrillion', '000000000000000'],
+                ['quintillion', '000000000000000000'],
+                ['sextillion', '000000000000000000000'],
+                ['septillion', '000000000000000000000000'],
+                ['octillion', '000000000000000000000000000'],
+                ['nonillion', '000000000000000000000000000000'],
+                ['decillion', '000000000000000000000000000000000']
+        ]
+        for magnitude, zeroes in magnitudes:
+            pattern = re.compile('[0-9]+ ?'+magnitude)
+            for match in re.finditer(pattern, self):
+                match = match.group(0)
+                num = re.search('[0-9]+', match).group(0)
+                self = re.sub(re.escape(match), num+zeroes, self)
+        return Qa3Question(self)
 
-def get_qa3question(dc_question, dump_name=None):
-    question = dc_question.question
+    def substitute_date(self, ref_dates, qa3_answer):
+        for match in re.finditer('[0-9]{4}-[0-9]{2}-[0-9]{2}', self):
+            date = match.group(0)
+            i = qa3_answer.index_by_chunk(date)
+            if i is None or qa3_answer.result[i].get_type() != 'refYear':
+                if date not in ref_dates:
+                    ref_dates.append(date)
+                self = re.sub(date, '<NUM' + string.ascii_uppercase[ref_dates.index(date)] + '>', self, 1)
+        return Qa3Question(self)
 
-    if dump_name is None:
-        qa3_answer = qa3.get_answer_from_qa3(dc_question.question)
-    else:
-        qa3_answer = qa3.get_answer_from_dump(dc_question.id, dump_name)
+    def substitute_year(self, ref_years, qa3_answer):
+        for match in re.finditer('[0-9]{4}', self):
+            year = match.group(0)
+            if 1899 < int(year) < 2099:
+                i = qa3_answer.index_by_chunk(year)
+                if i is None or qa3_answer.result[i].get_type() != 'refYear':
+                    if year not in ref_years:
+                        ref_years.append(year)
+                    self = re.sub(year, '<NUM' + string.ascii_uppercase[ref_years.index(year)] + '>', self, 1)
+        return Qa3Question(self)
 
-    for i, result in enumerate(qa3_answer.result):
-        if re.search(result.chunk, question):
-            if result.is_dataset(qa3_answer.dataset):
-                question = re.sub(result.chunk, '<DATASET>', question)
-            elif result.is_type('refYear'):
-                question = re.sub(result.chunk, '<YEAR##'+str(i)+'>', question)
-            elif result.is_integer():
-                question = re.sub(result.chunk, '<NUM##' + str(i) + '>', question)
-            elif result.is_identifier():
-                question = re.sub(result.chunk, '<PROP##'+str(i)+'>', question)
-            else:
-                question = re.sub(result.chunk, '<VALUE##'+str(i)+'>', question)
+    def substitute_num(self, numbers, qa3_answer):
+        for match in re.finditer('[0-9]+', self):
+            num = match.group(0)
+            i = qa3_answer.index_by_chunk(num)
+            if i is None or qa3_answer.result[i].get_type() != 'refYear':
+                if num not in numbers:
+                    numbers.append(num)
+                self = re.sub(num, '<NUM' + string.ascii_uppercase[numbers.index(num)] + '>', self, 1)
+        return Qa3Question(self)
 
-    # magnitude = {
-    #     'thousand': 000,
-    #     'million': 000000,
-    #     'billion': 000000000,
-    #     'trillion': 000000000000,
-    #     'quadrillion': 000000000000000,
-    #     'quintillion': 000000000000000000,
-    #     'sextillion': 000000000000000000000,
-    #     'septillion': 000000000000000000000000,
-    #     'octillion': 000000000000000000000000000,
-    #     'nonillion': 000000000000000000000000000000,
-    #     'decillion': 000000000000000000000000000000000,
-    # }
-    #
-    # for word in magnitude:
-    #     re.sub('[0-9]*'+word, question)
-
-    # for match in re.finditer('[0-9][0-9][0-9][0-9]-[0-9]?[0-9]-[0-9]?[0-9]', question):
-    #     num = '' + match.group(0)
-    #     question = re.sub(re.escape(num), '<DATE>', question, 1)
-    #
-    # for match in re.finditer('[0-9]+', question):
-    #     num = '' + match.group(0)
-    #     if 1899 < int(num) < 2099:
-    #         question = re.sub(re.escape(num), '<YEAR>', question, 1)
-    #     else:
-    #         question = re.sub(re.escape(num), '<N>', question, 1)
-
-    return question
+    def substitute_from_qa3(self, qa3_answer):
+        for i, result in enumerate(qa3_answer.result):
+            if re.search(result.chunk, self):
+                if result.is_dataset(qa3_answer.dataset):
+                    self = re.sub(result.chunk, '<DATASET>', self)
+                elif result.is_type('refYear'):
+                    self = re.sub(result.chunk, '<YEAR' + str(i) + '>', self)
+                # elif result.is_integer():
+                #     self = re.sub(result.chunk, '<NUM' + str(i) + '>', self)
+                elif result.is_identifier():
+                    self = re.sub(result.chunk, '<PROP' + str(i) + '>', self)
+                else:
+                    self = re.sub(result.chunk, '<VALUE' + str(i) + '>', self)
+        return Qa3Question(self)
