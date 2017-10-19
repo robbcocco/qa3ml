@@ -35,9 +35,9 @@ class Qa3Query(str):
 
     def replace_qa3_result(self, qa3_element, replace_to, index):
         query = self
-        for match in re.finditer(qa3_element.strip(), query):
+        for match in re.finditer('(?P<placeholder>[ <>=()])'+qa3_element.strip(), query):
             variable = match.group(0)
-            query = re.sub(variable, '<' + replace_to + str(index) + '>', query)
+            query = re.sub(variable, match.group('placeholder') + '<' + replace_to + str(index) + '>', query)
         return Qa3Query(query)
 
     def clean_frow(self):
