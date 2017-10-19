@@ -242,7 +242,7 @@
             "aggregation": false,
             "answers": [],
             "query": "select xsd:decimal(?amount) as ?amount from <http://linkedspending.aksw.org/newcastle-city-council-payments-over-500> { ?obs qb:dataSet ls:newcastle-city-council-payments-over-500. ?obs lso:newcastle-city-council-payments-over-500-amount ?amount. } order by desc(xsd:decimal(?amount)) limit 10",
-            "qa3_query": "select ?varA { ?obs <MEASURE> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(?varA) limit  <NUMA> ",
+            "qa3_query": "select ?varA { ?obs <MEASURE> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(?varA) limit <NUMA>",
             "qa3_dataset": "newcastle-city-council-payments-over-500",
             "qa3_result": [
                 {
@@ -311,7 +311,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select distinct(?narrative) from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-narrative ?narrative. ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 5",
-            "qa3_query": "select distinct(?varA) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit  <NUMA> ",
+            "qa3_query": "select distinct(?varA) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
             "qa3_result": [
                 {
@@ -396,7 +396,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?et from <http://linkedspending.aksw.org/iw-council-spending-2012-13-test> { ?obs qb:dataSet ls:iw-council-spending-2012-13-test. ?obs lso:iw-council-spending-2012-13-test-expensestype ?et. ?obs lso:iw-council-spending-2012-13-test-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 10",
-            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-expensestype> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit  <NUMA> ",
+            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-expensestype> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "iw-council-spending-2012-13-test",
             "qa3_result": [
                 {
@@ -762,7 +762,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?division from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-division ?division. ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010). } group by ?division having (sum(xsd:decimal(?amount)) > 10000000)",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-division> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ca-local-toronto> . filter(year(?varC)=<YEAR1>) . } group by ?varA having (sum(?varB) >  <NUMA> )",
+            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-division> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ca-local-toronto> . filter(year(?varC)=<YEAR1>) . } group by ?varA having (sum(?varB) > <NUMA> )",
             "qa3_dataset": "city-of-redacre-spending",
             "qa3_result": [
                 {
@@ -1843,7 +1843,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?client sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/lobbying_dataset_qy> { ?obs qb:dataSet ls:lobbying_dataset_qy. ?obs lso:lobbying_dataset_qy-client ?client. ?obs lso:lobbying_dataset_qy-amount ?amount. } group by ?client having sum(xsd:decimal(?amount))>50000000",
-            "qa3_query": "select ?varA sum(?varB) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having sum(?varB)> <NUMA> ",
+            "qa3_query": "select ?varA sum(?varB) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having sum(?varB)> <NUMA>",
             "qa3_dataset": "lobbying_dataset_qy",
             "qa3_result": [
                 {

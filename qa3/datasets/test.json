@@ -316,7 +316,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select distinct(?result) from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-expenditure-category ?result. ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 3",
-            "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -expenditure-category> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit  <NUMA> ",
+            "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -expenditure-category> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
             "qa3_result": [
                 {
@@ -441,7 +441,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/iw-council-spending-2012-13-test> { ?obs qb:dataSet ls:iw-council-spending-2012-13-test. ?obs lso:iw-council-spending-2012-13-test-servicearea ?result. ?obs lso:iw-council-spending-2012-13-test-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 3",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-servicearea> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit  <NUMA> ",
+            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-servicearea> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "iw-council-spending-2012-13-test",
             "qa3_result": [
                 {
