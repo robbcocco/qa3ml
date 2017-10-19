@@ -24,16 +24,16 @@ class Qa3Query(str):
         query = self
         # Types to leave as they are
         known_types = ['refYear', 'refDate']
-        query = query.replace_qa3_result(qa3_element=result.subject, replace_to='SUB', index=index)
-        query = query.replace_qa3_result(qa3_element=result.value, replace_to='VAL', index=index)
+        query = query._replace_qa3_result(qa3_element=result.subject, replace_to='SUB', index=index)
+        query = query._replace_qa3_result(qa3_element=result.value, replace_to='VAL', index=index)
         if result.get_type() not in known_types:
-            query = query.replace_qa3_result(qa3_element=result.property, replace_to='PROP', index=index)
+            query = query._replace_qa3_result(qa3_element=result.property, replace_to='PROP', index=index)
         if result.is_type('refYear'):
             year_value = re.split('"', result.value)[1]
-            query = query.replace_qa3_result(qa3_element=str(year_value), replace_to='YEAR', index=index)
+            query = query._replace_qa3_result(qa3_element=str(year_value), replace_to='YEAR', index=index)
         return Qa3Query(query)
 
-    def replace_qa3_result(self, qa3_element, replace_to, index):
+    def _replace_qa3_result(self, qa3_element, replace_to, index):
         query = self
         for match in re.finditer('(?P<placeholder>[ "\'<>=()])'+qa3_element.strip(), query):
             query = re.sub(match.group(0), match.group('placeholder') + '<' + replace_to + str(index) + '>', query)

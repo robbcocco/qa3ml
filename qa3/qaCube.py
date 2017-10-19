@@ -9,11 +9,11 @@ class QA3:
     def __init__(self, question, query, qa3_answer=None):
         self.question = question
         self.query = query
-        self.get_qa3(qa3_answer=qa3_answer)
+        self._get_qa3(qa3_answer=qa3_answer)
 
-    def get_qa3(self, qa3_answer):
-        question = qa3question.Qa3Question(clean_string(self.question))
-        query = qa3query.Qa3Query(clean_string(self.query))
+    def _get_qa3(self, qa3_answer):
+        question = qa3question.Qa3Question(_clean_string(self.question))
+        query = qa3query.Qa3Query(_clean_string(self.query))
 
         numbers = []
         refDates = []
@@ -44,11 +44,11 @@ class QA3:
         query = query.remove_xsddecimal()
         query = query.reorder_query()
 
-        self.question = clean_string(question)
-        self.query = clean_string(query)
+        self.question = _clean_string(question)
+        self.query = _clean_string(query)
 
 
-def clean_string(c_string):
+def _clean_string(c_string):
     c_string = re.sub('[\n\t]', ' ', c_string).strip()
     c_string = re.sub(' +', ' ', c_string)
     return c_string
