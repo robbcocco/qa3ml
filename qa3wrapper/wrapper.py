@@ -6,6 +6,19 @@ import qa3wrapper.interface as interface
 
 
 def get_answer_from_qa3(question):
+    """
+    Returns the answer from qa3.link's step1
+
+    Parameters
+    ----------
+    question : str
+        Question to ask to qa3
+
+    Returns
+    -------
+    Answer
+        Result from http://swipe.unica.it/apps/qa3/?q=question
+    """
     qa3_answer = interface.get_json(question=question)
     if qa3_answer is not None:
         answer = Answer(answer=qa3_answer)
@@ -16,6 +29,21 @@ def get_answer_from_qa3(question):
 
 
 def get_answer_from_dump(answer_id, file_name):
+    """
+    Returns the answer from a previously dumped result
+
+    Parameters
+    ----------
+    answer_id : str
+        Id of the question
+    file_name : str
+        Name of the file, without the extension
+
+    Returns
+    -------
+    Answer
+        Dumped result from http://swipe.unica.it/apps/qa3/?q=question
+    """
     directory = os.path.dirname(__file__)
     data_path = os.path.join(directory, 'dumps/'+file_name+'.json')
     with open(data_path, newline='') as data_file:
@@ -50,9 +78,24 @@ class Answer:
             self.result = None
             self.api_status = 'API rate limit exceeded'
 
-    def index_by_chunk(self, value):
+    def index_by_chunk(self, chunk):
+        """
+        Returns the index of the chunk
+        
+        Returns the index of the chunk of the question passed, from the results list
+    
+        Parameters
+        ----------
+        chunk : str
+            Chunk you want the index of
+    
+        Returns
+        -------
+        int
+            Index of the chunk, None if not found
+        """
         for i, result in enumerate(self.result):
-            if str(value) == str(result.chunk):
+            if str(chunk).strip() == str(result.chunk).strip():
                 return int(i)
         return None
 
@@ -67,19 +110,45 @@ class Result:
         # self.value = re.split('"', result[3])[1]
 
     def is_dataset(self, dataset):
+        """Returns True if the result is used as the dataset"""
         return re.split('"', self.value)[1] == dataset or re.match('<http://linkedspending.aksw.org/instance/' + dataset
                                                                    + '>', self.subject)
 
     def is_identifier(self):
+        """Return True if the result is an Identifier"""
         return self.property == '<http://purl.org/dc/terms/identifier>'
 
-    # def is_integer(self):
-    #     return re.search('_[0-9]+', self.value)
-
     def is_type(self, type_name):
+        """
+        Returns True if the result is of the given type
+        
+        # >>> result.is_type('refYear')
+        # True
+    
+        Parameters
+        ----------
+        type_name : str
+            Type you want to check
+    
+        Returns
+        -------
+        bool
+            True if the type matches, False otherwise
+        """
         return self.property == '<http://linkedspending.aksw.org/ontology/'+type_name+'>'
 
     def get_type(self):
+        """
+        Returns the type of the result
+        
+        # >>> result.get_type()
+        # 'refYear'
+    
+        Returns
+        -------
+        str
+            Type of the result
+        """
         type_name = self.property.rsplit('/')[-1]
         type_name = re.sub('>', '', type_name)
-        return type_name
+        return type_name.strip()

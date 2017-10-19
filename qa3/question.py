@@ -4,6 +4,16 @@ import string
 
 class Qa3Question(str):
     def expand_numbers(self):
+        """
+        Returns the question with all the numbers in digits
+        
+        Replace numbers wrote in letters with the digit counterpart
+    
+        Returns
+        -------
+        Qa3Question
+            The updated question
+        """
         question = self
         magnitudes = [
                 ['thousand', '000'],
@@ -27,6 +37,23 @@ class Qa3Question(str):
         return Qa3Question(question)
 
     def substitute_date(self, ref_dates, qa3_answer):
+        """
+        Returns the question with the dates tagged
+        
+        Replace dates found in the question with the tag <DATE>
+    
+        Parameters
+        ----------
+        ref_dates : List(str)
+            The list containing the dates
+        qa3_answer
+            The results received from qa3
+    
+        Returns
+        -------
+        Qa3Question
+            The updated question
+        """
         question = self
         for match in re.finditer('[0-9]{4}-[0-9]{2}-[0-9]{2}', question):
             date = match.group(0)
@@ -38,6 +65,23 @@ class Qa3Question(str):
         return Qa3Question(question)
 
     def substitute_year(self, ref_years, qa3_answer):
+        """
+        Returns the question with the years tagged
+        
+        Replace years found in the question with the tag <YEAR>
+    
+        Parameters
+        ----------
+        ref_years : List(str)
+            The list containing the years
+        qa3_answer
+            The results received from qa3
+    
+        Returns
+        -------
+        Qa3Question
+            The updated question
+        """
         question = self
         for match in re.finditer('[0-9]{4}', question):
             year = match.group(0)
@@ -50,6 +94,23 @@ class Qa3Question(str):
         return Qa3Question(question)
 
     def substitute_num(self, numbers, qa3_answer):
+        """
+        Returns the question with the numbers tagged
+        
+        Replace numbers found in the question with the tag <NUM>
+    
+        Parameters
+        ----------
+        numbers : List(str)
+            The list containing the numbers
+        qa3_answer
+            The results received from qa3
+    
+        Returns
+        -------
+        Qa3Question
+            The updated question
+        """
         question = self
         for match in re.finditer('[0-9]+', question):
             num = match.group(0)
@@ -60,16 +121,34 @@ class Qa3Question(str):
                 question = re.sub(num, '<NUM' + string.ascii_uppercase[numbers.index(num)] + '>', question, 1)
         return Qa3Question(question)
 
-    def substitute_from_qa3(self, qa3_answer):
+    def substitute_from_qa3(self, result, index, dataset):
+        """
+        Returns the question with the result from qa3.link step1
+        
+        Replace the results' type from the corresponding chunk of text with a tag
+    
+        Parameters
+        ----------
+        result : Result
+            Result from qa3.link
+        index: int
+            Index of the result from the results list
+        dataset: str
+            The dataset found by qa3
+    
+        Returns
+        -------
+        Qa3Question
+            The updated question
+        """
         question = self
-        for i, result in enumerate(qa3_answer.result):
-            if re.search(result.chunk, question):
-                if result.is_dataset(qa3_answer.dataset):
-                    question = re.sub(result.chunk, '<DATASET>', question)
-                elif result.is_type('refYear'):
-                    question = re.sub(result.chunk, '<YEAR' + str(i) + '>', question)
-                elif result.is_identifier():
-                    question = re.sub(result.chunk, '<PROP' + str(i) + '>', question)
-                else:
-                    question = re.sub(result.chunk, '<VALUE' + str(i) + '>', question)
+        if re.search(result.chunk, question):
+            if result.is_dataset(dataset):
+                question = re.sub(result.chunk, '<DATASET>', question)
+            elif result.is_type('refYear'):
+                question = re.sub(result.chunk, '<YEAR' + str(index) + '>', question)
+            elif result.is_identifier():
+                question = re.sub(result.chunk, '<PROP' + str(index) + '>', question)
+            else:
+                question = re.sub(result.chunk, '<VALUE' + str(index) + '>', question)
         return Qa3Question(question)

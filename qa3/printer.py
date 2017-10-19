@@ -115,7 +115,6 @@ def qa3questioner_text(file_name):
 def clean_string(string):
     string = re.sub('\n', '', string).strip()
     string = re.sub(' +', ' ', string)
-
     return string
 
 
