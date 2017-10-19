@@ -35,9 +35,8 @@ class Qa3Query(str):
 
     def replace_qa3_result(self, qa3_element, replace_to, index):
         query = self
-        for match in re.finditer('(?P<placeholder>[ <>=()])'+qa3_element.strip(), query):
-            variable = match.group(0)
-            query = re.sub(variable, match.group('placeholder') + '<' + replace_to + str(index) + '>', query)
+        for match in re.finditer('(?P<placeholder>[ "\'<>=()])'+qa3_element.strip(), query):
+            query = re.sub(match.group(0), match.group('placeholder') + '<' + replace_to + str(index) + '>', query)
         return Qa3Query(query)
 
     def clean_frow(self):
@@ -188,8 +187,9 @@ class Qa3Query(str):
         """
         query = self
         for val in values:
-            for match in re.finditer(val, query):
-                query = re.sub(match.group(0), ' <'+replace_to+string.ascii_uppercase[values.index(val)]+'> ', query)
+            for match in re.finditer('(?P<placeholder>[ "\'<>=()])'+val, query):
+                query = re.sub(match.group(0), match.group('placeholder') +
+                               '<' + replace_to+string.ascii_uppercase[values.index(val)] + '>', query)
         return Qa3Query(query)
 
     def generalize_properties(self):
