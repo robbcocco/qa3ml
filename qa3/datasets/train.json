@@ -163,7 +163,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Agency <https://openspending.org/maldives_proposed_expenditure_2015/Agency/anti-corruption-commission>. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. }",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_<YEAR1>-amount> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
+            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
             "qa3_result": [
                 {
@@ -1927,7 +1927,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/alb_planned_budget_2013> { ?obs qb:dataSet ls:alb_planned_budget_2013. ?obs lso:alb_planned_budget_2013-cofog1 <https://openspending.org/alb_planned_budget_2013/cofog1/09>. ?obs lso:alb_planned_budget_2013-amount ?amount. }",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_<YEAR0>-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_<YEAR0>-cofog1> <https://openspending.org/alb_planned_budget_<YEAR0>/cofog1/09> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/alb_planned_budget_<YEAR0>> . }",
+            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-cofog1> <https://openspending.org/alb_planned_budget_2013/cofog1/09> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/alb_planned_budget_2013> . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
             "qa3_result": [
                 {
@@ -2021,7 +2021,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/al_planned_budget_2007to2013> { ?obs qb:dataSet ls:al_planned_budget_2007to2013. ?obs lso:al_planned_budget_2007to2013-cofog1 <https://openspending.org/al_planned_budget_2007to2013/cofog1/public-order-and-safety>. ?obs lso:refYear ?year. filter(year(?year)=2007). ?obs lso:al_planned_budget_2007to2013-amount ?amount. } ",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/al_planned_budget_<YEAR1>to2013-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
+            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
             "qa3_result": [
                 {
@@ -2042,7 +2042,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/al_planned_budget_2007to2013> { ?obs qb:dataSet ls:al_planned_budget_2007to2013. ?obs lso:al_planned_budget_2007to2013-cofog1 <https://openspending.org/al_planned_budget_2007to2013/cofog1/health>. ?obs lso:al_planned_budget_2007to2013-amount ?amount. ?obs lso:refYear ?year. filter((year(?year)>=2007)&&year(?year)<=2010) } ",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/al_planned_budget_<YEAR1>to2013-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter((year(?varB)>=<YEAR1>)&&year(?varB)<=<YEAR2>) . }",
+            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter((year(?varB)>=<YEAR1>)&&year(?varB)<=<YEAR2>) . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
             "qa3_result": [
                 {
