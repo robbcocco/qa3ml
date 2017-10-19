@@ -137,7 +137,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?agency from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Agency ?agency. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. filter(xsd:decimal(?amount)>1000000000). }",
-            "qa3_query": "select ?varA { ?obs <SUB0> ?varA . ?obs <SUB1> ?varB . ?obs qb:dataSet <DATASET> . filter(?varB> <NUMA> ) . }",
+            "qa3_query": "select ?varA { ?obs <SUB0> ?varA . ?obs <SUB1> ?varB . ?obs qb:dataSet <DATASET> . filter(?varB><NUMA>) . }",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
             "qa3_result": [
                 {
@@ -589,7 +589,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?programme from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-programme-name ?programme. ?obs lso:big-lottery-fund-grants-amount ?amount. } group by ?programme having (sum(xsd:decimal(?amount))>1000000&&sum(xsd:decimal(?amount))<10000000)",
-            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-programme-name> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(?varB)> <NUMA> &&sum(?varB)< <NUMA> 0)",
+            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-programme-name> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(?varB)><NUMA>&&sum(?varB)<<NUMA>0)",
             "qa3_dataset": "big-lottery-fund-grants",
             "qa3_result": [
                 {
@@ -610,7 +610,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?area from <http://linkedspending.aksw.org/uk-local-gloucestershirev1> { ?obs qb:dataSet ls:uk-local-gloucestershirev1. ?obs lso:uk-local-gloucestershirev1-service-area ?area. ?obs lso:uk-local-gloucestershirev1-amount ?amount. } group by ?area having (sum(xsd:decimal(?amount))>1000000)",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-service-area> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/uk-local-gloucestershirev1> . } group by ?varA having (sum(?varB)> <NUMA> )",
+            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-service-area> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/uk-local-gloucestershirev1> . } group by ?varA having (sum(?varB)><NUMA>)",
             "qa3_dataset": "mcc_spend",
             "qa3_result": [
                 {
@@ -762,7 +762,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?division from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-division ?division. ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010). } group by ?division having (sum(xsd:decimal(?amount)) > 10000000)",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-division> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ca-local-toronto> . filter(year(?varC)=<YEAR1>) . } group by ?varA having (sum(?varB) > <NUMA> )",
+            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-division> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ca-local-toronto> . filter(year(?varC)=<YEAR1>) . } group by ?varA having (sum(?varB) > <NUMA>)",
             "qa3_dataset": "city-of-redacre-spending",
             "qa3_result": [
                 {
@@ -872,7 +872,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select max(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dcc_exp_budget2013> { ?obs qb:dataSet ls:dcc_exp_budget2013. ?obs lso:dcc_exp_budget2013-Division <https://openspending.org/dcc_exp_budget2013/Division/a>. ?obs lso:dcc_exp_budget2013-amount ?amount. }",
-            "qa3_query": "select max(?varA) { ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget <YEARA> -Division> <https://openspending.org/dcc_exp_budget <YEARA> /Division/a> . ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget <YEARA> -amount> ?varA . ?obs qb:dataSet <DATASET> . }",
+            "qa3_query": "select max(?varA) { ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-Division> <https://openspending.org/dcc_exp_budget2013/Division/a> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "dcc_exp_budget2013",
             "qa3_result": [
                 {
@@ -898,7 +898,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dcc_exp_budget2013> { ?obs qb:dataSet ls:dcc_exp_budget2013. ?obs lso:dcc_exp_budget2013-amount ?amount. }",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget <YEARA> -amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/dcc_exp_budget <YEARA> > . }",
+            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/dcc_exp_budget2013> . }",
             "qa3_dataset": "oakland-adopted-budget-fy-2011-13-expenditures",
             "qa3_result": [
                 {
@@ -1356,7 +1356,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?area from <http://linkedspending.aksw.org/cm-nwr-investments> { ?obs qb:dataSet ls:cm-nwr-investments. ?obs lso:cm-nwr-investments-area ?area. ?obs lso:cm-nwr-investments-amount ?amount. } group by ?area having (sum(xsd:decimal(?amount))>5000000000)",
-            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(?varB)> <NUMA> )",
+            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(?varB)><NUMA>)",
             "qa3_dataset": "cm-nwr-investments",
             "qa3_result": [
                 {
@@ -1545,7 +1545,7 @@
             "aggregation": false,
             "answers": [],
             "query": "select distinct(?date) from <http://linkedspending.aksw.org/pbw-ct> { ?obs qb:dataSet ls:pbw-ct. ?obs lso:pbw-ct-Category <https://openspending.org/pbw-ct/Category/upgrading-and-greening-in-ward-49>. ?obs lso:refDate ?date. }",
-            "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/pbw-ct-Category> <https://openspending.org/pbw-ct/Category/upgrading-and-greening-in-ward- <NUMA> > . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs qb:dataSet <DATASET> . }",
+            "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "pbw-ct",
             "qa3_result": [
                 {
@@ -1718,7 +1718,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/scottish-spending-jan13> { ?obs qb:dataSet ls:scottish-spending-jan13. ?obs lso:scottish-spending-jan13-amount ?amount. ?obs lso:refDate ?date. filter(strstarts(str(?date), \"2013-01-09\")). }",
-            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varB . ?obs qb:dataSet <DATASET> . filter(strstarts(str(?varB), \" <DATEA> \")) . }",
+            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varB . ?obs qb:dataSet <DATASET> . filter(strstarts(str(?varB), \"<DATEA>\")) . }",
             "qa3_dataset": "scottish-spending-jan13",
             "qa3_result": []
         },
@@ -1843,7 +1843,7 @@
             "aggregation": true,
             "answers": [],
             "query": "select ?client sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/lobbying_dataset_qy> { ?obs qb:dataSet ls:lobbying_dataset_qy. ?obs lso:lobbying_dataset_qy-client ?client. ?obs lso:lobbying_dataset_qy-amount ?amount. } group by ?client having sum(xsd:decimal(?amount))>50000000",
-            "qa3_query": "select ?varA sum(?varB) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having sum(?varB)> <NUMA>",
+            "qa3_query": "select ?varA sum(?varB) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having sum(?varB)><NUMA>",
             "qa3_dataset": "lobbying_dataset_qy",
             "qa3_result": [
                 {

@@ -316,7 +316,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select distinct(?result) from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-expenditure-category ?result. ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 3",
-            "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_201 <NUMA> -expenditure-category> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
+            "qa3_query": "select distinct(?varA) { ?obs <MEASURE> ?varB . ?obs <SUB1> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
             "qa3_result": [
                 {
@@ -394,7 +394,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/wandsworthspending_2013> { ?obs qb:dataSet ls:wandsworthspending_2013. ?obs lso:wandsworthspending_2013-Department \"HOUSING\". ?obs lso:wandsworthspending_2013-amount ?amount. }",
-            "qa3_query": "select sum(?varA) { ?obs <http://linkedspending.aksw.org/ontology/wandsworthspending_ <YEARA> -Department> <VAL1> . ?obs <http://linkedspending.aksw.org/ontology/wandsworthspending_ <YEARA> -amount> ?varA . ?obs qb:dataSet <DATASET> . }",
+            "qa3_query": "select sum(?varA) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "wandsworthspending_2013",
             "qa3_result": [
                 {
@@ -441,7 +441,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/iw-council-spending-2012-13-test> { ?obs qb:dataSet ls:iw-council-spending-2012-13-test. ?obs lso:iw-council-spending-2012-13-test-servicearea ?result. ?obs lso:iw-council-spending-2012-13-test-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 3",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-1 <NUMA> -test-servicearea> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
+            "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-servicearea> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(?varB)) limit <NUMA>",
             "qa3_dataset": "iw-council-spending-2012-13-test",
             "qa3_result": [
                 {
@@ -671,7 +671,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select ?result from <http://linkedspending.aksw.org/uk-local-gloucestershirev1> { ?obs qb:dataSet ls:uk-local-gloucestershirev1. ?obs lso:uk-local-gloucestershirev1-expense ?result. ?obs lso:uk-local-gloucestershirev1-amount ?amount. } group by ?result having (sum(xsd:decimal(?amount))>10000000)",
-            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-expense> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/uk-local-gloucestershirev1> . } group by ?varA having (sum(?varB)> <NUMA> )",
+            "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-expense> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/uk-local-gloucestershirev1> . } group by ?varA having (sum(?varB)><NUMA>)",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
             "qa3_result": [
                 {
@@ -875,7 +875,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select min(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dcc_exp_budget2013> { ?obs qb:dataSet ls:dcc_exp_budget2013. ?obs lso:dcc_exp_budget2013-Service <https://openspending.org/dcc_exp_budget2013/Service/d04>. ?obs lso:dcc_exp_budget2013-amount ?amount. }",
-            "qa3_query": "select min(?varA) { ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget <YEARA> -Service> <https://openspending.org/dcc_exp_budget <YEARA> /Service/d04> . ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget <YEARA> -amount> ?varA . ?obs qb:dataSet <DATASET> . }",
+            "qa3_query": "select min(?varA) { ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-Service> <https://openspending.org/dcc_exp_budget2013/Service/d04> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "dcc_exp_budget2013",
             "qa3_result": [
                 {
@@ -974,7 +974,7 @@
             "aggregation": true,
             "answers": [],
             "query": " select max(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/cameroon_visualisation> { ?obs qb:dataSet ls:cameroon_visualisation. ?obs lso:cameroon_visualisation-sub_account <https://openspending.org/cameroon_visualisation/sub_account/221-1>. ?obs lso:cameroon_visualisation-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2009). }",
-            "qa3_query": "select max(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/cameroon_visualisation-sub_account> <https://openspending.org/cameroon_visualisation/sub_account/221-1> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)= <YEARA> ) . }",
+            "qa3_query": "select max(?varA) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/cameroon_visualisation-sub_account> <https://openspending.org/cameroon_visualisation/sub_account/221-1> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEARA>) . }",
             "qa3_dataset": "cameroon_visualisation",
             "qa3_result": []
         },
