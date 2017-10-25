@@ -61,7 +61,7 @@ class Qa3Question(str):
             if i is None or qa3_answer.result[i].get_type() != 'refYear':
                 if date not in ref_dates:
                     ref_dates.append(date)
-                question = re.sub(date, '<NUM' + string.ascii_uppercase[ref_dates.index(date)] + '>', question, 1)
+                question = re.sub(date, '<DATE' + string.ascii_uppercase[ref_dates.index(date)] + '>', question, 1)
         return Qa3Question(question)
 
     def substitute_year(self, ref_years, qa3_answer):
@@ -90,7 +90,7 @@ class Qa3Question(str):
                 if i is None or qa3_answer.result[i].get_type() != 'refYear':
                     if year not in ref_years:
                         ref_years.append(year)
-                    question = re.sub(year, '<NUM' + string.ascii_uppercase[ref_years.index(year)] + '>', question, 1)
+                    question = re.sub(year, '<YEAR' + string.ascii_uppercase[ref_years.index(year)] + '>', question, 1)
         return Qa3Question(question)
 
     def substitute_num(self, numbers, qa3_answer):
@@ -151,4 +151,50 @@ class Qa3Question(str):
                 question = re.sub(result.chunk, '<PROP' + str(index) + '>', question)
             else:
                 question = re.sub(result.chunk, '<VALUE' + str(index) + '>', question)
+        return Qa3Question(question)
+
+    def fillin_from_qa3(self, qa3_answer):
+        question = self
+        for match in re.finditer('<DATASET>', question):
+            i = qa3_answer.get_dataset_index()
+            if i is not None:
+                question = re.sub(re.escape(match.group(0)), qa3_answer.result[i].chunk, question)
+            else:
+                question = re.sub(re.escape(match.group(0)), qa3_answer.dataset, question)
+        for match in re.finditer('<YEAR(?P<index>[0-9]+)>', question):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                question = re.sub(re.escape(match.group(0)), qa3_answer.result[index].chunk, question)
+        for match in re.finditer('<PROP(?P<index>[0-9]+)>', question):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                question = re.sub(re.escape(match.group(0)), qa3_answer.result[index].chunk, question)
+        for match in re.finditer('<VALUE(?P<index>[0-9]+)>', question):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                question = re.sub(re.escape(match.group(0)), qa3_answer.result[index].chunk, question)
+        return Qa3Question(question)
+
+    def fillin_date(self, ref_dates):
+        question = self
+        for match in re.finditer('<DATE(?P<index>[A-Z]+)>', question):
+            index = string.ascii_uppercase.index(match.group('index'))
+            if ref_dates[index] is not None:
+                question = re.sub(re.escape(match.group(0)), ref_dates[index], question)
+        return Qa3Question(question)
+
+    def fillin_year(self, ref_years):
+        question = self
+        for match in re.finditer('<YEAR(?P<index>[A-Z]+)>', question):
+            index = string.ascii_uppercase.index(match.group('index'))
+            if ref_years[index] is not None:
+                question = re.sub(re.escape(match.group(0)), ref_years[index], question)
+        return Qa3Question(question)
+
+    def fillin_num(self, numbers):
+        question = self
+        for match in re.finditer('<NUM(?P<index>[A-Z]+)>', question):
+            index = string.ascii_uppercase.index(match.group('index'))
+            if numbers[index] is not None:
+                question = re.sub(re.escape(match.group(0)), numbers[index], question)
         return Qa3Question(question)

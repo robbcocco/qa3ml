@@ -99,6 +99,12 @@ class Answer:
                 return int(i)
         return None
 
+    def get_dataset_index(self):
+        for i, result in enumerate(self.result):
+            if result.is_dataset():
+                return int(i)
+        return None
+
 
 class Result:
     def __init__(self, row):

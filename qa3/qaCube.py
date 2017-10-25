@@ -6,21 +6,20 @@ import qa3.question as qa3question
 
 
 class QA3:
-    def __init__(self, question, query, qa3_answer=None):
+    def __init__(self, question, query):
         self.question = question
         self.query = query
-        self._get_qa3(qa3_answer=qa3_answer)
 
-    def _get_qa3(self, qa3_answer):
+    def get_qa3(self, qa3_answer=None):
         question = qa3question.Qa3Question(_clean_string(self.question))
         query = qa3query.Qa3Query(_clean_string(self.query))
+
+        if qa3_answer is None:
+            qa3_answer = qa3.get_answer_from_qa3(question)
 
         numbers = []
         refDates = []
         refYears = []
-
-        if qa3_answer is None:
-            qa3_answer = qa3.get_answer_from_qa3(question)
 
         question = question.expand_numbers()
         question = question.substitute_date(ref_dates=refDates, qa3_answer=qa3_answer)
@@ -46,6 +45,39 @@ class QA3:
 
         self.question = _clean_string(question)
         self.query = _clean_string(query)
+
+    def fillin_query(self, question, qa3_answer=None):
+        new_question = qa3question.Qa3Question(_clean_string(question))
+        qa3_question = qa3question.Qa3Question(_clean_string(self.question))
+        qa3_query = qa3query.Qa3Query(_clean_string(self.query))
+
+        if qa3_answer is None:
+            qa3_answer = qa3.get_answer_from_qa3(new_question)
+
+        numbers = []
+        refDates = []
+        refYears = []
+
+        new_question = new_question.expand_numbers()
+        new_question = new_question.substitute_date(ref_dates=refDates, qa3_answer=qa3_answer)
+        new_question = new_question.substitute_year(ref_years=refYears, qa3_answer=qa3_answer)
+        new_question = new_question.substitute_num(numbers=numbers, qa3_answer=qa3_answer)
+
+        for i, result in enumerate(qa3_answer.result):
+            new_question = new_question.substitute_from_qa3(result=result, index=i, dataset=qa3_answer.dataset)
+
+        qa3_question = qa3_question.fillin_from_qa3(qa3_answer=qa3_answer)
+        qa3_question = qa3_question.fillin_date(ref_dates=refDates)
+        qa3_question = qa3_question.fillin_year(ref_years=refYears)
+        qa3_question = qa3_question.fillin_num(numbers=numbers)
+
+        # domanda
+        # risultato da qa3
+        # template domanda e query
+        # riempo i template
+        self.question = _clean_string(qa3_question)
+        self.query = _clean_string(qa3_query)
+        return new_question
 
 
 def _clean_string(c_string):

@@ -69,7 +69,8 @@ def qa3questioner(file_name):
             # print(qa3_answer.api_status)
             break
 
-        qa3 = qaCube.QA3(question=question.question, query=question.query, qa3_answer=qa3_answer)
+        qa3 = qaCube.QA3(question=question.question, query=question.query)
+        qa3.get_qa3(qa3_answer=qa3_answer)
 
         answer = answer2json(question=question, qa3_answer=qa3_answer, query=qa3.query)
 
@@ -92,7 +93,8 @@ def qa3questioner_text(file_name):
             # print(qa3_answer.api_status)
             break
 
-        qa3 = qaCube.QA3(question=question.question, query=question.query, qa3_answer=qa3_answer)
+        qa3 = qaCube.QA3(question=question.question, query=question.query)
+        qa3.get_qa3(qa3_answer=qa3_answer)
 
         # query = qa3query.get_qa3query(question, file_name, aggregators=False)
         # query_aggr = qa3query.get_qa3query(question, file_name)
@@ -107,7 +109,6 @@ def qa3questioner_text(file_name):
 
         text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
                + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\n'
-        # text = text + temp_dcquestion + '\t' + temp_dcquery + '\t' + temp_query + '\n'
 
     return text
 
