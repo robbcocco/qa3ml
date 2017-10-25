@@ -236,3 +236,46 @@ class Qa3Query(str):
                     temp = temp + row + ' . '
                 query = re.sub(re.escape(match.group(0)), match.group('brace')+temp, query)
         return Qa3Query(query)
+
+    def fillin_dataset(self, qa3_dataset):
+        query = self
+        for match in re.finditer('<DATASET>', query):
+            query = re.sub(re.escape(match.group(0)), '<http://linkedspending.aksw.org/instance/' + qa3_dataset + '>',
+                           query)
+        return Qa3Query(query)
+
+    def fillin_measure(self, qa3_dataset):
+        query = self
+        for match in re.finditer('<MEASURE>', query):
+            query = re.sub(re.escape(match.group(0)), '<http://linkedspending.aksw.org/ontology/' + qa3_dataset +
+                           '-amount>', query)
+        return Qa3Query(query)
+
+    def fillin_from_qa3(self, qa3_answer):
+        query = self
+        for match in re.finditer('<SUB(?P<index>[0-9]+)>', query):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                query = re.sub(re.escape(match.group(0)), qa3_answer.result[index].subject, query)
+        for match in re.finditer('<PROP(?P<index>[0-9]+)>', query):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                query = re.sub(re.escape(match.group(0)), qa3_answer.result[index].property, query)
+        for match in re.finditer('<VAL(?P<index>[0-9]+)>', query):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                query = re.sub(re.escape(match.group(0)), qa3_answer.result[index].value, query)
+        for match in re.finditer('<YEAR(?P<index>[0-9]+)>', query):
+            index = int(match.group('index'))
+            if qa3_answer.result[index] is not None:
+                year_value = re.split('"', qa3_answer.result[index].value)[1]
+                query = re.sub(re.escape(match.group(0)), str(year_value), query)
+        return Qa3Query(query)
+
+    def fillin_values(self, values, replace_from):
+        query = self
+        for match in re.finditer('<' + replace_from + '(?P<index>[A-Z]+)>', query):
+            index = string.ascii_uppercase.index(match.group('index'))
+            if values[index] is not None:
+                query = re.sub(re.escape(match.group(0)), values[index], query)
+        return Qa3Query(query)

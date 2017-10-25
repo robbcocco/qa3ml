@@ -40,7 +40,7 @@ class QA3:
         query = query.replace_measure(qa3_dataset=qa3_answer.dataset)
         query = query.substitute_variables()
         query = query.generalize_properties()
-        query = query.remove_xsddecimal()
+        # query = query.remove_xsddecimal()
         query = query.reorder_query()
 
         self.question = _clean_string(question)
@@ -71,10 +71,13 @@ class QA3:
         qa3_question = qa3_question.fillin_year(ref_years=refYears)
         qa3_question = qa3_question.fillin_num(numbers=numbers)
 
-        # domanda
-        # risultato da qa3
-        # template domanda e query
-        # riempo i template
+        qa3_query = qa3_query.fillin_dataset(qa3_dataset=qa3_answer.dataset)
+        qa3_query = qa3_query.fillin_measure(qa3_dataset=qa3_answer.dataset)
+        qa3_query = qa3_query.fillin_from_qa3(qa3_answer=qa3_answer)
+        qa3_query = qa3_query.fillin_values(values=refDates, replace_from='DATE')
+        qa3_query = qa3_query.fillin_values(values=refYears, replace_from='YEAR')
+        qa3_query = qa3_query.fillin_values(values=numbers, replace_from='NUM')
+
         self.question = _clean_string(qa3_question)
         self.query = _clean_string(qa3_query)
         return new_question
