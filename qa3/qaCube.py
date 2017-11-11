@@ -1,21 +1,28 @@
 import re
 
-import qa3wrapper.wrapper as qa3
+import wrapper.qa3Wrapper as qa3Wrapper
+import wrapper.tagMeWrapper as tagMeWrapper
 import qa3.query as qa3query
 import qa3.question as qa3question
 
+QA3 = 'QA3'
+TAGME = 'TagMe'
 
-class QA3:
+
+class QACube:
     def __init__(self, question, query):
         self.question = question
         self.query = query
 
-    def get_qa3(self, qa3_answer=None):
+    def get_qa3(self, qa3_answer=None, site=QA3):
         question = qa3question.Qa3Question(_clean_string(self.question))
         query = qa3query.Qa3Query(_clean_string(self.query))
 
         if qa3_answer is None:
-            qa3_answer = qa3.get_answer_from_qa3(question)
+            if site is QA3:
+                qa3_answer = qa3Wrapper.get_answer_from_web(question)
+            elif site is TAGME:
+                qa3_answer = tagMeWrapper.get_answer_from_web(question)
 
         numbers = []
         refDates = []
@@ -46,13 +53,16 @@ class QA3:
         self.question = _clean_string(question)
         self.query = _clean_string(query)
 
-    def fillin_query(self, question, qa3_answer=None):
+    def fillin_query(self, question, qa3_answer=None, site=QA3):
         new_question = qa3question.Qa3Question(_clean_string(question))
         qa3_question = qa3question.Qa3Question(_clean_string(self.question))
         qa3_query = qa3query.Qa3Query(_clean_string(self.query))
 
         if qa3_answer is None:
-            qa3_answer = qa3.get_answer_from_qa3(new_question)
+            if site is QA3:
+                qa3_answer = qa3Wrapper.get_answer_from_web(question)
+            elif site is TAGME:
+                qa3_answer = tagMeWrapper.get_answer_from_web(question)
 
         numbers = []
         refDates = []

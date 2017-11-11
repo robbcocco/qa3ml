@@ -35,8 +35,9 @@ class Qa3Query(str):
 
     def _replace_qa3_result(self, qa3_element, replace_to, index):
         query = self
-        for match in re.finditer('(?P<placeholder>[ "\'<>=()])'+qa3_element.strip(), query):
-            query = re.sub(match.group(0), match.group('placeholder') + '<' + replace_to + str(index) + '>', query)
+        if qa3_element is not None:
+            for match in re.finditer('(?P<placeholder>[ "\'<>=()])'+qa3_element.strip(), query):
+                query = re.sub(match.group(0), match.group('placeholder') + '<' + replace_to + str(index) + '>', query)
         return Qa3Query(query)
 
     def clean_frow(self):
@@ -93,7 +94,25 @@ class Qa3Query(str):
         }, {
             'prefix': 'ls:',
             'url': 'http://linkedspending.aksw.org/instance/'
+        }, {
+            'prefix': 'dbo:',
+            'url': 'http://dbpedia.org/ontology/'
+        }, {
+            'prefix': 'dbp:',
+            'url': 'http://dbpedia.org/property/'
         }]
+        for match in re.finditer(r'PREFIX (?P<prefix>[a-zA-Z]+:) <(?P<url>[^>]+)>', query):
+            prefix = match.group('prefix')
+            url = match.group('url')
+            # url = re.sub('<|>', '', match.group('url'))
+            new_prefix = {
+                'prefix': prefix,
+                'url': url
+            }
+            prefixes.append(new_prefix)
+
+            query = re.sub(re.escape(match.group(0)), '', query)
+
         for prefix in prefixes:
             pattern = re.compile(prefix['prefix']+r'(?P<content>[^ .]+)')
             for match in re.finditer(pattern, query):

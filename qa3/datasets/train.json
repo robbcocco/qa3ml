@@ -8,18 +8,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/town_of_cary_expenditures> { ?obs qb:dataSet ls:town_of_cary_expenditures. ?obs lso:town_of_cary_expenditures-amount ?amount. ?obs lso:town_of_cary_expenditures-Class <https://openspending.org/town_of_cary_expenditures/Class/6>. ?obs lso:refYear ?year. filter(year(?year)=2011). }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "town_of_cary_expenditures",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/town_of_cary_expenditures/Class/6>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Public Works and Utilities\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-town_of_cary_expenditures-a99179b2b547204b13509b402bc49889e55c354c>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "2",
@@ -29,23 +18,7 @@
             "query": "select ?program from <http://linkedspending.aksw.org/town_of_cary_expenditures> { ?obs qb:dataSet ls:town_of_cary_expenditures. ?obs lso:town_of_cary_expenditures-Program ?program. ?obs lso:town_of_cary_expenditures-Class <https://openspending.org/town_of_cary_expenditures/Class/6>. }",
             "qa3_query": "select ?varA { ?obs <SUB0> ?varA . ?obs <SUB1> <SUB2> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "town_of_cary_expenditures",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Program>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Program\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/town_of_cary_expenditures-Class>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Class\" "
-                },
-                {
-                    "subject": "<https://openspending.org/town_of_cary_expenditures/Class/6>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Public Works and Utilities\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "3",
@@ -55,18 +28,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/town_of_cary_revenues> { ?obs qb:dataSet ls:town_of_cary_revenues. ?obs lso:refYear ?year. filter(year(?year)=2009). ?obs lso:town_of_cary_revenues-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "town_of_cary_revenues",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/town_of_cary_revenues>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"town_of_cary_revenues\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-town_of_cary_revenues-0967a7ff593690a50fc7a3093d99cc61e4c22619>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2009\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "4",
@@ -76,13 +38,7 @@
             "query": "select ?program from <http://linkedspending.aksw.org/town_of_cary_revenues> { ?obs qb:dataSet ls:town_of_cary_revenues. ?obs lso:town_of_cary_revenues-Program ?program. ?obs lso:town_of_cary_revenues-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "town_of_cary_revenues",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/town_of_cary_revenues-Program>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Program\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "5",
@@ -92,18 +48,7 @@
             "query": "select ?dep from <http://linkedspending.aksw.org/city-of-whiteacre-spending> { ?obs qb:dataSet ls:city-of-whiteacre-spending. ?obs lso:city-of-whiteacre-spending-to ?dep. ?obs lso:city-of-whiteacre-spending-amount ?amount. ?obs lso:refYear ?year. filter (year(?year)=2010). } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <DATASET> . filter (year(?varC)=<YEAR1>) . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "city-of-whiteacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Department\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-city-of-whiteacre-spending-ff0de4da37aa14fca02d89ae85201edd08c051d0>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "6",
@@ -113,23 +58,7 @@
             "query": "select ?year sum(xsd:decimal(?amount)) as ?result from <http://linkedspending.aksw.org/city-of-whiteacre-spending> { ?obs qb:dataSet ls:city-of-whiteacre-spending. ?obs lso:city-of-whiteacre-spending-object <https://openspending.org/city-of-whiteacre-spending/object/3150.0>. ?obs lso:city-of-whiteacre-spending-to <https://openspending.org/city-of-whiteacre-spending/to/210708>. ?obs lso:city-of-whiteacre-spending-amount ?amount. ?obs lso:refYear ?year. } group by ?year",
             "qa3_query": "select ?varA sum(xsd:decimal(?varB)) { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-object> <https://openspending.org/city-of-whiteacre-spending/object/3150.0> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . } group by ?varA",
             "qa3_dataset": "city-of-whiteacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/city-of-whiteacre-spending/to/210708>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"General District Court\" "
-                },
-                {
-                    "subject": "<https://openspending.org/city-of-whiteacre-spending/object/3125.0>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"COURT APPOINTED ATTORNEY FEES\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-time>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Year\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "7",
@@ -139,23 +68,7 @@
             "query": "select ?agency from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Agency ?agency. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. filter(xsd:decimal(?amount)>1000000000). }",
             "qa3_query": "select ?varA { ?obs <SUB0> ?varA . ?obs <SUB1> ?varB . ?obs qb:dataSet <DATASET> . filter(xsd:decimal(?varB)><NUMA>) . }",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-Agency>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Agency\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/maldives_proposed_expenditure_2015-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-maldives_proposed_expenditure_2015-98b222900be3f26cb0e5be197041fc6480834b07>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2015\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "8",
@@ -165,18 +78,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/maldives_proposed_expenditure_2015> { ?obs qb:dataSet ls:maldives_proposed_expenditure_2015. ?obs lso:maldives_proposed_expenditure_2015-Agency <https://openspending.org/maldives_proposed_expenditure_2015/Agency/anti-corruption-commission>. ?obs lso:maldives_proposed_expenditure_2015-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "maldives_proposed_expenditure_2015",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/maldives_proposed_expenditure_2015/Agency/anti-corruption-commission>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Anti Corruption Commission \" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-maldives_proposed_expenditure_2015-98b222900be3f26cb0e5be197041fc6480834b07>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2015\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "9",
@@ -186,13 +88,7 @@
             "query": "select ?district from <http://linkedspending.aksw.org/ministry_of_health> { ?obs qb:dataSet ls:ministry_of_health. ?obs lso:ministry_of_health-District ?district. ?obs lso:ministry_of_health-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2014). } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-District> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ministry_of_health-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ministry_of_health> . filter(year(?varC)=<YEAR0>) . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "fingal_exp_budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-f33977cf48402e93ff8e03b72f03ff4e759f11c6>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2014\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "10",
@@ -202,18 +98,7 @@
             "query": "select avg(?sum) as ?sum { select ?district sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ministry_of_health> { ?obs qb:dataSet ls:ministry_of_health. ?obs lso:ministry_of_health-District ?district. ?obs lso:ministry_of_health-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2014). } }",
             "qa3_query": "select avg(?varA) { select ?varB sum(xsd:decimal(?varC)) as ?varA { ?obs <MEASURE> ?varC . ?obs <SUB0> ?varB . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varD . ?obs qb:dataSet <DATASET> . filter(year(?varD)=<YEAR1>) . } }",
             "qa3_dataset": "ministry_of_health",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ministry_of_health-District>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"District\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ministry_of_health-47a235d4bc6e3b9a611ac15b8e6756eb87b23715>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2014\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "11",
@@ -223,18 +108,7 @@
             "query": "select max(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/newcastle-city-council-payments-over-500> { ?obs qb:dataSet ls:newcastle-city-council-payments-over-500. ?obs lso:newcastle-city-council-payments-over-500-expenditure-category \"Supplies & Services\". ?obs lso:newcastle-city-council-payments-over-500-amount ?amount. }",
             "qa3_query": "select max(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "newcastle-city-council-payments-over-500",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/newcastle-city-council-payments-over-500/to/newcastle-city-council>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"NEWCASTLE CITY COUNCIL\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-newcastle-city-council-payments-over-500-f0dab79cee8d37da5bd8675637dcab19e39ca37e>",
-                    "property": "<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-expenditure-category>",
-                    "value": "\"Supplies & Services\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "12",
@@ -244,18 +118,7 @@
             "query": "select xsd:decimal(?amount) as ?amount from <http://linkedspending.aksw.org/newcastle-city-council-payments-over-500> { ?obs qb:dataSet ls:newcastle-city-council-payments-over-500. ?obs lso:newcastle-city-council-payments-over-500-amount ?amount. } order by desc(xsd:decimal(?amount)) limit 10",
             "qa3_query": "select xsd:decimal(?varA) { ?obs <MEASURE> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(xsd:decimal(?varA)) limit <NUMA>",
             "qa3_dataset": "newcastle-city-council-payments-over-500",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-newcastle-city-council-payments-over-500-889c9effe813988203144c92534ef15d4ad78b56>",
-                    "property": "<http://linkedspending.aksw.org/ontology/newcastle-city-council-payments-over-500-identifier>",
-                    "value": "\"10\" "
-                },
-                {
-                    "subject": "<https://openspending.org/newcastle-city-council-payments-over-500/to/newcastle-city-council>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"NEWCASTLE CITY COUNCIL\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "13",
@@ -265,13 +128,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/uk-local-walthamforest> { ?obs qb:dataSet ls:uk-local-walthamforest. ?obs lso:uk-local-walthamforest-ExpenseArea <https://openspending.org/uk-local-walthamforest/ExpenseArea/environment-regeneration>. ?obs lso:uk-local-walthamforest-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "uk-local-walthamforest",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/uk-local-walthamforest/ExpenseArea/environment-regeneration>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Environment & Regeneration\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "14",
@@ -281,13 +138,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/uk-local-walthamforest> { ?obs qb:dataSet ls:uk-local-walthamforest. ?obs lso:uk-local-walthamforest-to <https://openspending.org/uk-local-walthamforest/to/15519>. ?obs lso:uk-local-walthamforest-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "uk-local-walthamforest",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/uk-local-walthamforest/to/15519>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Synarbor Global Solutions Ltd\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "15",
@@ -297,13 +148,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-service-label \"Adult Social Care & Health\". ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-cheshire_west_and_chester_april_2013-a2731e65400aa6c096f8d424d9792ca3cc0441a1>",
-                    "property": "<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-service-label>",
-                    "value": "\"Adult Social Care & Health\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "16",
@@ -313,13 +158,7 @@
             "query": "select distinct(?narrative) from <http://linkedspending.aksw.org/cheshire_west_and_chester_april_2013> { ?obs qb:dataSet ls:cheshire_west_and_chester_april_2013. ?obs lso:cheshire_west_and_chester_april_2013-narrative ?narrative. ?obs lso:cheshire_west_and_chester_april_2013-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 5",
             "qa3_query": "select distinct(?varA) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(xsd:decimal(?varB))) limit <NUMA>",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-narrative>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"narrative\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "17",
@@ -329,18 +168,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/city-of-redacre-spending> { ?obs qb:dataSet ls:city-of-redacre-spending. ?obs lso:city-of-redacre-spending-from <https://openspending.org/city-of-redacre-spending/from/510>. ?obs lso:city-of-redacre-spending-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <SUB1> <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "city-of-redacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/city-of-redacre-spending/from/510>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Insurance\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-from>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Fund\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "18",
@@ -350,13 +178,7 @@
             "query": "select ?division sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/city-of-redacre-spending> { ?obs qb:dataSet ls:city-of-redacre-spending. ?obs lso:city-of-redacre-spending-to ?division. ?obs lso:city-of-redacre-spending-amount ?amount. }",
             "qa3_query": "select ?varA sum(xsd:decimal(?varB)) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "city-of-redacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Division\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "19",
@@ -366,13 +188,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/wandsworthspending_2013> { ?obs qb:dataSet ls:wandsworthspending_2013. ?obs lso:wandsworthspending_2013-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/wandsworthspending_2013-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/wandsworthspending_2013> . }",
             "qa3_dataset": "city-of-whiteacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Department\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "20",
@@ -382,13 +198,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?amount from <http://linkedspending.aksw.org/wandsworthspending_2013> { ?obs qb:dataSet ls:wandsworthspending_2013. ?obs lso:wandsworthspending_2013-DetailedExpenses \"CRIMINAL RECORDS BUREAU\". ?obs lso:wandsworthspending_2013-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/wandsworthspending_2013-DetailedExpenses> <VAL0> . ?obs <http://linkedspending.aksw.org/ontology/wandsworthspending_2013-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/wandsworthspending_2013> . }",
             "qa3_dataset": "iw-council-spending-2012-13-test",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/iw-council-spending-2012-13-test/suppliernameclustered/criminal-records-bureau>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"CRIMINAL RECORDS BUREAU\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "21",
@@ -398,13 +208,7 @@
             "query": "select ?et from <http://linkedspending.aksw.org/iw-council-spending-2012-13-test> { ?obs qb:dataSet ls:iw-council-spending-2012-13-test. ?obs lso:iw-council-spending-2012-13-test-expensestype ?et. ?obs lso:iw-council-spending-2012-13-test-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 10",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-expensestype> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(xsd:decimal(?varB))) limit <NUMA>",
             "qa3_dataset": "iw-council-spending-2012-13-test",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-iw-council-spending-2012-13-test-8d2c8824bcd055c9f7efeedc4eee457b291fab4e>",
-                    "property": "<http://linkedspending.aksw.org/ontology/iw-council-spending-2012-13-test-index>",
-                    "value": "\"_10\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "22",
@@ -424,23 +228,7 @@
             "query": "select ?dep { select ?dep sum(xsd:decimal(?amount5)) as ?sum5 sum(xsd:decimal(?amount6)) as ?sum6 from <http://linkedspending.aksw.org/city-of-springfield-budget> { ?obs qb:dataSet ls:city-of-springfield-budget. ?obs lso:city-of-springfield-budget-to ?dep. { ?obs lso:city-of-springfield-budget-amount ?amount5. ?obs lso:refYear ?year5. filter(year(?year5)=2005). } union { ?obs lso:city-of-springfield-budget-amount ?amount6. ?obs lso:refYear ?year6. filter(year(?year6)=2006). } } } group by ?dep having(?sum5>?sum6)",
             "qa3_query": "select ?varA { select ?varA sum(xsd:decimal(?varB)) as ?varC sum(xsd:decimal(?varD)) as ?varE { ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varF . filter(year(?varF)=<YEAR1>) . } union { ?obs <MEASURE> ?varD . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varG . filter(year(?varG)=<YEAR2>) . } } } group by ?varA having(?varC>?varE)",
             "qa3_dataset": "city-of-springfield-budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-springfield-budget-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Department\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-city-of-springfield-budget-2090f3943f55dd91f7d8ef19d2ccbdb60ffe28bd>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2005\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-city-of-springfield-budget-fed3d7f68ec4c060f8d948300e605a59bd498de7>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2006\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "24",
@@ -450,18 +238,7 @@
             "query": "select max(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/city-of-springfield-budget> { ?obs qb:dataSet ls:city-of-springfield-budget. ?obs lso:city-of-springfield-budget-deptgroup <https://openspending.org/city-of-springfield-budget/deptgroup/public-works>. ?obs lso:city-of-springfield-budget-amount ?amount. }",
             "qa3_query": "select max(xsd:decimal(?varA)) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "city-of-springfield-budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-springfield-budget-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/city-of-springfield-budget/deptgroup/public-works>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"PUBLIC WORKS\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "25",
@@ -471,33 +248,7 @@
             "query": "select ?sum_fullerton/?sum_all { select sum(xsd:decimal(?fullerton)) as ?sum_fullerton sum(xsd:decimal(?all)) as ?sum_all from <http://linkedspending.aksw.org/pscs_ca_cities> { ?obs qb:dataSet ls:pscs_ca_cities. { ?obs lso:pscs_ca_cities-gov-full-name \"Fullerton\". ?obs lso:pscs_ca_cities-amount ?fullerton. } union { ?obs lso:pscs_ca_cities-amount ?all. } } }",
             "qa3_query": "select ?varA/?varB { select sum(xsd:decimal(?varC)) as ?varA sum(xsd:decimal(?varD)) as ?varB { ?obs qb:dataSet <DATASET> . { ?obs <PROP0> <VAL0> . ?obs <SUB1> ?varC . } union { ?obs <SUB1> ?varD . } } }",
             "qa3_dataset": "pscs_ca_cities",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-9b9afcd427fa41d763fc216be622bb880e0be85b>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-gov-full-name>",
-                    "value": "\"Fullerton\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-85e13e3eba6b1523649a1db7d2d1a0090afc2103>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"Other Expenditures\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-gov-full-name>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"City\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-f7e1dcfdc6c5fe666f398a03b26c1fd288fd5cdb>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "26",
@@ -507,13 +258,7 @@
             "query": "select count(distinct(?category)) from <http://linkedspending.aksw.org/pscs_ca_cities> { ?obs qb:dataSet ls:pscs_ca_cities. ?obs lso:pscs_ca_cities-caption ?category. }",
             "qa3_query": "select count(distinct(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/pscs_ca_cities> . }",
             "qa3_dataset": "city-of-redacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-category>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"category\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "27",
@@ -523,18 +268,7 @@
             "query": "select max(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/dc-city-salaries> { ?obs qb:dataSet ls:dc-city-salaries. ?obs lso:dc-city-salaries-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2011). } ",
             "qa3_query": "select max(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "dc-city-salaries",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/dc-city-salaries>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Washington DC employee salaries\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-5485f4b70712b68c3dfd39bfe4ed870a26f86e99>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "28",
@@ -544,18 +278,7 @@
             "query": "select avg(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/dc-city-salaries> { ?obs qb:dataSet ls:dc-city-salaries. ?obs lso:dc-city-salaries-amount ?amount. ?obs lso:dc-city-salaries-position \"Engineering Technician\". }",
             "qa3_query": "select avg(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "dc-city-salaries",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-401c7848227270e38246f6033ad6dbecc8cf5392>",
-                    "property": "<http://linkedspending.aksw.org/ontology/dc-city-salaries-position>",
-                    "value": "\"Engineering Technician\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-dc-city-salaries-f40c235426548ab625b646c3e3095ecba8b7d5c2>",
-                    "property": "<http://linkedspending.aksw.org/ontology/dc-city-salaries-first>",
-                    "value": "\"Washington\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "29",
@@ -565,23 +288,7 @@
             "query": "select xsd:decimal(?amount) from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-amount ?amount. ?obs lso:big-lottery-fund-grants-to <https://openspending.org/big-lottery-fund-grants/to/king-george-s-field>. } ",
             "qa3_query": "select xsd:decimal(?varA) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "big-lottery-fund-grants",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/big-lottery-fund-grants/to/king-george-s-field>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"King George's Field\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/big-lottery-fund-grants>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"big-lottery-fund-grants\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "30",
@@ -591,18 +298,7 @@
             "query": "select ?programme from <http://linkedspending.aksw.org/big-lottery-fund-grants> { ?obs qb:dataSet ls:big-lottery-fund-grants. ?obs lso:big-lottery-fund-grants-programme-name ?programme. ?obs lso:big-lottery-fund-grants-amount ?amount. } group by ?programme having (sum(xsd:decimal(?amount))>1000000&&sum(xsd:decimal(?amount))<10000000)",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-programme-name> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(xsd:decimal(?varB))><NUMA>&&sum(xsd:decimal(?varB))<<NUMA>0)",
             "qa3_dataset": "big-lottery-fund-grants",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/big-lottery-fund-grants/to/will-to-give>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Will To Give\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-big-lottery-fund-grants-775f6c0ee36a4617f59911436c6d531eb072e596>",
-                    "property": "<http://linkedspending.aksw.org/ontology/big-lottery-fund-grants-funder-name>",
-                    "value": "\"Big Lottery Fund\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "31",
@@ -612,13 +308,7 @@
             "query": "select ?area from <http://linkedspending.aksw.org/uk-local-gloucestershirev1> { ?obs qb:dataSet ls:uk-local-gloucestershirev1. ?obs lso:uk-local-gloucestershirev1-service-area ?area. ?obs lso:uk-local-gloucestershirev1-amount ?amount. } group by ?area having (sum(xsd:decimal(?amount))>1000000)",
             "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/uk-local-gloucestershirev1-service-area> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/uk-local-gloucestershirev1> . } group by ?varA having (sum(xsd:decimal(?varB))><NUMA>)",
             "qa3_dataset": "mcc_spend",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/mcc_spend-service-area>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"service-area\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "32",
@@ -628,13 +318,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/uk-local-gloucestershirev1> { ?obs qb:dataSet ls:uk-local-gloucestershirev1. ?obs lso:uk-local-gloucestershirev1-to <https://openspending.org/uk-local-gloucestershirev1/to/gloucestershire-police-authority>. ?obs lso:uk-local-gloucestershirev1-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "uk-local-gloucestershirev1",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/uk-local-gloucestershirev1/to/gloucestershire-police-authority>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Gloucestershire Police Authority\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "33",
@@ -644,28 +328,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/ukgov-finances-cra> { ?obs qb:dataSet ls:ukgov-finances-cra. ?obs lso:ukgov-finances-cra-region <https://openspending.org/ukgov-finances-cra/region/scotland>. ?obs lso:ukgov-finances-cra-cofog2 <https://openspending.org/ukgov-finances-cra/cofog2/09.6>. ?obs lso:ukgov-finances-cra-from <https://openspending.org/ukgov-finances-cra/from/Dept022>. ?obs lso:ukgov-finances-cra-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> <https://openspending.org/ukgov-finances-cra/from/Dept022> . ?obs [] <SUB2> . ?obs [] <SUB3> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ukgov-finances-cra",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/ukgov-finances-cra/from/DES022>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Department for Education\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ukgov-finances-cra-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Paid to\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ukgov-finances-cra/cofog2/09.6>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Extra education services\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ukgov-finances-cra/region/scotland>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"SCOTLAND\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "34",
@@ -675,18 +338,7 @@
             "query": "select distinct(?function) from <http://linkedspending.aksw.org/ukgov-finances-cra> { ?obs qb:dataSet ls:ukgov-finances-cra. ?obs lso:ukgov-finances-cra-hmt1 ?function. ?obs lso:ukgov-finances-cra-from <https://openspending.org/ukgov-finances-cra/from/Dept022>. }",
             "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-from> <https://openspending.org/ukgov-finances-cra/from/Dept022> . ?obs <http://linkedspending.aksw.org/ontology/ukgov-finances-cra-hmt1> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ukgov-finances-cra",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ukgov-finances-cra-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Paid to\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ukgov-finances-cra/from/DES022>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Department for Education\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "35",
@@ -696,18 +348,7 @@
             "query": "select distinct(?status) from <http://linkedspending.aksw.org/iati_cordaid_af> { ?obs qb:dataSet ls:iati_cordaid_af. ?obs lso:iati_cordaid_af-Unique <https://openspending.org/iati_cordaid_af/Unique/195>. ?obs lso:iati_cordaid_af-Activity_Status ?status. }",
             "qa3_query": "select distinct(?varA) { ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/iati_cordaid_af-Unique> <https://openspending.org/iati_cordaid_af/Unique/195> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "iati_cordaid_af",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/iati_cordaid_af-Activity_Status>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Activity_Status\" "
-                },
-                {
-                    "subject": "<https://openspending.org/iati_cordaid_af/Unique/198>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Basic health care in Urozgan\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "36",
@@ -717,18 +358,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/iati_cordaid_af> { ?obs qb:dataSet ls:iati_cordaid_af. ?obs lso:iati_cordaid_af-Sector <https://openspending.org/iati_cordaid_af/Sector/12240>. ?obs lso:iati_cordaid_af-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "iati_cordaid_af",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/iati_cordaid_af-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/iati_cordaid_af/Sector/12240>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Basic nutrition\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "37",
@@ -738,23 +368,7 @@
             "query": "select sum(xsd:decimal(?amount)) from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-division \"Technical Services\". ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2009). }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "ca-local-toronto",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-dd2c47609e7af56fa6911b4ac86dde4c3d009399>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ca-local-toronto-budget-type>",
-                    "value": "\"Budget\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-c1cb6cac65d372f33e6d49f1c343b84e64feeaca>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ca-local-toronto-division>",
-                    "value": "\"Technical Services\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-c1cb6cac65d372f33e6d49f1c343b84e64feeaca>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2009\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "38",
@@ -764,18 +378,7 @@
             "query": "select ?division from <http://linkedspending.aksw.org/ca-local-toronto> { ?obs qb:dataSet ls:ca-local-toronto. ?obs lso:ca-local-toronto-division ?division. ?obs lso:ca-local-toronto-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010). } group by ?division having (sum(xsd:decimal(?amount)) > 10000000)",
             "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ca-local-toronto-division> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varC . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ca-local-toronto> . filter(year(?varC)=<YEAR1>) . } group by ?varA having (sum(xsd:decimal(?varB)) > <NUMA>)",
             "qa3_dataset": "city-of-redacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-redacre-spending-to>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Division\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-city-of-redacre-spending-060d39c4dac5425327691ba873d6705ab3f255dc>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "39",
@@ -785,23 +388,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ie_charity_exp> { ?obs qb:dataSet ls:ie_charity_exp. ?obs lso:ie_charity_exp-Charity <https://openspending.org/ie_charity_exp/Charity/15437>. ?obs lso:ie_charity_exp-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ie_charity_exp",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/ie_charity_exp/Charity/15437>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Sightsavers\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-8ea910ace9e0cc4347de516e57692349c436d087>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Charity\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ie_charity_exp/Charity/5365>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"The MS of Ireland\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "40",
@@ -811,18 +398,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ie_charity_exp> { ?obs qb:dataSet ls:ie_charity_exp. ?obs lso:ie_charity_exp-Charity <https://openspending.org/ie_charity_exp/Charity/7556>. ?obs lso:ie_charity_exp-Level3 <https://openspending.org/ie_charity_exp/Level3/b1-5100>. ?obs lso:ie_charity_exp-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ie_charity_exp-Level3> <https://openspending.org/ie_charity_exp/Level3/b1-5100> . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ie_charity_exp",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/ie_charity_exp/Charity/7556>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Special Olympics Ireland\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-8ea910ace9e0cc4347de516e57692349c436d087>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Charity\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "41",
@@ -832,18 +408,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/frontex> { ?obs qb:dataSet ls:frontex. ?obs lso:frontex-Heading <https://openspending.org/frontex/Heading/a-2>. ?obs lso:frontex-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "frontex",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/frontex>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Frontex Budget\" "
-                },
-                {
-                    "subject": "<https://openspending.org/frontex/Heading/a-2>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Administrative Expenditure\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "42",
@@ -853,18 +418,7 @@
             "query": "select avg(?sum) { select ?chapter sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/frontex> { ?obs qb:dataSet ls:frontex. ?obs lso:frontex-Chapter ?chapter. ?obs lso:frontex-amount ?amount. } }",
             "qa3_query": "select avg(?varA) { select ?varB sum(xsd:decimal(?varC)) as ?varA { ?obs <MEASURE> ?varC . ?obs <SUB1> ?varB . ?obs qb:dataSet <DATASET> . } }",
             "qa3_dataset": "frontex",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/frontex>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Frontex Budget\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/frontex-Chapter>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"Chapter\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "43",
@@ -874,23 +428,7 @@
             "query": "select max(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dcc_exp_budget2013> { ?obs qb:dataSet ls:dcc_exp_budget2013. ?obs lso:dcc_exp_budget2013-Division <https://openspending.org/dcc_exp_budget2013/Division/a>. ?obs lso:dcc_exp_budget2013-amount ?amount. }",
             "qa3_query": "select max(xsd:decimal(?varA)) { ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-Division> <https://openspending.org/dcc_exp_budget2013/Division/a> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "dcc_exp_budget2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dcc_exp_budget2013/from/a>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Housing and Building\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/dcc_exp_budget2013>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Dublin City Council Expenditure Budget 2013\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "44",
@@ -900,18 +438,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dcc_exp_budget2013> { ?obs qb:dataSet ls:dcc_exp_budget2013. ?obs lso:dcc_exp_budget2013-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/dcc_exp_budget2013-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/dcc_exp_budget2013> . }",
             "qa3_dataset": "oakland-adopted-budget-fy-2011-13-expenditures",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/oakland-adopted-budget-fy-2011-13-expenditures-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-oakland-adopted-budget-fy-2011-13-expenditures-30c21b3fe8393ac445e378177cc341f14ffb8cc9>",
-                    "property": "<http://linkedspending.aksw.org/ontology/oakland-adopted-budget-fy-2011-13-expenditures-department>",
-                    "value": "\"City Council\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "45",
@@ -921,18 +448,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/financial_aid> { ?obs qb:dataSet ls:financial_aid. ?obs lso:financial_aid-amount ?amount. ?obs lso:financial_aid-aid \"Guarantees (1)\". ?obs lso:financial_aid-country <https://openspending.org/financial_aid/country/austria>. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/financial_aid-aid> \"Guarantees (1)\" . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "financial_aid",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/financial_aid>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Financial_crisis_aid\" "
-                },
-                {
-                    "subject": "<https://openspending.org/financial_aid/country/austria>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Austria\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "46",
@@ -942,23 +458,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/financial_aid> { ?obs qb:dataSet ls:financial_aid. ?obs lso:financial_aid-amount ?amount. ?obs lso:financial_aid-country <https://openspending.org/financial_aid/country/belgium>. ?obs lso:refYear ?year. filter(year(?year)=2011). }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "financial_aid",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/financial_aid>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Financial_crisis_aid\" "
-                },
-                {
-                    "subject": "<https://openspending.org/financial_aid/country/belgium>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Belgium\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-financial_aid-9eb9726a7b1717cc421d1c28720744086394afd0>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "47",
@@ -968,28 +468,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/concern2012> { ?obs qb:dataSet ls:concern2012. ?obs lso:concern2012-Level1 <https://openspending.org/concern2012/Level1/expended>. ?obs lso:concern2012-Level3 <https://openspending.org/concern2012/Level3/charitable-activities>. ?obs lso:concern2012-Level4 <https://openspending.org/concern2012/Level4/bangladesh>. ?obs lso:concern2012-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/concern2012-Level1> <https://openspending.org/concern2012/Level1/expended> . ?obs <http://linkedspending.aksw.org/ontology/concern2012-Level3> <https://openspending.org/concern2012/Level3/charitable-activities> . ?obs <http://linkedspending.aksw.org/ontology/concern2012-Level4> <https://openspending.org/concern2012/Level4/bangladesh> . ?obs <http://linkedspending.aksw.org/ontology/concern2012-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/concern2012> . }",
             "qa3_dataset": "ie_charity_exp",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-8ea910ace9e0cc4347de516e57692349c436d087>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Charity\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ie_charity_exp/Level1/b>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Expended\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ie_charity_exp/Level3/b2-5210>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Charitable Activities\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-0b9ffb275173e8fc93b26e509fde3167323f44ad>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Bangladesh\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "48",
@@ -999,18 +478,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/concern2012> { ?obs qb:dataSet ls:concern2012. ?obs lso:concern2012-Level3 <https://openspending.org/concern2012/Level3/costs-of-generating-funds>. ?obs lso:concern2012-Level4 <https://openspending.org/concern2012/Level4/public-appeals-events>. ?obs lso:concern2012-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/concern2012-Level3> <https://openspending.org/concern2012/Level3/costs-of-generating-funds> . ?obs <http://linkedspending.aksw.org/ontology/concern2012-Level4> <https://openspending.org/concern2012/Level4/public-appeals-events> . ?obs <http://linkedspending.aksw.org/ontology/concern2012-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/concern2012> . }",
             "qa3_dataset": "ie_charity_exp",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-5756f54db0bc657fb78c982dc5861386044e4114>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Costs of Generating Funds\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ie_charity_exp-904b45a81f8ab5957445ca8fff4e382a8f93d16c>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ie_charity_exp-Level4>",
-                    "value": "\"Public Appeals & Events\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "49",
@@ -1020,23 +488,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/dc-vendors-contractors> { ?obs qb:dataSet ls:dc-vendors-contractors. ?obs lso:dc-vendors-contractors-from <https://openspending.org/dc-vendors-contractors/from/department-of-health>. ?obs lso:dc-vendors-contractors-to <https://openspending.org/dc-vendors-contractors/to/vwr-international-llc>. ?obs lso:dc-vendors-contractors-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs [] <SUB2> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "dc-vendors-contractors",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/dc-vendors-contractors-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dc-vendors-contractors/from/department-of-health>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"DEPARTMENT OF HEALTH\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dc-vendors-contractors/to/vwr-international-llc>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"VWR INTERNATIONAL LLC\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "50",
@@ -1056,23 +508,7 @@
             "query": "select max(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/cameroon_visualisation> { ?obs qb:dataSet ls:cameroon_visualisation. ?obs lso:cameroon_visualisation-head_account <https://openspending.org/cameroon_visualisation/head_account/610-xxx>. ?obs lso:cameroon_visualisation-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2008). }",
             "qa3_query": "select max(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/cameroon_visualisation-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/cameroon_visualisation-head_account> <https://openspending.org/cameroon_visualisation/head_account/610-xxx> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/cameroon_visualisation> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "finland-aid",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/finland-aid-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/finland-aid/recipient-country/cm>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Cameroon\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-finland-aid-c2ddcb4bb3e429bd5da8bb6ce6823ce2361f6ace>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2008\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "52",
@@ -1092,18 +528,7 @@
             "query": "select distinct(?date) from <http://linkedspending.aksw.org/nominettrust_funding> { ?obs qb:dataSet ls:nominettrust_funding. ?obs lso:nominettrust_funding-region <https://openspending.org/nominettrust_funding/region/london>. ?obs lso:refDate ?date. }",
             "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "nominettrust_funding",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/nominettrust_funding/region/london>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"London\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/nominettrust_funding>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Nominet Trust funding\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "54",
@@ -1113,23 +538,7 @@
             "query": "select distinct(?date) from <http://linkedspending.aksw.org/nominettrust_funding> { ?obs qb:dataSet ls:nominettrust_funding. ?obs lso:nominettrust_funding-programme <https://openspending.org/nominettrust_funding/programme/web-in-society>. ?obs lso:refDate ?date. }",
             "qa3_query": "select distinct(?varA) { ?obs <SUB1> <SUB0> . ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "nominettrust_funding",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/nominettrust_funding/programme/web-in-society>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Web in Society\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/nominettrust_funding-programme>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"programme\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/nominettrust_funding>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Nominet Trust funding\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "55",
@@ -1139,28 +548,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/618ac3ec98384f44a9ef142356ce476d> { ?obs qb:dataSet ls:618ac3ec98384f44a9ef142356ce476d. ?obs lso:618ac3ec98384f44a9ef142356ce476d-cofog1 <https://openspending.org/618ac3ec98384f44a9ef142356ce476d/cofog1/01>. ?obs lso:618ac3ec98384f44a9ef142356ce476d-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2009). }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-cofog1> <https://openspending.org/618ac3ec98384f44a9ef142356ce476d/cofog1/01> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/618ac3ec98384f44a9ef142356ce476d> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "pscs_ca_cities",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-85e13e3eba6b1523649a1db7d2d1a0090afc2103>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"Other Expenditures\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-cf0350c69136a45e9a586b56beaf3dec7ea077ff>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2009\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-80ca48c907a62dae578e97317cf20062a1643f1b>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"General\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-66fc9fb509e0b11ee66753e5c272a85ec602d868>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"Public service\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "56",
@@ -1170,18 +558,7 @@
             "query": "select distinct(?type) from <http://linkedspending.aksw.org/618ac3ec98384f44a9ef142356ce476d> { ?obs qb:dataSet ls:618ac3ec98384f44a9ef142356ce476d. ?obs lso:618ac3ec98384f44a9ef142356ce476d-type ?type. ?obs lso:618ac3ec98384f44a9ef142356ce476d-economiclevel1 \"Running expenses\". }",
             "qa3_query": "select distinct(?varA) { ?obs <PROP1> <VAL1> . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "618ac3ec98384f44a9ef142356ce476d",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-type>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Budgetary classification\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-618ac3ec98384f44a9ef142356ce476d-8b31551d0f8a7a86b3c885654e4b67e4a4c334af>",
-                    "property": "<http://linkedspending.aksw.org/ontology/618ac3ec98384f44a9ef142356ce476d-economiclevel1>",
-                    "value": "\"Running expenses\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "57",
@@ -1191,18 +568,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/propbudg13> { ?obs qb:dataSet ls:propbudg13. ?obs lso:propbudg13-to <https://openspending.org/propbudg13/to/total-overhead-cost>. ?obs lso:propbudg13-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "propbudg13",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-propbudg13-076e13bb7bbfe919d3673c40125a4876eaf1bc94>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<https://openspending.org/propbudg13/to/total-overhead-cost>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"TOTAL OVERHEAD COST\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "58",
@@ -1212,18 +578,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/propbudg13> { ?obs qb:dataSet ls:propbudg13. ?obs lso:propbudg13-from <https://openspending.org/propbudg13/from/ministries-and-department-agencies>. ?obs lso:propbudg13-recipient <https://openspending.org/propbudg13/recipient/ministry-of-petroleum-resources>. ?obs lso:propbudg13-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "propbudg13",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/propbudg13/recipient/ministry-of-petroleum-resources>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"MINISTRY OF PETROLEUM RESOURCES\" "
-                },
-                {
-                    "subject": "<https://openspending.org/propbudg13/from/ministries-and-department-agencies>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"MINISTRIES AND DEPARTMENT AGENCIES\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "59",
@@ -1233,28 +588,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/nyc-council-member-items> { ?obs qb:dataSet ls:nyc-council-member-items. ?obs lso:nyc-council-member-items-to <https://openspending.org/nyc-council-member-items/to/gun-hill-basketball-association-inc>. ?obs lso:nyc-council-member-items-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/nyc-council-member-items-to> <https://openspending.org/nyc-council-member-items/to/gun-hill-basketball-association-inc> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/nyc-council-member-items> . }",
             "qa3_dataset": "dc-city-salaries",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/dc-city-salaries/to/york>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"York\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dc-city-salaries/to/council>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"COUNCIL\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dc-city-salaries/to/givens>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"GIVENS\" "
-                },
-                {
-                    "subject": "<https://openspending.org/dc-city-salaries/to/hill>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Hill\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "60",
@@ -1264,18 +598,7 @@
             "query": "select count(distinct(year(?year))) as ?years from <http://linkedspending.aksw.org/nyc-council-member-items> { ?obs qb:dataSet ls:nyc-council-member-items. ?obs lso:nyc-council-member-items-from <https://openspending.org/nyc-council-member-items/from/dickens>. ?obs lso:nyc-council-member-items-to <https://openspending.org/nyc-council-member-items/to/american-performing-arts-collaborative-inc>. ?obs lso:refYear ?year. }",
             "qa3_query": "select count(distinct(year(?varA))) { ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varA . ?obs [] <SUB0> . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "nyc-council-member-items",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/nyc-council-member-items/from/dickens>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Dickens\" "
-                },
-                {
-                    "subject": "<https://openspending.org/nyc-council-member-items/to/american-performing-arts-collaborative-inc>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"American Performing Arts Collaborative, Inc.\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "61",
@@ -1285,23 +608,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/fingal_exp_budget> { ?obs qb:dataSet ls:fingal_exp_budget. ?obs lso:fingal_exp_budget-ref2-desc \"Service Support Costs\". ?obs lso:fingal_exp_budget-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2011). }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "fingal_exp_budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-1297ea91daf79710a71de587b3770d739aa8b0ca>",
-                    "property": "<http://linkedspending.aksw.org/ontology/fingal_exp_budget-ref2-desc>",
-                    "value": "\"Service Support Costs\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/fingal_exp_budget>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Fingal County Council Expenditure Budget\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-1297ea91daf79710a71de587b3770d739aa8b0ca>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "62",
@@ -1311,23 +618,7 @@
             "query": "select min(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/fingal_exp_budget> { ?obs qb:dataSet ls:fingal_exp_budget. ?obs lso:fingal_exp_budget-Service <https://openspending.org/fingal_exp_budget/Service/g04>. ?obs lso:fingal_exp_budget-amount ?amount. }",
             "qa3_query": "select min(xsd:decimal(?varA)) { ?obs <SUB0> ?varA . ?obs <http://linkedspending.aksw.org/ontology/fingal_exp_budget-Service> <https://openspending.org/fingal_exp_budget/Service/g04> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "fingal_exp_budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/fingal_exp_budget-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-fingal_exp_budget-0e8b7226a7ba9c113ee70dc0951905f2a90b1496>",
-                    "property": "<http://linkedspending.aksw.org/ontology/fingal_exp_budget-ref1-desc>",
-                    "value": "\"Veterinary Service\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/fingal_exp_budget>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Fingal County Council Expenditure Budget\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "63",
@@ -1337,18 +628,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/cm-nwr-investments> { ?obs qb:dataSet ls:cm-nwr-investments. ?obs lso:cm-nwr-investments-area <https://openspending.org/cm-nwr-investments/area/mezam>. ?obs lso:cm-nwr-investments-chapter <https://openspending.org/cm-nwr-investments/chapter/15>. ?obs lso:cm-nwr-investments-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/cm-nwr-investments-area> <https://openspending.org/cm-nwr-investments/area/mezam> . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "cm-nwr-investments",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/cm-nwr-investments/chapter/15>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Basic Education \" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-cm-nwr-investments-de04f4a9d229d846c772e8170e8d44e66f705e86>",
-                    "property": "<http://linkedspending.aksw.org/ontology/cm-nwr-investments-commune>",
-                    "value": "\"Mezam\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "64",
@@ -1358,23 +638,7 @@
             "query": "select ?area from <http://linkedspending.aksw.org/cm-nwr-investments> { ?obs qb:dataSet ls:cm-nwr-investments. ?obs lso:cm-nwr-investments-area ?area. ?obs lso:cm-nwr-investments-amount ?amount. } group by ?area having (sum(xsd:decimal(?amount))>5000000000)",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having (sum(xsd:decimal(?varB))><NUMA>)",
             "qa3_dataset": "cm-nwr-investments",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/cm-nwr-investments-area>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"area\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-cm-nwr-investments-b6d65f2503cd27d6b34d9b6428fc837521deaf21>",
-                    "property": "<http://linkedspending.aksw.org/ontology/cm-nwr-investments-sn>",
-                    "value": "\"5\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-cm-nwr-investments-9dd891d6f426b929a6b54f147f6fd5f321680859>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "65",
@@ -1384,13 +648,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ug_budget_subcategories> { ?obs qb:dataSet ls:ug_budget_subcategories. ?obs lso:ug_budget_subcategories-to <https://openspending.org/ug_budget_subcategories/to/works-and-transport>. ?obs lso:ug_budget_subcategories-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ug_budget_subcategories-to> <https://openspending.org/ug_budget_subcategories/to/works-and-transport> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ug_budget_subcategories",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/ug_budget_subcategories/sub-categories/works-and-transport>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Works   and  transport\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "66",
@@ -1400,18 +658,7 @@
             "query": "select distinct(year(?year)) as ?year from <http://linkedspending.aksw.org/ug_budget_subcategories> { ?obs qb:dataSet ls:ug_budget_subcategories. ?obs lso:ug_budget_subcategories-to <https://openspending.org/ug_budget_subcategories/to/education>. ?obs lso:ug_budget_subcategories-amount ?amount. ?obs lso:refYear ?year. }",
             "qa3_query": "select distinct(year(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ug_budget_subcategories-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/ug_budget_subcategories-to> <https://openspending.org/ug_budget_subcategories/to/education> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ug_budget_subcategories> . }",
             "qa3_dataset": "alb_planned_budget_2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-time>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Year\" "
-                },
-                {
-                    "subject": "<https://openspending.org/alb_planned_budget_2013/cofog1/09>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Education\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "67",
@@ -1421,18 +668,7 @@
             "query": "select count(distinct(?entity)) from <http://linkedspending.aksw.org/faith> { ?obs qb:dataSet ls:faith. ?obs lso:faith-target <https://openspending.org/faith/target/typhoon-yolanda>. ?obs lso:faith-from ?entity. }",
             "qa3_query": "select count(distinct(?varA)) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "faith",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/faith-from>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Donor entity\" "
-                },
-                {
-                    "subject": "<https://openspending.org/faith/target/typhoon-yolanda>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Typhoon Yolanda\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "68",
@@ -1442,18 +678,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/faith> { ?obs qb:dataSet ls:faith. ?obs lso:faith-conduit <https://openspending.org/faith/conduit/red-cross>. ?obs lso:faith-from <https://openspending.org/faith/from/china>. ?obs lso:faith-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs [] <SUB0> . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "faith",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/faith/conduit/red-cross>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Red Cross\" "
-                },
-                {
-                    "subject": "<https://openspending.org/faith/from/china>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"China\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "69",
@@ -1463,23 +688,7 @@
             "query": "select ?result { ?obs lso:finland-aid-recipient-country <https://openspending.org/finland-aid/recipient-country/in>. ?obs lso:finland-aid-amount ?amount. ?obs lso:finland-aid-sector ?result. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs [] <SUB2> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "finland-aid",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/finland-aid-sector>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"sector\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-finland-aid-621371ee61063239ad2ef434bbca6613325231ef>",
-                    "property": "<http://linkedspending.aksw.org/ontology/finland-aid-geographical-target-area>",
-                    "value": "\"Finland\" "
-                },
-                {
-                    "subject": "<https://openspending.org/finland-aid/recipient-country/in>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"India\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "70",
@@ -1489,23 +698,7 @@
             "query": "select distinct(?result) { ?obs lso:finland-aid-recipient-country <https://openspending.org/finland-aid/recipient-country/by>. ?obs lso:finland-aid-type-of-aid ?result. ?obs lso:refYear ?year. filter(year(?year)=2011). }",
             "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/finland-aid-type-of-aid> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB1> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "finland-aid",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-finland-aid-621371ee61063239ad2ef434bbca6613325231ef>",
-                    "property": "<http://linkedspending.aksw.org/ontology/finland-aid-geographical-target-area>",
-                    "value": "\"Finland\" "
-                },
-                {
-                    "subject": "<https://openspending.org/finland-aid/recipient-country/by>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Belarus\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-finland-aid-016b3ef858943502887ab2367ca8514fb9c86e7a>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2011\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "71",
@@ -1515,13 +708,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/pvd2014proposed> { ?obs qb:dataSet ls:pvd2014proposed. ?obs lso:pvd2014proposed-acct-dept \"101-106: Muncipal Court\". ?obs lso:pvd2014proposed-acct-div \"City Courts\". ?obs lso:pvd2014proposed-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/pvd2014proposed-acct-dept> \"101-106: Muncipal Court\" . ?obs <http://linkedspending.aksw.org/ontology/pvd2014proposed-acct-div> \"City Courts\" . ?obs <http://linkedspending.aksw.org/ontology/pvd2014proposed-amount> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/pvd2014proposed> . }",
             "qa3_dataset": "city-of-springfield-budget",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-springfield-budget-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "72",
@@ -1531,13 +718,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/pvd2014proposed> { ?obs qb:dataSet ls:pvd2014proposed. ?obs lso:pvd2014proposed-gl-account \"54625: EDUCATIONAL MATERIALS\". ?obs lso:pvd2014proposed-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/pvd2014proposed-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/pvd2014proposed-gl-account> \"54625: EDUCATIONAL MATERIALS\" . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/pvd2014proposed> . }",
             "qa3_dataset": "cheshire_west_and_chester_april_2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-cheshire_west_and_chester_april_2013-11766bd9930c1d537f9738cad6bc1c499a490cf3>",
-                    "property": "<http://linkedspending.aksw.org/ontology/cheshire_west_and_chester_april_2013-expenditure-category>",
-                    "value": "\"Educational Materials\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "73",
@@ -1547,13 +728,7 @@
             "query": "select distinct(?date) from <http://linkedspending.aksw.org/pbw-ct> { ?obs qb:dataSet ls:pbw-ct. ?obs lso:pbw-ct-Category <https://openspending.org/pbw-ct/Category/upgrading-and-greening-in-ward-49>. ?obs lso:refDate ?date. }",
             "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "pbw-ct",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/pbw-ct/Category/upgrading-and-greening-in-ward-49>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"upgrading and greening in ward 49\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "74",
@@ -1563,13 +738,7 @@
             "query": "select distinct(?source) from <http://linkedspending.aksw.org/pbw-ct> { ?obs qb:dataSet ls:pbw-ct. ?obs lso:pbw-ct-Department <https://openspending.org/pbw-ct/Department/cape-town-electricity>. ?obs lso:pbw-ct-FundingSource ?source. }",
             "qa3_query": "select distinct(?varA) { ?obs <http://linkedspending.aksw.org/ontology/pbw-ct-FundingSource> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "pbw-ct",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/pbw-ct/Department/cape-town-electricity>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Cape Town Electricity\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "75",
@@ -1579,28 +748,7 @@
             "query": "select ?type from <http://linkedspending.aksw.org/trends_in_civi_tech_open_gov> { ?obs qb:dataSet ls:trends_in_civi_tech_open_gov. ?obs lso:trends_in_civi_tech_open_gov-tech \"CKAN\". ?obs lso:trends_in_civi_tech_open_gov-amount ?amount. ?obs lso:trends_in_civi_tech_open_gov-investor_type ?type. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <PROP1> <VAL1> . ?obs <SUB0> ?varA . ?obs <SUB3> ?varB . ?obs qb:dataSet <DATASET> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "trends_in_civi_tech_open_gov",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/trends_in_civi_tech_open_gov-investor_type>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"investor_type\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-trends_in_civi_tech_open_gov-31768432a8220177e2b0c2a9f093cf240eab5d1e>",
-                    "property": "<http://linkedspending.aksw.org/ontology/trends_in_civi_tech_open_gov-tech>",
-                    "value": "\"CKAN\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/trends_in_civi_tech_open_gov-tech>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Technology\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/trends_in_civi_tech_open_gov-amount>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Funding\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "76",
@@ -1610,13 +758,7 @@
             "query": "select ?date from <http://linkedspending.aksw.org/trends_in_civi_tech_open_gov> { ?obs qb:dataSet ls:trends_in_civi_tech_open_gov. ?obs lso:trends_in_civi_tech_open_gov-from <https://openspending.org/trends_in_civi_tech_open_gov/from/pew-charitable-trust>. ?obs lso:refDate ?date. }",
             "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/refDate> ?varA . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "trends_in_civi_tech_open_gov",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/trends_in_civi_tech_open_gov/from/pew-charitable-trust>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Pew Charitable Trust \" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "77",
@@ -1626,18 +768,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/e27f4ef7601446798cfa733a06cea8d9> { ?obs qb:dataSet ls:e27f4ef7601446798cfa733a06cea8d9. ?obs lso:e27f4ef7601446798cfa733a06cea8d9-economiclevel3 \"Buildings and edifices\". ?obs lso:e27f4ef7601446798cfa733a06cea8d9-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "e27f4ef7601446798cfa733a06cea8d9",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-e27f4ef7601446798cfa733a06cea8d9-056c6a893b8b25088f455a8eb6a3035e5e3b9c35>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2006\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-e27f4ef7601446798cfa733a06cea8d9-bd2ed31499f6803b79df98673d49c73b7f695deb>",
-                    "property": "<http://linkedspending.aksw.org/ontology/e27f4ef7601446798cfa733a06cea8d9-economiclevel3>",
-                    "value": "\"Buildings and edifices\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "78",
@@ -1647,23 +778,7 @@
             "query": "select distinct(?admin) from <http://linkedspending.aksw.org/e27f4ef7601446798cfa733a06cea8d9> { ?obs qb:dataSet ls:e27f4ef7601446798cfa733a06cea8d9. ?obs lso:e27f4ef7601446798cfa733a06cea8d9-economic <https://openspending.org/e27f4ef7601446798cfa733a06cea8d9/economic/4267>. ?obs lso:e27f4ef7601446798cfa733a06cea8d9-from ?admin. }",
             "qa3_query": "select distinct(?varA) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "e27f4ef7601446798cfa733a06cea8d9",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/e27f4ef7601446798cfa733a06cea8d9-from>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Admin\" "
-                },
-                {
-                    "subject": "<https://openspending.org/e27f4ef7601446798cfa733a06cea8d9/economic/4267>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Personal and catering materials\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-e27f4ef7601446798cfa733a06cea8d9-056c6a893b8b25088f455a8eb6a3035e5e3b9c35>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2006\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "79",
@@ -1673,18 +788,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/f0bd947d9854445987d6ece304840a3c> { ?obs qb:dataSet ls:f0bd947d9854445987d6ece304840a3c. ?obs lso:f0bd947d9854445987d6ece304840a3c-economic <https://openspending.org/f0bd947d9854445987d6ece304840a3c/economic/4213>. ?obs lso:f0bd947d9854445987d6ece304840a3c-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-economic> <https://openspending.org/f0bd947d9854445987d6ece304840a3c/economic/4213> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/f0bd947d9854445987d6ece304840a3c> . }",
             "qa3_dataset": "pscs_ca_cities",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-85e13e3eba6b1523649a1db7d2d1a0090afc2103>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"Other Expenditures\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-pscs_ca_cities-51cd77139b456e6bb3aa277f2079276da261d3b0>",
-                    "property": "<http://linkedspending.aksw.org/ontology/pscs_ca_cities-caption>",
-                    "value": "\"Public Utilities\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "80",
@@ -1694,23 +798,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/f0bd947d9854445987d6ece304840a3c> { ?obs qb:dataSet ls:f0bd947d9854445987d6ece304840a3c. ?obs lso:f0bd947d9854445987d6ece304840a3c-economiclevel1 \"Running expenses\". ?obs lso:f0bd947d9854445987d6ece304840a3c-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "f0bd947d9854445987d6ece304840a3c",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-247057ecce79ba99159774ae9957c53a062021dc>",
-                    "property": "<http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-economiclevel3>",
-                    "value": "\"Other costs, other\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-925412ed77d77b7ed0e5c9a570b89757d7884c01>",
-                    "property": "<http://linkedspending.aksw.org/ontology/f0bd947d9854445987d6ece304840a3c-economiclevel1>",
-                    "value": "\"Running expenses\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-f0bd947d9854445987d6ece304840a3c-925412ed77d77b7ed0e5c9a570b89757d7884c01>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2007\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "81",
@@ -1730,23 +818,7 @@
             "query": "select min(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/scottish-spending-jan13> { ?obs qb:dataSet ls:scottish-spending-jan13. ?obs lso:scottish-spending-jan13-amount ?amount. ?obs lso:scottish-spending-jan13-directorate \"Environment and Forestry\". }",
             "qa3_query": "select min(xsd:decimal(?varA)) { ?obs <PROP1> <VAL1> . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "scottish-spending-jan13",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/scottish-spending-jan13-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-scottish-spending-jan13-2be0caff42d46f6136eb5adda3227ff288359794>",
-                    "property": "<http://linkedspending.aksw.org/ontology/scottish-spending-jan13-directorate>",
-                    "value": "\"Environment and Forestry\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-scottish-spending-jan13-5f8f2edcfda4988d5e143b652b51e4243d905c0a>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "83",
@@ -1756,13 +828,7 @@
             "query": "select year(?year) from <http://linkedspending.aksw.org/oakland-adopted-budget-fy-2011-13-expenditures> { ?obs qb:dataSet ls:oakland-adopted-budget-fy-2011-13-expenditures. ?obs lso:oakland-adopted-budget-fy-2011-13-expenditures-amount ?amount. ?obs lso:refYear ?year. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select year(?varA) { ?obs <http://linkedspending.aksw.org/ontology/oakland-adopted-budget-fy-2011-13-expenditures-amount> ?varB . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varA . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/oakland-adopted-budget-fy-2011-13-expenditures> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "city-of-whiteacre-spending",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/city-of-whiteacre-spending-time>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Year\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "84",
@@ -1772,18 +838,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/oakland-adopted-budget-fy-2011-13-expenditures> { ?obs qb:dataSet ls:oakland-adopted-budget-fy-2011-13-expenditures. ?obs lso:oakland-adopted-budget-fy-2011-13-expenditures-unit \"Administrative Unit\". ?obs lso:oakland-adopted-budget-fy-2011-13-expenditures-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2012) }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "oakland-adopted-budget-fy-2011-13-expenditures",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-oakland-adopted-budget-fy-2011-13-expenditures-2211e72a8fd05fd18e718866e9c3e775473a80a2>",
-                    "property": "<http://linkedspending.aksw.org/ontology/oakland-adopted-budget-fy-2011-13-expenditures-unit>",
-                    "value": "\"Administrative Unit\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-oakland-adopted-budget-fy-2011-13-expenditures-50ce76c56c415073c6b998a524a320db934b024a>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2012\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "85",
@@ -1793,23 +848,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/allexp13budg> { ?obs qb:dataSet ls:allexp13budg. ?obs lso:allexp13budg-level0 \"RECURRENT EXPENDITURE\". ?obs lso:allexp13budg-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/allexp13budg-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/allexp13budg-level0> \"RECURRENT EXPENDITURE\" . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/allexp13budg> . }",
             "qa3_dataset": "ca-local-toronto",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-abc85fac105637461705149e7a4a3d5871854fae>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ca-local-toronto-type>",
-                    "value": "\"Other Expenditures\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-dd2c47609e7af56fa6911b4ac86dde4c3d009399>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ca-local-toronto-budget-type>",
-                    "value": "\"Budget\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ca-local-toronto-672ad290bfa35a6fb444e54957356d4673fa0493>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "86",
@@ -1819,23 +858,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/allexp13budg> { ?obs qb:dataSet ls:allexp13budg. ?obs lso:allexp13budg-level1 \"GENERAL SERVICES\". ?obs lso:allexp13budg-level2 \"Office of the President\". ?obs lso:allexp13budg-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs <http://linkedspending.aksw.org/ontology/allexp13budg-level2> \"Office of the President\" . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "allexp13budg",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-allexp13budg-105e9528dea67ccd7ff16dd42e9fe79006caaf18>",
-                    "property": "<http://linkedspending.aksw.org/ontology/allexp13budg-level1>",
-                    "value": "\"GENERAL SERVICES\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-allexp13budg-e2da2e0829f01a4774380ba2c115472b880eaf5a>",
-                    "property": "<http://linkedspending.aksw.org/ontology/allexp13budg-level1>",
-                    "value": "\"OFFICE OF THE PRESIDENT\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-allexp13budg-3d2798d1d87fa9e9e08085b6129991da9e05528b>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "87",
@@ -1845,18 +868,7 @@
             "query": "select ?client sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/lobbying_dataset_qy> { ?obs qb:dataSet ls:lobbying_dataset_qy. ?obs lso:lobbying_dataset_qy-client ?client. ?obs lso:lobbying_dataset_qy-amount ?amount. } group by ?client having sum(xsd:decimal(?amount))>50000000",
             "qa3_query": "select ?varA sum(xsd:decimal(?varB)) { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } group by ?varA having sum(xsd:decimal(?varB))><NUMA>",
             "qa3_dataset": "lobbying_dataset_qy",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/lobbying_dataset_qy-client>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"client\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/lobbying_dataset_qy/views/lobbying-contribution>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Lobbying contribution\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "88",
@@ -1866,18 +878,7 @@
             "query": "select ?industry from <http://linkedspending.aksw.org/lobbying_dataset_qy> { ?obs qb:dataSet ls:lobbying_dataset_qy. ?obs lso:lobbying_dataset_qy-industry ?industry. ?obs lso:lobbying_dataset_qy-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1",
             "qa3_query": "select ?varA { ?obs <MEASURE> ?varB . ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "lobbying_dataset_qy",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/lobbying_dataset_qy-industry>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"industry\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/lobbying_dataset_qy/views/lobbying-contribution>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Lobbying contribution\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "89",
@@ -1887,18 +888,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/mcc_spend> { ?obs qb:dataSet ls:mcc_spend. ?obs lso:mcc_spend-amount ?amount. ?obs lso:mcc_spend-supplier-name \"SLC Paragon\". }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP1> <VAL1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "mcc_spend",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/mcc_spend/from/manchester-city-council>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Manchester City Council\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-mcc_spend-0ab269e33cfb7c3f3fce700b0bbf245500e0675c>",
-                    "property": "<http://linkedspending.aksw.org/ontology/mcc_spend-supplier-name>",
-                    "value": "\"SLC Paragon\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "90",
@@ -1908,18 +898,7 @@
             "query": "select distinct(?area) from <http://linkedspending.aksw.org/mcc_spend> { ?obs qb:dataSet ls:mcc_spend. ?obs lso:mcc_spend-service-area ?area. }",
             "qa3_query": "select distinct(?varA) { ?obs <SUB0> ?varA . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "mcc_spend",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/mcc_spend-service-area>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"service-area\" "
-                },
-                {
-                    "subject": "<https://openspending.org/mcc_spend/from/manchester-city-council>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Manchester City Council\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "91",
@@ -1929,18 +908,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/alb_planned_budget_2013> { ?obs qb:dataSet ls:alb_planned_budget_2013. ?obs lso:alb_planned_budget_2013-cofog1 <https://openspending.org/alb_planned_budget_2013/cofog1/09>. ?obs lso:alb_planned_budget_2013-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-amount> ?varA . ?obs <http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-cofog1> <https://openspending.org/alb_planned_budget_2013/cofog1/09> . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/alb_planned_budget_2013> . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/al_planned_budget_2007to2013>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<https://openspending.org/al_planned_budget_2007to2013/cofog1/education>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Education\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "92",
@@ -1950,23 +918,7 @@
             "query": "select distinct(?id) from <http://linkedspending.aksw.org/alb_planned_budget_2013> { ?obs qb:dataSet ls:alb_planned_budget_2013. ?obs lso:alb_planned_budget_2013-cofog1 <https://openspending.org/alb_planned_budget_2013/cofog1/06>. ?obs lso:alb_planned_budget_2013-UniqueID ?id. }",
             "qa3_query": "select distinct(?varA) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "alb_planned_budget_2013",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/alb_planned_budget_2013-UniqueID>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Identification\" "
-                },
-                {
-                    "subject": "<https://openspending.org/alb_planned_budget_2013/cofog1/06>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Housing and community amenities\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-alb_planned_budget_2013-16084194e8fd633040af3e2baad8096339778308>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2013\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "93",
@@ -1976,28 +928,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ke-county-exp> { ?obs qb:dataSet ls:ke-county-exp. ?obs lso:ke-county-exp-administration <https://openspending.org/ke-county-exp/administration/thika>. ?obs lso:ke-county-exp-county <https://openspending.org/ke-county-exp/county/kiambu>. ?obs lso:ke-county-exp-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <SUB0> <https://openspending.org/ke-county-exp/county/kiambu> . ?obs <SUB3> <SUB2> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ke-county-exp",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ke-county-exp-county>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"county\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ke-county-exp/administration/kiambu>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Kiambu\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ke-county-exp/administration/thika>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Thika\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ke-county-exp-administration>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"administration\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "94",
@@ -2007,13 +938,7 @@
             "query": "select ?admin from <http://linkedspending.aksw.org/ke-county-exp> { ?obs qb:dataSet ls:ke-county-exp. ?obs lso:ke-county-exp-administration ?admin. ?obs lso:ke-county-exp-amount ?amount. } order by desc(sum(xsd:decimal(?amount))) limit 1 ",
             "qa3_query": "select ?varA { ?obs <http://linkedspending.aksw.org/ontology/ke-county-exp-administration> ?varA . ?obs <http://linkedspending.aksw.org/ontology/ke-county-exp-amount> ?varB . ?obs qb:dataSet <http://linkedspending.aksw.org/instance/ke-county-exp> . } order by desc(sum(xsd:decimal(?varB))) limit 1",
             "qa3_dataset": "town_of_cary_expenditures",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/town_of_cary_expenditures/LineItem/104>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Administration\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "95",
@@ -2023,18 +948,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/al_planned_budget_2007to2013> { ?obs qb:dataSet ls:al_planned_budget_2007to2013. ?obs lso:al_planned_budget_2007to2013-cofog1 <https://openspending.org/al_planned_budget_2007to2013/cofog1/public-order-and-safety>. ?obs lso:refYear ?year. filter(year(?year)=2007). ?obs lso:al_planned_budget_2007to2013-amount ?amount. } ",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR1>) . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/al_planned_budget_2007to2013/cofog1/public-order-and-safety>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Public order and safety\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-al_planned_budget_2007to2013-84c23c053cdb785544a88a8d63dd09c03d88308e>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2007\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "96",
@@ -2044,23 +958,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/al_planned_budget_2007to2013> { ?obs qb:dataSet ls:al_planned_budget_2007to2013. ?obs lso:al_planned_budget_2007to2013-cofog1 <https://openspending.org/al_planned_budget_2007to2013/cofog1/health>. ?obs lso:al_planned_budget_2007to2013-amount ?amount. ?obs lso:refYear ?year. filter((year(?year)>=2007)&&year(?year)<=2010) } ",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB0> . ?obs qb:dataSet <DATASET> . filter((year(?varB)>=<YEAR1>)&&year(?varB)<=<YEAR2>) . }",
             "qa3_dataset": "al_planned_budget_2007to2013",
-            "qa3_result": [
-                {
-                    "subject": "<https://openspending.org/al_planned_budget_2007to2013/cofog1/health>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Health\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-al_planned_budget_2007to2013-84c23c053cdb785544a88a8d63dd09c03d88308e>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2007\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-al_planned_budget_2007to2013-1adc9e640a261b7f4f1e57d3096d827c940e25e7>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "97",
@@ -2070,23 +968,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/external-debts> { ?obs qb:dataSet ls:external-debts. ?obs lso:external-debts-to <https://openspending.org/external-debts/to/kwara>. ?obs lso:external-debts-amount ?amount. } ",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <SUB1> ?varA . ?obs [] <SUB2> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "external-debts",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/external-debts>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"external-debts\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/external-debts-amount>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"amount\" "
-                },
-                {
-                    "subject": "<https://openspending.org/external-debts/to/kwara>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Kwara\" "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "98",
@@ -2096,23 +978,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/external-debts> { ?obs qb:dataSet ls:external-debts. ?obs lso:external-debts-to <https://openspending.org/external-debts/to/rivers>. ?obs lso:external-debts-amount ?amount. ?obs lso:refYear ?year. filter(year(?year)=2010) } ",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <http://linkedspending.aksw.org/ontology/refYear> ?varB . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . filter(year(?varB)=<YEAR2>) . }",
             "qa3_dataset": "external-debts",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/external-debts>",
-                    "property": "<http://purl.org/dc/terms/identifier>",
-                    "value": "\"external-debts\" "
-                },
-                {
-                    "subject": "<https://openspending.org/external-debts/to/rivers>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Rivers\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-external-debts-0710c07db35f596cb7af080ee53fc162fd8f0f93>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "99",
@@ -2122,23 +988,7 @@
             "query": "select count(distinct(?admin)) from <http://linkedspending.aksw.org/ddc94682cc95482a8deefc60596686fc> { ?obs qb:dataSet ls:ddc94682cc95482a8deefc60596686fc. ?obs lso:ddc94682cc95482a8deefc60596686fc-economic <https://openspending.org/ddc94682cc95482a8deefc60596686fc/economic/4823>. ?obs lso:ddc94682cc95482a8deefc60596686fc-from ?admin. } ",
             "qa3_query": "select count(distinct(?varA)) { ?obs <SUB0> ?varA . ?obs [] <SUB1> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ddc94682cc95482a8deefc60596686fc",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ddc94682cc95482a8deefc60596686fc-from>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Admin\" "
-                },
-                {
-                    "subject": "<https://openspending.org/ddc94682cc95482a8deefc60596686fc/economic/4823>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#label>",
-                    "value": "\"Mandatory payments\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ddc94682cc95482a8deefc60596686fc-5d25cf8d8791ebc3080dd25193d364b68a1963fa>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                }
-            ]
+            "qa3_result": []
         },
         {
             "id": "100",
@@ -2148,28 +998,7 @@
             "query": "select sum(xsd:decimal(?amount)) as ?sum from <http://linkedspending.aksw.org/ddc94682cc95482a8deefc60596686fc> { ?obs qb:dataSet ls:ddc94682cc95482a8deefc60596686fc. ?obs lso:ddc94682cc95482a8deefc60596686fc-economiclevel1 \"Running expenses\". ?obs lso:ddc94682cc95482a8deefc60596686fc-type \"personnel\". ?obs lso:ddc94682cc95482a8deefc60596686fc-amount ?amount. }",
             "qa3_query": "select sum(xsd:decimal(?varA)) { ?obs <MEASURE> ?varA . ?obs <PROP0> <VAL0> . ?obs <SUB1> <VAL3> . ?obs qb:dataSet <DATASET> . }",
             "qa3_dataset": "ddc94682cc95482a8deefc60596686fc",
-            "qa3_result": [
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ddc94682cc95482a8deefc60596686fc-5d25cf8d8791ebc3080dd25193d364b68a1963fa>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ddc94682cc95482a8deefc60596686fc-economiclevel1>",
-                    "value": "\"Running expenses\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/ontology/ddc94682cc95482a8deefc60596686fc-type>",
-                    "property": "<http://www.w3.org/2000/01/rdf-schema#comment>",
-                    "value": "\"Budgetary classification\" "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ddc94682cc95482a8deefc60596686fc-5d25cf8d8791ebc3080dd25193d364b68a1963fa>",
-                    "property": "<http://linkedspending.aksw.org/ontology/refYear>",
-                    "value": "\"2010\"^^<http://www.w3.org/2001/XMLSchema#gYear> "
-                },
-                {
-                    "subject": "<http://linkedspending.aksw.org/instance/observation-ddc94682cc95482a8deefc60596686fc-08b867402b2a47b2a0f0260cae11348d0220b8f7>",
-                    "property": "<http://linkedspending.aksw.org/ontology/ddc94682cc95482a8deefc60596686fc-type>",
-                    "value": "\"personnel\" "
-                }
-            ]
+            "qa3_result": []
         }
     ]
 }

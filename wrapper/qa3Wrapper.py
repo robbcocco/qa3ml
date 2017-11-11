@@ -2,10 +2,10 @@ import re
 import json
 import os
 
-import qa3wrapper.interface as interface
+import wrapper.interface as interface
 
 
-def get_answer_from_qa3(question):
+def get_answer_from_web(question):
     """
     Returns the answer from qa3.link's step1
 
@@ -19,9 +19,9 @@ def get_answer_from_qa3(question):
     Answer
         Result from http://swipe.unica.it/apps/qa3/?q=question
     """
-    qa3_answer = interface.get_json(question=question)
-    if qa3_answer is not None:
-        answer = Answer(answer=qa3_answer)
+    raw_answer = interface.get_json(question=question)
+    if raw_answer is not None:
+        answer = Answer(answer=raw_answer)
     else:
         answer = Answer()
 

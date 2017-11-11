@@ -4,9 +4,8 @@ import re
 
 import datacube.dataset as dc
 import qa3.qaCube as qaCube
-import qa3.query as qa3query
-import qa3.question as qa3question
-import qa3wrapper.wrapper as qa3wrapper
+import wrapper.qa3Wrapper as qa3Wrapper
+import wrapper.tagMeWrapper as tagMeWrapper
 
 
 def save_data_to_json(data, file_name):
@@ -34,13 +33,13 @@ def answer2json(question, qa3_answer, query):
     #     answers.append(answer)
 
     results = []
-    for qa3_result in qa3_answer.result:
-        result = {
-            'subject': qa3_result.subject,
-            'property': qa3_result.property,
-            'value': qa3_result.value
-        }
-        results.append(result)
+    # for qa3_result in qa3_answer.result:
+    #     result = {
+    #         'subject': qa3_result.subject,
+    #         'property': qa3_result.property,
+    #         'value': qa3_result.value
+    #     }
+    #     results.append(result)
 
     temp = {
         'id': question.id,
@@ -56,49 +55,35 @@ def answer2json(question, qa3_answer, query):
     return temp
 
 
-def qa3questioner(file_name):
-    dc_dataset = dc.Dataset(file_name)
+def get_answers(file_name, use_cache, site):
+    dc_dataset = dc.Dataset(file_name=file_name)
     dataset = {}
     answers = []
-
-    # print(dc_dataset.questions[1].question)
-    for question in dc_dataset.questions:
-        qa3_answer = qa3wrapper.get_answer_from_dump(question.id, file_name)
-
-        if qa3_answer is None:
-            # print(qa3_answer.api_status)
-            break
-
-        qa3 = qaCube.QA3(question=question.question, query=question.query)
-        qa3.get_qa3(qa3_answer=qa3_answer)
-
-        answer = answer2json(question=question, qa3_answer=qa3_answer, query=qa3.query)
-
-        print(answer['id'])
-        answers.append(answer)
-
-    dataset['answers'] = answers
-
-    return dataset
-
-
-def qa3questioner_text(file_name):
-    dc_dataset = dc.Dataset(file_name=file_name)
     text = ''
 
     for question in dc_dataset.questions:
-        qa3_answer = qa3wrapper.get_answer_from_dump(question.id, file_name)
+        print(question.id)
 
-        if qa3_answer is None:
-            # print(qa3_answer.api_status)
-            break
+        if use_cache is True:
+            if site is qaCube.QA3:
+                qa3_answer = qa3Wrapper.get_answer_from_dump(question.id, file_name)
+            elif site is qaCube.TAGME:
+                qa3_answer = tagMeWrapper.get_answer_from_dump(question.id, file_name)
+        else:
+            if site is qaCube.QA3:
+                qa3_answer = qa3Wrapper.get_answer_from_web(question.question)
+            elif site is qaCube.TAGME:
+                qa3_answer = tagMeWrapper.get_answer_from_web(question.question)
 
-        qa3 = qaCube.QA3(question=question.question, query=question.query)
+            if qa3_answer is None:
+                # print(qa3_answer.api_status)
+                break
+
+        qa3 = qaCube.QACube(question=question.question, query=question.query)
         qa3.get_qa3(qa3_answer=qa3_answer)
 
-        # query = qa3query.get_qa3query(question, file_name, aggregators=False)
-        # query_aggr = qa3query.get_qa3query(question, file_name)
-        # qa3_question = qa3question.get_qa3question(question, file_name)
+        answer = answer2json(question=question, qa3_answer=qa3_answer, query=qa3.query)
+        answers.append(answer)
 
         temp_dcquestion = clean_string(question.question)
         temp_question = clean_string(qa3.question)
@@ -106,21 +91,20 @@ def qa3questioner_text(file_name):
         temp_query = clean_string(qa3.query)
         temp_dcdataset = clean_string(question.dataset)
         temp_dataset = clean_string(qa3_answer.dataset)
-
         text = text + file_name + '\t' + question.id + '\t' + temp_dcdataset + '\t' + temp_dataset \
                + '\t' + temp_dcquestion + '\t' + temp_question + '\t' + temp_dcquery + '\t' + temp_query + '\n'
 
-    return text
+    dataset['answers'] = answers
+    return dataset, text
 
 
-def clean_string(string):
-    string = re.sub('\n', '', string).strip()
-    string = re.sub(' +', ' ', string)
-    return string
+def clean_string(c_string):
+    c_string = re.sub('[\n\t]', ' ', c_string).strip()
+    c_string = re.sub(' +', ' ', c_string)
+    return c_string
 
 
-def save_data(file_name, source_json, use_cache=False):
-    dataset = qa3questioner(source_json)
-    text = qa3questioner_text(source_json)
+def save_data(file_name, source_json, use_cache=False, site=qaCube.QA3):
+    dataset, text = get_answers(source_json, use_cache, site)
     save_data_to_json(dataset, file_name)
     save_data_to_text(text, file_name)
